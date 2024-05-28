@@ -10,7 +10,7 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            background: linear-gradient(135deg, #1f1c2c, #453490);
             color: #fff;
             overflow-x: hidden; /* Hide horizontal scrollbar */
         }
@@ -35,11 +35,14 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         nav ul li {
-            display: inline;
-            margin-right: 20px;
+            margin: 10px;
         }
 
         nav ul li a {
@@ -51,6 +54,7 @@
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             transition: all 0.3s ease;
             color: #fff;
+            white-space: nowrap;
         }
 
         nav ul li a:hover {
@@ -70,7 +74,7 @@
         }
 
         .content {
-            background: linear-gradient(135deg, #3a3d40, #181818);
+            background: linear-gradient(135deg, #282a2d, #181818);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -97,7 +101,7 @@
         .links a {
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, #1fc705, #2575fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 1.1em;
@@ -128,6 +132,13 @@
             width: 100%;
             font-size: 0.9em;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            nav ul li a {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
