@@ -129,7 +129,7 @@
             background: linear-gradient(135deg, #1f1c2c, #928dab);
             padding: 10px;
             text-align: center;
-position: fixed;
+            position: fixed;
             bottom: 0;
             width: 100%;
             font-size: 0.9em;
@@ -141,6 +141,70 @@ position: fixed;
                 font-size: 1em;
                 padding: 8px 16px;
             }
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .carousel-item img,
+        .carousel-item video {
+            width: 100%;
+            display: block;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            font-size: 1.2em;
+            max-width: 80%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -239,7 +303,7 @@ position: fixed;
         <section id="info" class="content-section">
             <div class="content">
                 <h2>INFO</h2>
-                <p>This website will nevercharge a single penny for any content.</p>
+                <p>This website will never charge a single penny for any content.</p>
                 <div class="links">
                     <a>
                         <img src="Books.webp" alt="Book Icon">
@@ -262,8 +326,77 @@ position: fixed;
         </section>
     </main>
 
+    <!-- Carousel Section -->
+    <section class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-item">
+                <img src="report1.png" alt="Image 1">
+                <div class="caption">EXPERIENCING SUDDEN TRAFFIC GROWTH</div>
+            </div>
+            <div class="carousel-item">
+                <video controls>
+                    <source src="taskade.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="caption">UPCOMING PLANS</div>
+            </div>
+            <div class="carousel-item">
+                <video controls>
+                    <source src="batman.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="caption">I'm VENGEANCE</div>
+            </div>
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button prev">&lt;</button>
+            <button class="carousel-button next">&gt;</button>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2024 PirateHive - All rights reserved.</p>
     </footer>
+
+    <script>
+        const carouselContainer = document.querySelector('.carousel-container');
+        const items = carouselContainer.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        let currentIndex = 0;
+
+        function showItem(index) {
+            const offset = -index * 100;
+            carouselContainer.style.transform = `translateX(${offset}%)`;
+            stopVideos();
+        }
+
+        function showNextItem() {
+            currentIndex = (currentIndex + 1) % items.length;
+            showItem(currentIndex);
+        }
+
+        function showPrevItem() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            showItem(currentIndex);
+        }
+
+        function stopVideos() {
+            items.forEach(item => {
+                const video = item.querySelector('video');
+                if (video) {
+                    video.play();
+                    video.muted();
+                    video.currentTime = 0;
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', showPrevItem);
+        nextButton.addEventListener('click', showNextItem);
+
+        // Initialize carousel
+        showItem(currentIndex);
+    </script>
 </body>
 </html>
