@@ -68,13 +68,14 @@
             padding: 20px;
         }
 
-        .content-section {
+       .content-section {
             margin-bottom: 60px;
             position: relative;
             overflow: hidden;
+            min-height: calc(50vh - 60px); /* Adjust the height based on your preference */
         }
 
-        .content {
+       .content {
             background: linear-gradient(135deg, #282a2d, #181818);
             padding: 30px;
             border-radius: 15px;
@@ -86,7 +87,7 @@
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
-        .content h2 {
+       .content h2 {
             font-family: 'Montserrat', sans-serif;
             font-size: 2em;
             margin-top: 0;
@@ -95,11 +96,11 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .links {
+       .links {
             margin-top: 20px;
         }
 
-        .links a {
+       .links a {
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, #1fc705, #2575fc);
@@ -112,11 +113,11 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        .links a:hover {
+       .links a:hover {
             transform: scale(1.1);
         }
 
-        .links img {
+       .links img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -128,7 +129,7 @@
             background: linear-gradient(135deg, #1f1c2c, #928dab);
             padding: 10px;
             text-align: center;
-            position: fixed;
+position: fixed;
             bottom: 0;
             width: 100%;
             font-size: 0.9em;
@@ -235,10 +236,10 @@
             </div>
         </section>
 
-        <section id="jeeneet" class="content-section">
+        <section id="info" class="content-section">
             <div class="content">
                 <h2>INFO</h2>
-                <p>This website will never charge a single penny for any content.</p>
+                <p>This website will nevercharge a single penny for any content.</p>
                 <div class="links">
                     <a>
                         <img src="Books.webp" alt="Book Icon">
@@ -264,37 +265,5 @@
     <footer>
         <p>&copy; 2024 PirateHive - All rights reserved.</p>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll('.content-section');
-
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-
-            function animateSections() {
-                sections.forEach(section => {
-                    if (isInViewport(section)) {
-                        section.querySelector('.content').style.transform = 'translateY(0)';
-                        section.querySelector('.content').style.opacity = '1';
-                    } else {
-                        section.querySelector('.content').style.transform = 'translateY(100px)';
-                        section.querySelector('.content').style.opacity = '0';
-                    }
-                });
-            }
-
-            animateSections();
-
-            window.addEventListener('scroll', animateSections);
-        });
-    </script>
 </body>
 </html>
