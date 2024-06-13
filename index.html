@@ -211,10 +211,6 @@
             padding: 2px;
             text-align: center;
         }
-        emo {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.1em;
-        }
 
     </style>
 </head>
@@ -226,6 +222,7 @@
                 <li><a href="#movies">Movies</a></li>
                 <li><a href="#jeeneet">JEE NEET</a></li>
                 <li><a href="#cybersecurity">Cyber Security</a></li>
+                <li><a href="#info">INFO</a></li>
             </ul>
         </nav>
     </header>
@@ -236,23 +233,23 @@
                 <h2>Movies/Series/Anime</h2>
                 <p>Explore the latest movies and TV shows here.</p>
                 <div class="links">
-                    <a href="https://www.braflix.video/">
+                    <a href="https://www.braflix.video/" target="_blank">
                         <img src="cine.webp" alt="Movie Icon">
                         Movies/Tv/WebSeries
                     </a>
-                    <a href="https://binged.live/">
+                    <a href="https://binged.live/" target="_blank">
                         <img src="tv.webp" alt="TV Icon">
                         Movies (Regional language)
                     </a>
-                    <a href="https://topdocumentaryfilms.com/">
+                    <a href="https://topdocumentaryfilms.com/" target="_blank">
                         <img src="doc.png" alt="Documentary Icon">
                         Documentaries
                     </a>
-                    <a href="https://nekohaa.lol/">
+                    <a href="https://nekohaa.lol/" target="_blank">
                         <img src="anime.webp" alt="Anime Icon">
                         Anime
                     </a>
-                    <a href="https://allmanga.to/">
+                    <a href="https://allmanga.to/" target="_blank">
                         <img src="allmanga.webp" alt="Anime Icon">
                         All Manga
                     </a>
@@ -265,23 +262,23 @@
                 <h2>JEE NEET</h2>
                 <p>Top Institutes Paid Resources For Free.(8GB of Resources) Currently only JEE.Save this site many things are on the way.</p>
                 <div class="links">
-                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link">
+                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
                         <img src="Books.webp" alt="Book Icon">
                         Study Material
                     </a>
-                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link">
+                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
                         <img src="lecture.png" alt="Video Icon">
                         Video Lectures (Soon...)
                     </a>
-                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link">
+                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
                         <img src="test.png" alt="Test Icon">
                         Practice Tests & Quizzes
                     </a>
-                    <a href="https://t.me/PirateHive3">
+                    <a href="https://t.me/PirateHive3" target="_blank">
                         <img src="treasure.png" alt="Book Icon">
                         Major Edtech MOD/All batches
                     </a>
-                    <a href="https://t.me/PirateHive3">
+                    <a href="https://t.me/PirateHive3" target="_blank">
                         <img src="Telegram.webp" alt="Book Icon">
                         Best Telegram channels(No Promo)
                     </a>
@@ -294,15 +291,15 @@
                 <h2>Cyber Security (In Progress)</h2>
                 <p>Stay informed about the latest trends and techniques in cyber security.</p>
                 <div class="links">
-                    <a href="#">
+                    <a href="#" target="_blank">
                         <img src="sec.png" alt="Security Icon">
                         Cyber Security Basics
                     </a>
-                    <a href="#">
+                    <a href="#" target="_blank">
                         <img src="hacker.png" alt="Hacker Icon">
                         Ethical Hacking Tutorials
                     </a>
-                    <a href="#">
+                    <a href="#" target="_blank">
                         <img src="encrypt.webp" alt="Encryption Icon">
                         Encryption Techniques
                     </a>
@@ -315,8 +312,7 @@
                 <h2>INFO</h2>
                 <p>This website will never charge a single penny for any content.</p>
                 <div class="links">
-                    <a>
-                    <a href="https://phantomcodex9.github.io/phantom/">
+                    <a href="https://phantomcodex9.github.io/phantom/" target="_blank">
                         <img src="Books.webp" alt="Book Icon">
                         PARENT WEBSITE- bit.ly/phantom92
                     </a>
@@ -332,8 +328,7 @@
                         <img src="lecture.png" alt="Test Icon">
                         Adding a Games Section soon
                     </a>
-                    <a>
-                    <a href="https://t.me/PirateHive3">
+                    <a href="https://t.me/PirateHive3" target="_blank">
                         <img src="Telegram.webp" alt="TG Icon">
                         Join Us On Telegram
                     </a>
@@ -401,8 +396,7 @@
             items.forEach(item => {
                 const video = item.querySelector('video');
                 if (video) {
-                    video.play();
-                    video.muted();
+                    video.pause();
                     video.currentTime = 0;
                 }
             });
