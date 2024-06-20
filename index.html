@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-C5WVB11YW2');
-</script>
+      gtag('config', 'G-C5WVB11YW2');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PirateHive - Your Ultimate Destination</title>
@@ -18,7 +18,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0;
+            margin: 0; 
             padding: 0;
             background: linear-gradient(135deg, #1f1c2c, #453490);
             color: #fff;
@@ -45,7 +45,7 @@
         nav ul {
             list-style-type: none;
             padding: 0;
-            margin: 0;
+            margin: 0px;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -133,13 +133,81 @@
             margin-right: 10px;
         }
 
+        /* Sidebar Styles */
+.sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    z-index: 1000;
+    background-color: #0d0920;
+    transform: translateX(-250px);
+    transition: transform 0.5s ease;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    text-align: center;
+}
 
+.sidebar {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Adjust height based on content */
+    box-sizing: border-box; /* Ensure padding doesn't increase width */
+}
 
-        @media (max-width: 600px) {
-            nav ul li a {
-                font-size: 1em;
-                padding: 8px 16px;
-            }
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Hide overflow if necessary */
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Ensure links take up full width */
+    padding: 10px 0; /* Adjust padding for better spacing */
+}
+
+.sidebar footer {
+    margin-top: auto;
+    text-align: center;
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+.sidebar footer:hover {
+    color: #fff;
+}
+.hamburger {
+    position: fixed;
+    top: 18px;
+    left: 16px;
+    z-index: 1001;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Add transition for smooth hiding/showing */
+}
+
+.hamburger.hidden {
+    opacity: 0;
+    pointer-events: none; /* Ensure the icon is not clickable when hidden */
+}
+
+        .hamburger img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Add styles for the active state */
+        .sidebar-container.active {
+            transform: translateX(0);
         }
 
         /* Carousel Styles */
@@ -188,9 +256,9 @@
 
         .carousel-button:hover {
             background-color: rgba(0, 0, 0, 0.8);
-        }
+       }
 
-        .caption {
+       .caption {
             position: absolute;
             bottom: 10%;
             left: 50%;
@@ -205,16 +273,80 @@
             max-width: 100%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
+
         footer {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            background: linear-gradient(135deg, #1f1c2c, #1a9f70);
             padding: 2px;
             text-align: center;
         }
 
+
+
+#searchInput {
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1f1c2c;
+    color: #fff;
+}
+
+#searchInput::placeholder {
+    color: #ccc;
+}
+
+#searchInput:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.social-icons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px; /* Adjust the size as needed */
+    border-radius: 50%; /* Ensure round shape for circular icons */
+}
+
     </style>
 </head>
 <body>
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <ul>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#jeeneet">JEE NEET</a></li>
+                <li><a href="#cybersecurity">Cyber Security</a></li>
+                <li><a href="#info">INFO</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://t.me/PirateHive3" target="_blank">
+                    <img src="Telegram.webp" alt="Telegram">
+                </a>
+                <a href="https://www.instagram.com/phantomcodex9/" target="_blank">
+                    <img src="Insta.webp" alt="Instagram">
+                </a>
+            </div>
+            <footer>
+                Love what we do? Support us with a coffee!🚀   UPI-"singhx9@fam"
+            </footer>
+        </div>
+    </div>
+    <div class="hamburger">
+        <img src="menu4.webp" alt="Hamburger Icon">
+    </div>
     <header>
         <h1>PirateHive</h1>
         <nav>
@@ -226,157 +358,229 @@
             </ul>
         </nav>
     </header>
+    <div class="main-container">
+        <main>
+            <section id="movies" class="content-section">
+                <div class="content">
+                    <h2>Movies/Series/Anime</h2>
+                    <p>Explore the latest movies and TV shows here.</p>
+                    <div class="links">
+                        <a href="https://www.braflix.video/" target="_blank">
+                            <img src="cine.webp" alt="Movie Icon">
+                            Movies/Tv/WebSeries
+                        </a>
+                        <a href="https://binged.live/" target="_blank">
+                            <img src="tv.webp" alt="TV Icon">
+                            Movies (Regional language)
+                        </a>
+                        <a href="https://topdocumentaryfilms.com/" target="_blank">
+                            <img src="doc.png" alt="Documentary Icon">
+                            Documentaries
+                        </a>
+                        <a href="https://nekohaa.lol/" target="_blank">
+                            <img src="anime.webp" alt="Anime Icon">
+                            Anime
+                        </a>
+                        <a href="https://allmanga.to/" target="_blank">
+                            <img src="allmanga.webp" alt="Anime Icon">
+                            All Manga
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-    <main>
-        <section id="movies" class="content-section">
-            <div class="content">
-                <h2>Movies/Series/Anime</h2>
-                <p>Explore the latest movies and TV shows here.</p>
-                <div class="links">
-                    <a href="https://www.braflix.video/" target="_blank">
-                        <img src="cine.webp" alt="Movie Icon">
-                        Movies/Tv/WebSeries
-                    </a>
-                    <a href="https://binged.live/" target="_blank">
-                        <img src="tv.webp" alt="TV Icon">
-                        Movies (Regional language)
-                    </a>
-                    <a href="https://topdocumentaryfilms.com/" target="_blank">
-                        <img src="doc.png" alt="Documentary Icon">
-                        Documentaries
-                    </a>
-                    <a href="https://nekohaa.lol/" target="_blank">
-                        <img src="anime.webp" alt="Anime Icon">
-                        Anime
-                    </a>
-                    <a href="https://allmanga.to/" target="_blank">
-                        <img src="allmanga.webp" alt="Anime Icon">
-                        All Manga
-                    </a>
+            <section id="jeeneet" class="content-section">
+                <div class="content">
+                    <h2>JEE & NEET </h2>
+                    <p>Top Institutes Paid Resources For Free.Check Telegram For More Content</p>
+                    <div class="links">
+                        <a href="https://mega.nz/folder/cClAxJCJ#k_7WWHnTGjxrftSLnjLDiA" target="_blank">
+                            <img src="shelf.webp">
+                            Study Material [JEE,BITSAT]
+                        </a>
+
+                        <a href="https://mega.nz/folder/hD8nhKAC#zk0C9sPJeDxM-AWAw6lLdA" target="_blank">
+                            <img src="bio.webp">
+                            Study Material [NEET]⚡ 
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
+                            <img src="Books.webp" alt="Book Icon">
+                            Study Material 2(Old GDrive)
+                        </a>
+
+                        <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
+                           <img src="test.png" alt="Test Icon">
+                            Practice Quizzes(Soon...)
+                        </a>
+                        <a href="https://t.me/PirateHive3" target="_blank">
+                            <img src="treasure.png" alt="Book Icon">
+                            Major Edtech MOD/All batches
+                        </a>
+                        <a href="https://t.me/PirateHive3" target="_blank">
+                            <img src="Telegram.webp" alt="Book Icon">
+                            Best Telegram channels/Video Lectures
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cybersecurity" class="content-section">
+                <div class="content">
+                    <h2>Cyber Security (In Progress)</h2>
+                    <p>Stay informed about the latest trends and techniques in cyber security.</p>
+                    <div class="links">
+                        <a href="#" target="_blank">
+                            <img src="sec.png" alt="Security Icon">
+                            Cyber Security Basics
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="hacker.png" alt="Hacker Icon">
+                            Ethical Hacking Tutorials
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="encrypt.webp" alt="Encryption Icon">
+                            Encryption Techniques
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="info" class="content-section">
+                <div class="content">
+                    <h2>INFO</h2>
+                    <p>This website will never charge a single penny for any content.</p>
+                    <div class="links">
+                        <a href="https://phantomcodex9.github.io/phantom/" target="_blank">
+                            <img src="Books.webp" alt="Book Icon">
+                            PARENT WEBSITE- bit.ly/phantom92
+                        </a>
+                        <a>
+                            <img src="lecture.png" alt="Video Icon">
+                            The Main Purpose of Website is to provide alternative to almost everything paid out there on the internet
+                        </a>
+                        <a>
+                            <img src="lecture.png" alt="Test Icon">
+                            In Case of Any offense With Any Content on this Web Please Contact to the owner "phantomcodex9@gmail.com"
+                        </a>
+                        <a>
+                            <img src="lecture.png" alt="Test Icon">
+                            Adding a Games Section soon
+                        </a>
+                        <a href="https://t.me/PirateHive3" target="_blank">
+                            <img src="Telegram.webp" alt="TG Icon">
+                            Join Us On Telegram
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Carousel Section -->
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <img src="rep.png" alt="Image 1">
+                    <div class="caption">EXPERIENCING SUDDEN TRAFFIC GROWTH</div>
+                </div>
+                <div class="carousel-item">
+                    <video controls>
+                        <source src="taskade.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="caption">UPCOMING PLANS</div>
+                </div>
+                <div class="carousel-item">
+                    <video controls>
+                        <source src="batman.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="caption">I'm VENGEANCE.</div>
                 </div>
             </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev">&lt;</button>
+                <button class="carousel-button next">&gt;</button>
+            </div>
+
         </section>
 
-        <section id="jeeneet" class="content-section">
-            <div class="content">
-                <h2>JEE & NEET </h2>
-                <p>Top Institutes Paid Resources For Free.Check Telegram For More Content</p>
-                <div class="links">
-                    <a href="https://mega.nz/folder/cClAxJCJ#k_7WWHnTGjxrftSLnjLDiA" target="_blank">
-                        <img src="shelf.webp">
-                        Study Material [JEE,BITSAT]
-                    </a>
-
-                    <a href="https://mega.nz/folder/hD8nhKAC#zk0C9sPJeDxM-AWAw6lLdA" target="_blank">
-                        <img src="bio.webp">
-                        Study Material [NEET]⚡ 
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
-                        <img src="Books.webp" alt="Book Icon">
-                        Study Material 2(Old GDrive)
-                    </a>
-
-                    <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
-                        <img src="test.png" alt="Test Icon">
-                        Practice Quizzes(Soon...)
-                    </a>
-                    <a href="https://t.me/PirateHive3" target="_blank">
-                        <img src="treasure.png" alt="Book Icon">
-                        Major Edtech MOD/All batches
-                    </a>
-                    <a href="https://t.me/PirateHive3" target="_blank">
-                        <img src="Telegram.webp" alt="Book Icon">
-                        Best Telegram channels/Video Lectures
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="cybersecurity" class="content-section">
-            <div class="content">
-                <h2>Cyber Security (In Progress)</h2>
-                <p>Stay informed about the latest trends and techniques in cyber security.</p>
-                <div class="links">
-                    <a href="#" target="_blank">
-                        <img src="sec.png" alt="Security Icon">
-                        Cyber Security Basics
-                    </a>
-                    <a href="#" target="_blank">
-                        <img src="hacker.png" alt="Hacker Icon">
-                        Ethical Hacking Tutorials
-                    </a>
-                    <a href="#" target="_blank">
-                        <img src="encrypt.webp" alt="Encryption Icon">
-                        Encryption Techniques
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="info" class="content-section">
-            <div class="content">
-                <h2>INFO</h2>
-                <p>This website will never charge a single penny for any content.</p>
-                <div class="links">
-                    <a href="https://phantomcodex9.github.io/phantom/" target="_blank">
-                        <img src="Books.webp" alt="Book Icon">
-                        PARENT WEBSITE- bit.ly/phantom92
-                    </a>
-                    <a>
-                        <img src="lecture.png" alt="Video Icon">
-                        The Main Purpose of Website is to provide alternative to almost everything paid out there on the internet
-                    </a>
-                    <a>
-                        <img src="lecture.png" alt="Test Icon">
-                        In Case of Any offense With Any Content on this Web Please Contact to the owner "phantomcodex9@gmail.com"
-                    </a>
-                    <a>
-                        <img src="lecture.png" alt="Test Icon">
-                        Adding a Games Section soon
-                    </a>
-                    <a href="https://t.me/PirateHive3" target="_blank">
-                        <img src="Telegram.webp" alt="TG Icon">
-                        Join Us On Telegram
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Carousel Section -->
-    <section class="carousel">
-        <div class="carousel-container">
-            <div class="carousel-item">
-                <img src="rep.png" alt="Image 1">
-                <div class="caption">EXPERIENCING SUDDEN TRAFFIC GROWTH</div>
-            </div>
-            <div class="carousel-item">
-                <video controls>
-                    <source src="taskade.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="caption">UPCOMING PLANS</div>
-            </div>
-            <div class="carousel-item">
-                <video controls>
-                    <source src="batman.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="caption">I'm VENGEANCE.</div>
-            </div>
-        </div>
-        <div class="carousel-buttons">
-            <button class="carousel-button prev">&lt;</button>
-            <button class="carousel-button next">&gt;</button>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 PirateHive - All rights reserved.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2024 PirateHive - All rights reserved.</p>
+        </footer>
+    </div>
 
     <script>
-        const carouselContainer = document.querySelector('.carousel-container');
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebarContainer = document.querySelector('.sidebar-container');
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    const searchInput = document.getElementById('searchInput');
+
+    // Function to handle scroll event
+    function handleScroll() {
+        if (window.scrollY > 0) {
+            hamburger.classList.add('hidden'); // Hide hamburger icon when scrolled down
+        } else {
+            hamburger.classList.remove('hidden'); // Show hamburger icon when at the top
+        }
+    }
+
+    // Toggle sidebar visibility on hamburger click
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        sidebarContainer.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside of it
+    document.addEventListener('click', function(event) {
+        const target = event.target;
+
+        // Check if the click target is not inside the sidebar or the hamburger
+        if (!sidebarContainer.contains(target) && !hamburger.contains(target)) {
+            // Close sidebar if it is open
+            if (sidebarContainer.classList.contains('active')) {
+                sidebarContainer.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        }
+    });
+
+    // Scroll to section when sidebar link is clicked
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1); // Remove #
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                sidebarContainer.classList.remove('active'); // Collapse sidebar
+                hamburger.classList.remove('active'); // Collapse hamburger
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Implement search functionality
+    searchInput.addEventListener('input', function(event) {
+        const searchText = event.target.value.toLowerCase();
+
+        sidebarLinks.forEach(link => {
+            const linkText = link.textContent.toLowerCase();
+            if (linkText.includes(searchText)) {
+                link.parentElement.style.display = 'block'; // Show matching link
+            } else {
+                link.parentElement.style.display = 'none'; // Hide non-matching link
+            }
+        });
+    });
+
+    // Add scroll event listener to handle hiding/showing hamburger icon
+    window.addEventListener('scroll', handleScroll);
+});
+
+const carouselContainer = document.querySelector('.carousel-container');
         const items = carouselContainer.querySelectorAll('.carousel-item');
         const prevButton = document.querySelector('.carousel-button.prev');
         const nextButton = document.querySelector('.carousel-button.next');
