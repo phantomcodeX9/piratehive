@@ -1,28 +1,32 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-C5WVB11YW2');
+        gtag('config', 'G-C5WVB11YW2');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PirateHive - Your Ultimate Destination</title>
     <link rel="icon" href="pirate.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0; 
+            margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #1f1c2c, #453490);
             color: #fff;
-            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-x: hidden;
+            /* Hide horizontal scrollbar */
         }
 
         header {
@@ -36,7 +40,7 @@
         header h1 {
             margin: 0;
             font-size: 2.5em;
-            background: linear-gradient(135deg,  #27d888, #2575fc);
+            background: linear-gradient(135deg, #27d888, #2575fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 2px rgba(0, 0, 0, 0.8);
@@ -77,15 +81,16 @@
             padding: 20px;
         }
 
-       .content-section {
+        .content-section {
             margin-bottom: 60px;
             position: relative;
             overflow: hidden;
-            min-height: calc(50vh - 60px); /* Adjust the height based on your preference */
+            min-height: calc(50vh - 60px);
+            /* Adjust the height based on your preference */
         }
 
-       .content {
-            background: linear-gradient(135deg, #282a2d, #181818);
+        .content {
+            background: linear-gradient(135deg, #323538, #000000);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -96,7 +101,7 @@
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
-       .content h2 {
+        .content h2 {
             font-family: 'Montserrat', sans-serif;
             font-size: 2em;
             margin-top: 0;
@@ -105,100 +110,113 @@
             -webkit-text-fill-color: transparent;
         }
 
-       .links {
+        .links {
             margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            flex-direction: column;
         }
 
-       .links a {
+        .links a {
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #1fc705, #2575fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease;
+            background-color: #8a8af8;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            font-family: 'Roboto', sans-serif;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-       .links a:hover {
-            transform: scale(1.1);
+        .links a:hover {
+            background-color: #31ee7d;
         }
 
-       .links img {
+        .links img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             margin-right: 10px;
         }
 
+
         /* Sidebar Styles */
-.sidebar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
-    z-index: 1000;
-    background-color: #0d0920;
-    transform: translateX(-250px);
-    transition: transform 0.5s ease;
-    overflow-y: auto; /* Enable vertical scrolling if needed */
-    text-align: center;
-}
+        .sidebar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            z-index: 1000;
+            background-color: #0d0920;
+            transform: translateX(-250px);
+            transition: transform 0.5s ease;
+            overflow-y: auto;
+            /* Enable vertical scrolling if needed */
+            text-align: center;
+        }
 
-.sidebar {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Adjust height based on content */
-    box-sizing: border-box; /* Ensure padding doesn't increase width */
-}
+        .sidebar {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            /* Adjust height based on content */
+            box-sizing: border-box;
+            /* Ensure padding doesn't increase width */
+        }
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    overflow: hidden; /* Hide overflow if necessary */
-}
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            /* Hide overflow if necessary */
+        }
 
-.sidebar li {
-    margin-bottom: 10px;
-}
+        .sidebar li {
+            margin-bottom: 10px;
+        }
 
-.sidebar a {
-    color: #fff;
-    text-decoration: none;
-    display: block; /* Ensure links take up full width */
-    padding: 10px 0; /* Adjust padding for better spacing */
-}
+        .sidebar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            /* Ensure links take up full width */
+            padding: 10px 0;
+            /* Adjust padding for better spacing */
+        }
 
-.sidebar footer {
-    margin-top: auto;
-    text-align: center;
-    color: #ccc;
-    font-size: 0.9em;
-}
+        .sidebar footer {
+            margin-top: auto;
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.9em;
+        }
 
-.sidebar footer:hover {
-    color: #fff;
-}
-.hamburger {
-    position: fixed;
-    top: 18px;
-    left: 16px;
-    z-index: 1001;
-    cursor: pointer;
-    transition: opacity 0.3s ease; /* Add transition for smooth hiding/showing */
-}
+        .sidebar footer:hover {
+            color: #dbf305;
+        }
 
-.hamburger.hidden {
-    opacity: 0;
-    pointer-events: none; /* Ensure the icon is not clickable when hidden */
-}
+        .hamburger {
+            position: fixed;
+            top: 18px;
+            left: 16px;
+            z-index: 1001;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            /* Add transition for smooth hiding/showing */
+        }
+
+        .hamburger.hidden {
+            opacity: 0;
+            pointer-events: none;
+            /* Ensure the icon is not clickable when hidden */
+        }
 
         .hamburger img {
             width: 40px;
@@ -256,9 +274,9 @@
 
         .carousel-button:hover {
             background-color: rgba(0, 0, 0, 0.8);
-       }
+        }
 
-       .caption {
+        .caption {
             position: absolute;
             bottom: 10%;
             left: 50%;
@@ -275,7 +293,7 @@
         }
 
         footer {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Helvetica', sans-serif;
             background: linear-gradient(135deg, #1f1c2c, #1a9f70);
             padding: 2px;
             text-align: center;
@@ -283,77 +301,117 @@
 
 
 
-#searchInput {
-    width: 75%;
-    padding: 10px;
-    margin-bottom: 20px;
-    margin-left: 40px;
-    border-radius: 5px;
-    border: none;
-    background-color: #1f1c2c;
-    color: #fff;
-}
+        #searchInput {
+            width: 75%;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-left: 40px;
+            border-radius: 5px;
+            border: none;
+            background-color: #1f1c2c;
+            color: #fff;
+        }
 
-#searchInput::placeholder {
-    color: #ccc;
-}
+        #searchInput::placeholder {
+            color: #ccc;
+        }
 
-#searchInput:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
+        #searchInput:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
 
-.social-icons {
-    margin-top: 20px;
-    text-align: center;
-}
+        .social-icons {
+            margin-top: 20px;
+            text-align: center;
+        }
 
-.social-icons a {
-    display: inline-block;
-    margin: 0 10px;
-}
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+        }
 
-.social-icons img {
-    width: 30px; /* Adjust the size as needed */
-    height: 30px; /* Adjust the size as needed */
-    border-radius: 50%; /* Ensure round shape for circular icons */
-}
+        .social-icons img {
+            width: 30px;
+            /* Adjust the size as needed */
+            height: 30px;
+            /* Adjust the size as needed */
+            border-radius: 50%;
+            /* Ensure round shape for circular icons */
+        }
 
-.red-text {
-    color: red;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+        .red-text {
+            color: red;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
 
-.icon {
-    width: 30px; /* Adjust size as needed */
-    height: 20px; /* Adjust size as needed */
-    margin-right: 8px; /* Space between icon and text */
-    vertical-align: middle; /* Aligns icon with text */
-    margin-left: 4px;
-}
+        .icon {
+            width: 30px;
+            /* Adjust size as needed */
+            height: 20px;
+            /* Adjust size as needed */
+            margin-right: 8px;
+            /* Space between icon and text */
+            vertical-align: middle;
+            /* Aligns icon with text */
+            margin-left: 4px;
+        }
 
+        /* Base styles for links */
+        a {
+            font-family: 'Helvetica', sans-serif;
+            /* Custom font choice */
+            color: #007bff;
+            /* Link color */
+            text-decoration: none;
+            /* Remove underline */
+            font-size: 1rem;
+            /* Base size */
+        }
 
+        /* Hover effect for links */
+        a:hover {
+            color: #000000;
+            /* Darker color on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            a {
+                font-size: 1.2rem;
+                /* Slightly larger for smaller screens */
+            }
+        }
+
+        @media (min-width: 769px) {
+            a {
+                font-size: 1.5rem;
+                /* Slightly larger for laptop screens */
+            }
+        }
     </style>
 </head>
+
 <body>
     <section id="sidebar">
-    <div class="sidebar-container">
-        <div class="sidebar">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <ul>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#jeeneet">JEE NEET</a></li>
-                <li><a href="#cybersecurity">Cyber Security</a></li>
-                <li><a href="#GATE"> GATE<img src="soon.gif.mp4" alt="Soon" class="icon"></a></li>
-                <li><a href="#CSEcourses">Computer Science<img src="soon.gif.mp4" alt="Soon" class="icon"></a></li>
-                <li><a href="#info">INFO</a></li>
-            </ul>
-            <footer>
-                Don't Forget to join Telegram Channel
-            </footer>
+        <div class="sidebar-container">
+            <div class="sidebar">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <ul>
+                    <li><a href="#movies">Movies</a></li>
+                    <li><a href="#jeeneet">JEE NEET</a></li>
+                    <li><a href="#Btech">BE/Btech</a></li>
+                    <li><a href="#cybersecurity">Cyber Security</a></li>
+                    <li><a href="#GATE"> GATE<img src="soon.gif.mp4" alt="Soon" class="icon"></a></li>
+                    <li><a href="#Btech">Computer Science<img src="soon.gif.mp4" alt="Soon" class="icon"></a></li>
+                    <li><a href="#info">INFO</a></li>
+                </ul>
+                <footer>
+                    Don't Forget to join Telegram Channel
+                </footer>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
     <div class="hamburger">
         <img src="menu4.webp" alt="Hamburger Icon">
     </div>
@@ -363,7 +421,7 @@
             <ul>
                 <li><a href="#movies">Movies</a></li>
                 <li><a href="#jeeneet">JEE NEET</a></li>
-                <li><a href="#cybersecurity">Cyber Security</a></li>
+                <li><a href="#Btech">BE/Btech</a></li>
                 <li><a href="#info">INFO</a></li>
             </ul>
         </nav>
@@ -374,15 +432,25 @@
                 <div class="content">
                     <h2>Movies/Series/Anime</h2>
                     <p>Explore the latest movies and TV shows here.</p>
+                    <p>*Refer Adblocking section for better experience</p>
                     <div class="links">
-                        <a href="https://www.braflix.video/" target="_blank">
+                        <a href="https://freek.to/" target="_blank">
                             <img src="cine.webp" alt="Movie Icon">
                             Movies/Tv/WebSeries
                         </a>
-                        <a href="https://binged.live/" target="_blank">
+                        <a href="https://www.cineby.ru/" target="_blank">
                             <img src="tv.webp" alt="TV Icon">
-                            Movies (Regional language)
+                            Movies (Regional lang.)
                         </a>
+                        <a href="https://vidbinge.app/" target="_blank">
+                            <img src="movien3.webp" alt="TV Icon">
+                            Movies 2 (Downloadable/ad free)
+                        </a>
+                        <a href="https://rivestream.live/" target="_blank">
+                            <img src="movien4.webp" alt="TV Icon">
+                            Everything(sport/kdrama/radio)
+                        </a>
+
                         <a href="https://topdocumentaryfilms.com/" target="_blank">
                             <img src="doc.png" alt="Documentary Icon">
                             Documentaries
@@ -390,10 +458,6 @@
                         <a href="https://nekohaa.lol/" target="_blank">
                             <img src="anime.webp" alt="Anime Icon">
                             Anime
-                        </a>
-                        <a href="https://allmanga.to/" target="_blank">
-                            <img src="allmanga.webp" alt="Anime Icon">
-                            All Manga
                         </a>
                     </div>
                 </div>
@@ -414,9 +478,13 @@
                             Study Material [NEET]
                         </a>
 
-                        <a href="https://drive.google.com/drive/folders/16qoVrCzuQYNqjUuaPE9FQrTBMJQvvXSZ?usp=drive_link" target="_blank">
-                           <img src="test.png" alt="Test Icon">
-                            Practice Quizzes(Soon...)
+                        <a href="https://jee-mains-quiz.jee-adv.eu.org/" target="_blank">
+                            <img src="test.png" alt="Test Icon">
+                            Practice Quizzes & Test<img src="new.webp" alt="Soon" class="icon">
+                        </a>
+                        <a href=" https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ" target="_blank">
+                            <img src="lecture.png" alt="Book Icon">
+                            Lectures and Resources (2TB Compiled)<img src="new.webp" alt="Soon" class="icon">
                         </a>
                         <a href="https://t.me/PirateHive3" target="_blank">
                             <img src="treasure.png" alt="Book Icon">
@@ -426,6 +494,38 @@
                             <img src="Telegram.webp" alt="Book Icon">
                             Best Telegram channels/Video Lectures
                         </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Btech" class="content-section">
+                <div class="content">
+                    <h2>Bachelor Of Technology (BE/B.Tech) / Coding <img src="soon.gif.mp4" alt="Soon" class="icon">
+                    </h2>
+                    <p>Study Material for Btech Students (14TB dropping Soon)</p>
+                    <div class="links">
+                        <a onclick="location.href='coding.html'">
+                            <img src="Degree.webp" alt="Book Icon">
+                            1st Year
+                        </a>
+
+                        <a onclick="location.href='coding.html'">
+                            <img src="bookp.webp" alt="Test Icon">
+                            Books and Other Resources<img src="new.webp" alt="Soon" class="icon">
+                        </a>
+                        <a onclick="location.href='coding.html'">
+                            <img src="Coding.webp" alt="Book Icon">
+                            Coding and programming resources (dropping ON 11 DEC)
+                        </a>
+                        <a href="https://t.me/codingknights" target="_blank">
+                            <img src="chat2.webp" alt="Book Icon">
+                            Telegram channel & Chat Room <img src="new.webp" alt="Soon" class="icon">
+                        </a>
+                        <a onclick="location.href='discord.html'"> <img src="Discord.webp" alt="Book Icon">
+                            🌟Must join Discord's! Let's Learn & Develop Together <img src="new.webp" alt="Soon"
+                                class="icon">
+                        </a>
+
                     </div>
                 </div>
             </section>
@@ -458,14 +558,16 @@
                     <div class="links">
                         <a>
                             <img src="lecture.png" alt="Video Icon">
-                            Our mission is to provide free alternatives to various paid content available on the internet. We do not own any of the content featured on this site. If you have any concerns or need to address an issue, please mail us at [Phantomx92@proton.me]
+                            Our mission is to provide free alternatives to various paid content available on the
+                            internet. We do not own any of the content featured on this site. If you have any concerns
+                            or need to address an issue, please mail us at [Phantomx92@proton.me]
                         </a>
                         <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank">
                             <img src="Telegram.webp" alt="TG Icon">
                             Join Us On Telegram
                         </a>
                         <a href="https://phantomcodex9.github.io/phantom/" target="_blank">
-                            <img src="Books.webp" alt="Book Icon">
+                            <img src="sitep.webp" alt="Book Icon">
                             PARENT WEBSITE- bit.ly/phantom92
                         </a>
                     </div>
@@ -476,10 +578,6 @@
         <!-- Carousel Section -->
         <section class="carousel">
             <div class="carousel-container">
-                <div class="carousel-item">
-                    <img src="rep.png" alt="Image 1">
-                    <div class="caption">EXPERIENCING SUDDEN TRAFFIC GROWTH📈</div>
-                </div>
                 <div class="carousel-item">
                     <video controls>
                         <source src="taskade.mp4" type="video/mp4">
@@ -492,7 +590,7 @@
                         <source src="batman.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <div class="caption">I'm VENGEANCE.</div>
+                    <div class="caption">VENGEANCE</div>
                 </div>
             </div>
             <div class="carousel-buttons">
@@ -508,77 +606,62 @@
     </div>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebarContainer = document.querySelector('.sidebar-container');
-    const sidebarLinks = document.querySelectorAll('.sidebar a');
-    const searchInput = document.getElementById('searchInput');
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger');
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            const searchInput = document.getElementById('searchInput');
 
-    // Function to handle scroll event
-    function handleScroll() {
-        if (window.scrollY > 0) {
-            hamburger.classList.add('hidden'); // Hide hamburger icon when scrolled down
-        } else {
-            hamburger.classList.remove('hidden'); // Show hamburger icon when at the top
-        }
-    }
-
-    // Toggle sidebar visibility on hamburger click
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        sidebarContainer.classList.toggle('active');
-    });
-
-    // Close sidebar when clicking outside of it
-    document.addEventListener('click', function(event) {
-        const target = event.target;
-
-        // Check if the click target is not inside the sidebar or the hamburger
-        if (!sidebarContainer.contains(target) && !hamburger.contains(target)) {
-            // Close sidebar if it is open
-            if (sidebarContainer.classList.contains('active')) {
-                sidebarContainer.classList.remove('active');
-                hamburger.classList.remove('active');
+            // Handle scroll event
+            function handleScroll() {
+                hamburger.classList.toggle('hidden', window.scrollY > 0);
             }
-        }
-    });
 
-    // Scroll to section when sidebar link is clicked
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').substring(1); // Remove #
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                sidebarContainer.classList.remove('active'); // Collapse sidebar
-                hamburger.classList.remove('active'); // Collapse hamburger
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: 'smooth'
+            // Toggle sidebar visibility
+            hamburger.addEventListener('click', function () {
+                this.classList.toggle('active');
+                sidebarContainer.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside of it
+            document.addEventListener('click', function (event) {
+                if (!sidebarContainer.contains(event.target) && !hamburger.contains(event.target)) {
+                    sidebarContainer.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+
+            // Scroll to section when sidebar link is clicked
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                        sidebarContainer.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
                 });
-            }
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function (event) {
+                const searchText = event.target.value.toLowerCase();
+                sidebarLinks.forEach(link => {
+                    const linkText = link.textContent.toLowerCase();
+                    link.parentElement.style.display = linkText.includes(searchText) ? 'block' : 'none';
+                });
+            });
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
         });
-    });
 
-    // Implement search functionality
-    searchInput.addEventListener('input', function(event) {
-        const searchText = event.target.value.toLowerCase();
-
-        sidebarLinks.forEach(link => {
-            const linkText = link.textContent.toLowerCase();
-            if (linkText.includes(searchText)) {
-                link.parentElement.style.display = 'block'; // Show matching link
-            } else {
-                link.parentElement.style.display = 'none'; // Hide non-matching link
-            }
-        });
-    });
-
-    // Add scroll event listener to handle hiding/showing hamburger icon
-    window.addEventListener('scroll', handleScroll);
-});
-
-const carouselContainer = document.querySelector('.carousel-container');
+        const carouselContainer = document.querySelector('.carousel-container');
         const items = carouselContainer.querySelectorAll('.carousel-item');
         const prevButton = document.querySelector('.carousel-button.prev');
         const nextButton = document.querySelector('.carousel-button.next');
@@ -613,8 +696,8 @@ const carouselContainer = document.querySelector('.carousel-container');
         prevButton.addEventListener('click', showPrevItem);
         nextButton.addEventListener('click', showNextItem);
 
-        // Initialize carousel
         showItem(currentIndex);
     </script>
 </body>
+
 </html>
