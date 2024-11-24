@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Year</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to right, #f87a37, #871bd9);
+            color: #ffffffc4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background-color: #278ba6;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #111eb2;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: calc(50vh - 60px);
+            text-align: left;
+            /* Adjust the height based on your preference */
+        }
+
+        .content {
+            background: linear-gradient(135deg, #323538, #000000);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            text-align: left;
+            text-decoration: dotted;
+        }
+
+        .links {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to 1st Year</h1>
+    <button class="btn" onclick="location.href='semester 1.html'">Sem 1</button>
+    <button class="btn" onclick="location.href='semester 2.html'">Sem 2</button>
+</body>
+
+</html>
