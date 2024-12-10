@@ -1,71 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1st Year</title>
+    <title>BOOKS B.E.</title>
     <style>
         body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(to right, #f87a37, #871bd9);
-            color: #ffffffc4;
+            background: linear-gradient(to bottom right, #000, #1a1a1a);
+            color: #fff;
+            font-family: , monospace;
             text-align: center;
             padding: 50px;
         }
-
-        .btn {
-            padding: 15px 30px;
-            font-size: 20px;
-            margin: 20px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            background-color: #278ba6;
-            color: white;
+        h1 {
+            color: #00ff8c;
+            font-size: 4em;
+            margin-bottom: 20px;
         }
-
-        .btn:hover {
-            background-color: #111eb2;
+        .announcement {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px #ad22e4;
         }
-
-        .content-section {
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-            min-height: calc(50vh - 60px);
-            text-align: left;
-            /* Adjust the height based on your preference */
+        .announcement h2 {
+            color: #00ff00;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
-
-        .content {
-            background: linear-gradient(135deg, #323538, #000000);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-            position: relative;
-            z-index: 1;
-            transform: translateY(0);
-            opacity: 1;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-            text-align: left;
-            text-decoration: dotted;
+        .announcement p {
+            font-size: 1.2em;
+            line-height: 1.6;
         }
-
-        .links {
-            margin-top: 20px;
+        .countdown {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .countdown-item {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-size: 1.5em;
+            text-align: center;
+            box-shadow: 0 0 5px #00ff00;
         }
     </style>
 </head>
-
 <body>
-    <h1>Welcome to 1st Year</h1>
-    <button class="btn" onclick="location.href='semester 1.html'">Sem 1</button>
-    <button class="btn" onclick="location.href='semester 2.html'">Sem 2</button>
+    <h1>This section will be available SOON!</h1>
+    <div class="announcement">
+        <h2>It will contain best books for each subject</h2>
+        <p>I will be uploading atleast 3 books for each subject so you can refer them for your prepration</p>
+        <div class="countdown" id="countdown" style="color:#00ff00">
+            Loading countdown...
+        </div>
+        <p style="margin-top: 20px;"><strong>Date:</strong> December 25, 2024 | <strong>Time:</strong> 10:00 AM EST</p>
+        <p style="color: yellow; font-size: 24px;">The wait will be worth it, Stay tuned
+            for more details and exclusive sneak peeks."</p>
+        <p>🍵</p>
+    </div>
+    <script>
+        // Set the target date and time
+        const targetDate = new Date("december 25, 2024 00:00:00").getTime();
+        // Update the countdown every second
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            // Time calculations
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            // Display the countdown
+            document.getElementById("countdown").innerHTML =
+                `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+            // If the countdown is finished, clear the interval and show a message
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "The wait is over!";
+            }
+        }, 1000);
+    </script>
 </body>
-
 </html>
