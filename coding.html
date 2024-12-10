@@ -12,6 +12,8 @@
             color: #FFFFFF;
             text-align: center;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
@@ -47,7 +49,7 @@
             transition: background-color 0.3s ease;
             margin-top: 30px;
             opacity: 0;
-            animation: fadeIn 4s 6s ease-in-out forwards; /* Added delay */
+            animation: fadeIn 4s 6s ease-in-out forwards;
         }
 
         a:hover {
@@ -66,8 +68,23 @@
             }
         }
 
-    </style>
+        /* Make it mobile-responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
 
+            p,
+            .info-message {
+                font-size: 1em;
+            }
+
+            a {
+                font-size: 1.2em;
+                padding: 10px 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
