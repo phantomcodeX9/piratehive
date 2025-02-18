@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-C5WVB11YW2');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udemy Course Enrollments</title>
@@ -57,12 +49,42 @@
         a:visited {
             color: #888; /* Gray color for visited links */
         }
+        /* Search bar styles */
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #bb86fc;
+            border: none;
+            border-radius: 5px;
+            color: #121212;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #9a67ea;
+        } 
     </style>
 </head>
 <body>
     <h3>CREDITS - catch_me_if_you_can</h3>
     <p class="warning">⚠️ Create a Udemy account to enroll in these courses. Use a laptop or web version for a better experience.</p>
-    <ul>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search courses...">
+        <button onclick="searchCourses()">Search</button>
+    </div>
+
+    <ul id="courseList">
 <li><a href="https://www.udemy.com/course/4a0-100-alcatel-lucent-scalable-ip-networks-professional/?couponCode=1E5C06566EDAE960A580" rel="nofollow noopener" target="_blank" class="gtm-firstpost-link">4A0-100: Alcatel-Lucent Scalable IP Networks Professional</a></li>
 <li><a href="https://www.udemy.com/course/cold-marketing-strategy/?couponCode=BBCE1202" rel="nofollow noopener" target="_blank" class="gtm-firstpost-link">Build Your Best Cold Email Strategy!</a></li>
 <li><a href="https://www.udemy.com/course/marketing-guide-social-media-marketing-for-beginners-tareq-hajj?couponCode=76705AE263B3F5B6F4D7" rel="nofollow noopener" target="_blank" class="gtm-firstpost-link">Marketing Guide: Social Media Marketing for Beginners</a></li>
@@ -667,5 +689,23 @@
 <li><a href="https://udemy.com/course/ultimate-ai-art-content-creation-course-2023/?couponCode=63963200526771D73285" rel="nofollow noopener" target="_blank" class="gtm-firstpost-link">Ultimate AI Art Content Creation Course (Generative AI)</a></li>
 <li><a href="https://www.udemy.com/course/saas-marketing/?couponCode=B600CE47DDCB1D0F5971" rel="nofollow noopener" target="_blank" class="gtm-firstpost-link">SaaS Marketing with Dekker: SaaS Startup Lead Generation</a></li>
 </ul>
+<script>
+    function searchCourses() {
+        // Get the search input value
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const courseList = document.getElementById('courseList');
+        const courses = courseList.getElementsByTagName('li');
+
+        // Loop through all courses and hide those that don't match the search term
+        for (let i = 0; i < courses.length; i++) {
+            const courseText = courses[i].textContent.toLowerCase();
+            if (courseText.includes(searchTerm)) {
+                courses[i].style.display = "";
+            } else {
+                courses[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </body>
 </html>
