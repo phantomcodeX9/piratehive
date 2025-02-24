@@ -53,21 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', handleScroll);
 });
 
-            const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
-            let konamiIndex = 0;
-
-            document.addEventListener("keydown", (event) => {
-                if (event.key === konamiCode[konamiIndex]) {
-                    konamiIndex++;
-                    if (konamiIndex === konamiCode.length) {
-                        alert("🦇 You found the Dark Knight's secret! Redirecting to the Batcave... 🦇");
-                        window.location.href = "https://phantomcodex9.github.io/X9BETA/"; // Replace with your link
-                    }
-                } else {
-                    konamiIndex = 0; // Reset if the sequence is broken
-                }
-            });
-
 const carouselContainer = document.querySelector('.carousel-container');
 const items = carouselContainer.querySelectorAll('.carousel-item');
 const prevButton = document.querySelector('.carousel-button.prev');
@@ -104,3 +89,17 @@ prevButton.addEventListener('click', showPrevItem);
 nextButton.addEventListener('click', showNextItem);
 
 showItem(currentIndex);
+            const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+            let konamiIndex = 0;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        alert("🦇 You found the Dark Knight's secret! Redirecting to the Batcave... 🦇");
+                        window.location.href = "https://phantomcodex9.github.io/X9BETA/"; // Replace with your link
+                    }
+                } else {
+                    konamiIndex = 0; // Reset if the sequence is broken
+                }
+            });
