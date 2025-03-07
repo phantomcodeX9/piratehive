@@ -400,3 +400,42 @@ a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    #countdown {
+        padding: 8px;
+        margin: 5px 0;
+    }
+
+    #countdown p {
+        font-size: 1em; /* Smaller font size for mobile */
+    }
+
+    #timer {
+        font-size: 1.2em; /* Smaller font size for mobile */
+        flex-wrap: wrap; /* Allow timer elements to wrap on smaller screens */
+        gap: 5px; /* Reduce gap between elements */
+    }
+
+    #timer span {
+        padding: 3px 8px; /* Smaller padding for mobile */
+        font-size: 0.9em; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    #countdown p {
+        font-size: 0.9em; /* Even smaller font size for very small screens */
+    }
+
+    #timer {
+        font-size: 1em; /* Smaller font size for very small screens */
+        gap: 3px; /* Minimal gap between elements */
+    }
+
+    #timer span {
+        padding: 2px 6px; /* Minimal padding for very small screens */
+        font-size: 0.8em; /* Smaller font size for very small screens */
+    }
+}
