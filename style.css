@@ -368,3 +368,35 @@ a:hover {
         /* Slightly larger for laptop screens */
     }
 }
+/* Countdown Timer Styling */
+#countdown {
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#countdown p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+#timer {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff5722; /* Bright orange for visibility */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#timer span {
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
