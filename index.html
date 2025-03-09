@@ -3,264 +3,334 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7J2L93XLY0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', 'G-C5WVB11YW2');
+        gtag('config', 'G-7J2L93XLY0');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PirateHive - Your Ultimate Destination</title>
+    <title>PirateHive - Confedential</title>
     <link rel="icon" href="pirate.png" type="image/png">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
 
 <body>
-    <section id="sidebar">
-        <div class="sidebar-container">
-            <div class="sidebar">
-                <input type="text" id="searchInput" placeholder="Search...">
-                <ul>
-                    <li><a href="#movies">Movies</a></li>
-                    <li><a href="#jeeneet">JEE NEET</a></li>
-                    <li><a href="#Btech">BE/Btech</a></li>
-                    <li><a href="#cybersecurity">Cyber Security</a></li>
-                    <li><a href="#GATE"> GATE<img src="soon.gif.mp4" alt="Soon" class="icon"></a></li>
-                    <li><a href="#Btech">Computer Science<img src="soon.gif.mp4" alt="Soon" class="icon"></a></li>
-                    <li><a href="#info">INFO</a></li>
-                </ul>
-                <footer>
-                    Don't Forget to join Telegram Channel
-                </footer>
-            </div>
-        </div>
-    </section>
-    <div class="hamburger">
-        <img src="menu4.webp" alt="Hamburger Icon">
+    <div class="loading-screen" id="loadingScreen">
+        <img src="batman.png" alt="Batman Logo" class="batman-loader">
     </div>
-    <header>
-        <h1>PirateHive</h1>
-        <!-- Countdown Timer -->
-        <div id="countdown">
-            <p>New Update Release: March 9, 2025</p>
-            <div id="timer">
-                <span id="days"></span> Days
-                <span id="hours"></span> Hours
-                <span id="minutes"></span> Minutes
-                <span id="seconds"></span> Seconds
+
+    <body>
+        <!-- Top Ribbon -->
+        <!-- Top Ribbon -->
+        <div class="top-ribbon">
+            <div class="logo" style="color: #26aabd;">PirateHive-β</div>
+            <div class="quick-access">
+                <a href="#movies">Movies</a>
+                <a href="#jeeneet">JEE NEET</a>
+                <a href="#btech">BE/B.Tech</a>
+                <a href="#info">Info</a>
+            </div>
+            <div class="menu-container">
+                <a href="brokenlink.html" class="caution-symbol">⚠️</a>
+                <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
             </div>
         </div>
-        <nav>
-            <ul>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">PirateHive-βeta</div>
+                <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+            </div>
+            <ul class="sidebar-links">
                 <li><a href="#movies">Movies</a></li>
                 <li><a href="#jeeneet">JEE NEET</a></li>
-                <li><a href="#UDEMY">Udemy <img src="new.webp" alt="Soon" class="icon"></a></li>
-                <li><a href="#info">INFO</a></li>
+                <li><a href="#btech">BE/B.Tech</a></li>
+                <li><a href="#info">Info</a></li>
             </ul>
-        </nav>
-    </header>
-    <div class="main-container">
+        </aside>
+
+        <!-- Main Content -->
         <main>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+
+            <div class="quick-access-buttons">
+                <button onclick="scrollToSection('movies')">🎬 Movies</button>
+                <button onclick="scrollToSection('jeeneet')">📚 JEE/NEET</button>
+                <button onclick="scrollToSection('btech')">💻 BE/B.Tech</button>
+                <button onclick="scrollToSection('info')">ℹ️ Info</button>
+            </div>
+
+            <!-- Movies Section -->
             <section id="movies" class="content-section">
-                <div class="content">
-                    <h2>Entertainment</h2>
-                    <p>Explore the latest movies and TV shows here.</p>
-                    <p>*Refer Adblocking section for better experience</p>
-                    <div class="links">
-                        <a href="https://freek.to/" target="_blank">
-                            <img src="cine.webp" alt="Movie Icon">
-                            Movies/Tv/WebSeries
-                        </a>
-                        <a href="https://www.cineby.ru/" target="_blank">
-                            <img src="tv.webp" alt="TV Icon">
-                            Movies (Regional lang.)
-                        </a>
-                        <a href="https://vidbinge.app/" target="_blank">
-                            <img src="movien3.webp" alt="TV Icon">
-                            Movies 2 (Downloadable/ad free)
-                        </a>
-                        <a href="https://rivestream.live/" target="_blank">
-                            <img src="movien4.webp" alt="TV Icon">
-                            Everything(sport/kdrama)
-                        </a>
+                <h2>Entertainment</h2>
+                <a href="https://rentry.co/4e7mycvp" target="_blank" rel="noopener noreferrer"
+                    style="text-decoration: underline; color: aqua;">**Read This for a better Adfree Experience
+                    (link)</a>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="newcin.webp" alt="Movie Icon">
+                        <h3>Movies & TV Shows</h3>
+                        <p>Explore latest movies & TV shows.</p>
+                        <a href="https://freeky.to/" target="_blank" rel="noopener noreferrer" class="card-button">Visit
+                            Site</a>
+                    </div>
+                    <div class="card">
+                        <img src="tv.webp" alt="TV Icon">
+                        <h3>Movies (Regional Lang)</h3>
+                        <p>Watch movies in regional languages.</p>
+                        <a href="https://www.cineby.ru/" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Visit
+                            Site</a>
+                    </div>
+                    <div class="card">
+                        <img src="movien3.webp" alt="Download Icon">
+                        <h3>Downloadable/adfree</h3>
+                        <p>Download movies for offline viewing.</p>
+                        <a href="https://vidbinge.app/" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Visit
+                            Site</a>
+                    </div>
 
-                        <a href="https://topdocumentaryfilms.com/" target="_blank">
-                            <img src="doc.png" alt="Documentary Icon">
-                            Documentaries
-                        </a>
-                        <a href="https://www.miruro.tv/" target="_blank">
-                            <img src="anime.webp" alt="Anime Icon">
-                            Anime
-                        </a>
+                    <div class="card">
+                        <img src="movien4.webp" alt="Download Icon">
+                        <h3>Everything(Livesport/Movies/
+                            Multi-Lang)</h3>
+                        <p>This will be updated soon for live sports & TV</p>
+                        <a href="https://rivestream.xyz/" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Visit
+                            Site</a>
+                    </div>
+                    <div class="card">
+                        <img src="doc.png" alt="Download Icon">
+                        <h3>Documentaries</h3>
+                        <p>For Documentaries Enthusiasts</p>
+                        <a href="https://topdocumentaryfilms.com/" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Visit
+                            Site</a>
+                    </div>
+                    <div class="card">
+                        <img src="anime.webp" alt="Download Icon">
+                        <h3>Anime</h3>
+                        <p>I’ll take a potato chip... and eat it!</p>
+                        <a href="https://www.miruro.tv/" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Visit
+                            Site</a>
                     </div>
                 </div>
             </section>
-
+            <!-- JEE & NEET Section -->
             <section id="jeeneet" class="content-section">
-                <div class="content">
-                    <h2>JEE & NEET </h2>
-                    <p>Top Institutes Paid Resources For Free.Check Telegram For More Content</p>
-                    <div class="links">
-                        <a href="https://drive.google.com/drive/folders/1kt1fwIi2DkkcmF1Ly_ejq9_8U_KAy7Ea" target="_blank">
-                            <img src="shelf.webp">
-                            Study Material [JEE,BITSAT]
-                        </a>
-
-                        <a href="https://drive.google.com/drive/folders/15b8KvwVlRz1Renkqf8TfMdsoSB74me_i" target="_blank">
-                            <img src="bio.webp">
-                            Study Material [NEET]
-                        </a>
-
-                        <a href="https://jee-mains-quiz.jee-adv.eu.org/" target="_blank">
-                            <img src="test.png" alt="Test Icon">
-                            Practice Quizzes & Test<img src="new.webp" alt="Soon" class="icon">
-                        </a>
-                        <a href=" https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ" target="_blank">
-                            <img src="lecture.png" alt="Book Icon">
-                            Lectures and Resources (2TB Compiled)<img src="new.webp" alt="Soon" class="icon">
-                        </a>
-                        <a href="https://t.me/PirateHive3" target="_blank">
-                            <img src="treasure.png" alt="Book Icon">
-                            Major Edtech MOD/All batches
-                        </a>
-                        <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank">
-                            <img src="Telegram.webp" alt="Book Icon">
-                            Best Telegram channels/Video Lectures
-                        </a>
+                <h2>JEE & NEET</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="shelf.webp" alt="Study Icon">
+                        <h3>JEE / BITSAT</h3>
+                        <p>Better luck fighting for Placement if you survive this</p>
+                        <a href="https://drive.google.com/drive/folders/1kt1fwIi2DkkcmF1Ly_ejq9_8U_KAy7Ea"
+                            target="_blank" rel="noopener noreferrer" class="card-button">Access Now</a>
                     </div>
-                </div>
-            </section>
-            <section id="UDEMY" class="content-section">
-                <div class="content">
-                    <h2>UDEMY (500+ FREE COURSES)</h2>
-                    <h3 style="color: red;">*EXPIRED</h3>
-                    <p style="color: rgb(46, 255, 71);">ENROLL ASAP ALL THE LINKS ARE ALREADY EMBEDDED WITH COUPON CODE FOR FASTER ACCESS</p>
-                    <P>*This is a temporary section & will be removed after 3 days</P>
-                    <div class="links">
-                        <a onclick="location.href='udemy.html'">
-                            <img src="hacker.png" alt="Book Icon">
-                            UDEMY COURSES
-                        </a>
-
-
+                    <div class="card">
+                        <img src="bio.webp" alt="Test Icon">
+                        <h3>NEET</h3>
+                        <p>Please Hurry! 25lakh people are in QUE, </p>
+                        <a href="https://drive.google.com/drive/folders/15b8KvwVlRz1Renkqf8TfMdsoSB74me_i"
+                            target="_blank" rel="noopener noreferrer" class="card-button">Start Quiz</a>
+                    </div>
+                    <div class="card">
+                        <img src="test.png" alt="Test Icon">
+                        <h3>QUIZZES/TEST</h3>
+                        <p>Here, have some Reality Check of your prepration</p>
+                        <a href="https://jee-mains-quiz.jee-adv.eu.org/" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Start Quiz</a>
+                    </div>
+                    <div class="card">
+                        <img src="lecture.png" alt="Test Icon">
+                        <h3>Lectures and Resources (2TB Compiled)</h3>
+                        <p>This may have some hidden gems</p>
+                        <a href="https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ" target="_blank"
+                            rel="noopener noreferrer" class="card-button">Start Quiz</a>
+                    </div>
+                    <div class="card">
+                        <img src="Telegram.webp" alt="Test Icon">
+                        <h3> Best Telegram channels/Video Lectures</h3>
+                        <p>Join Our Channel & Check Pinned messages.If Didn't find what you were looking For Just drop a
+                            text on PRHIVE CHAT</p>
+                        <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Start Quiz</a>
                     </div>
                 </div>
             </section>
 
-            <section id="Btech" class="content-section">
-                <div class="content">
-                    <h2>Bachelor Of Technology (BE/B.Tech) / Coding <img src="soon.gif.mp4" alt="Soon" class="icon">
-                    </h2>
-                    <p>Study Material for Btech Students (14TB dropping Soon)</p>
-                    <div class="links">
-                        <a onclick="location.href='year1.html'">
-                            <img src="Degree.webp" alt="Book Icon">
-                            1st Year
-                        </a>
-
-                        <a onclick="location.href='year1.html'">
-                            <img src="bookp.webp" alt="Test Icon">
-                            Books and Other Resources<img src="new.webp" alt="Soon" class="icon">
-                        </a>
-                        <a onclick="location.href='coding.html'">
-                            <img src="Coding.webp" alt="Book Icon">
-                            Coding and programming resources (dropping ON 11 DEC)<img src="new.webp" alt="Soon" class="icon">
-                        </a>
-                        <a href="https://t.me/codingknights" target="_blank">
-                            <img src="chat2.webp" alt="Book Icon">
-                            Telegram channel & Chat Room <img src="new.webp" alt="Soon" class="icon">
-                        </a>
-                        <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank"> <img src="Discord.webp" alt="Book Icon">
-                            🌟Must join Discord's! Let's Learn & Develop Together <img src="new.webp" alt="new"
-                                class="icon">
-                        </a>
-
+            <!-- BE/B.Tech Section -->
+            <section id="btech" class="content-section">
+                <h2>BE/B.Tech & Coding</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="Degree.webp" alt="Book Icon">
+                        <h3>1st Year Resources</h3>
+                        <p>Access resources for 1st-year students.</p>
+                        <a href="year1.html" class="card-button">Explore</a>
+                    </div>
+                    <div class="card">
+                        <img src="Coding.webp" alt="Coding Icon">
+                        <h3>Coding Resources <img src="soon.gif.mp4" alt="Soon" class="icon"
+                                style="width: 25px; height: 25px; vertical-align: middle; margin-left: 4px;"></h3>
+                        <p>Learn coding with comprehensive resources.</p>
+                        <a href="coding.html" class="card-button">Explore</a>
+                    </div>
+                    <div class="card">
+                        <img src="chat.webp" alt="Coding Icon">
+                        <h3>Telegram channel & Chat Room</h3>
+                        <p>Brainstorm on new ideas</p>
+                        <a href="https://t.me/codingknights" class="card-button">Explore</a>
+                    </div>
+                    <div class="card">
+                        <img src="Discord.webp" alt="Coding Icon">
+                        <h3>Must join Discord!</h3>
+                        <p>socialise & learn</p>
+                        <a href="https://discord.gg/XZ6P9ZDK9M" class="card-button">Explore</a>
                     </div>
                 </div>
             </section>
 
-            <section id="cybersecurity" class="content-section">
-                <div class="content">
-                    <h2>Cyber Security (In Progress)</h2>
-                    <p>Stay informed about the latest trends and techniques in cyber security.</p>
-                    <div class="links">
-                        <a href="#" target="_blank">
-                            <img src="sec.png" alt="Security Icon">
-                            Cyber Security Basics
-                        </a>
-                        <a href="#" target="_blank">
-                            <img src="hacker.png" alt="Hacker Icon">
-                            Ethical Hacking Tutorials
-                        </a>
-                        <a href="#" target="_blank">
-                            <img src="encrypt.webp" alt="Encryption Icon">
-                            Encryption Techniques
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="info" class="content-section">
-                <div class="content">
-                    <h2>INFO</h2>
-                    <p>This is a non-profit website, We will never charge a single penny for any content.</p>
-                    <div class="links">
-                        <a>
-                            <img src="lecture.png" alt="Video Icon">
-                            Our mission is to provide free alternatives to various paid content available on the
+            <section id="info" class="content-section info-section">
+                <h2>Info</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="info.webp" alt="Info Icon">
+                        <h3>About Us</h3>
+                        <p>Our mission is to provide free alternatives to various paid content available on the
                             internet. We do not own any of the content featured on this site. If you have any concerns
-                            or need to address an issue, please mail us at [Phantomx92@proton.me]
-                        </a>
-                        <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank">
-                            <img src="Telegram.webp" alt="TG Icon">
-                            Join Us On Telegram
-                        </a>
-                        <a href="https://phantomcodex9.github.io/phantom/" target="_blank">
-                            <img src="sitep.webp" alt="Book Icon">
-                            PARENT WEBSITE- bit.ly/phantom92
-                        </a>
+                            or need to address an issue, please mail us at <a href="mailto:Phantomx92@proton.me"
+                                style="color: var(--primary-color);">Phantomx92@proton.me</a>.</p>
+                    </div>
+
+                    <!-- Join Telegram Card -->
+                    <div class="card">
+                        <img src="Telegram.webp" alt="Telegram Icon">
+                        <h3>Join Telegram</h3>
+                        <p>Join our Telegram channel for updates.</p>
+                        <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" rel="noopener noreferrer"
+                            class="card-button">Join Now</a>
                     </div>
                 </div>
             </section>
+
         </main>
-
-        <!-- Carousel Section -->
-        <section class="carousel">
-            <div class="carousel-container">
-                <div class="carousel-item">
-                    <video controls>
-                        <source src="taskade.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="caption">UPCOMING PLANS</div>
-                </div>
-                <div class="carousel-item">
-                    <video controls>
-                        <source src="batman.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="caption">VENGEANCE</div>
-                </div>
-            </div>
-            <div class="carousel-buttons">
-                <button class="carousel-button prev">&lt;</button>
-                <button class="carousel-button next">&gt;</button>
-            </div>
-
-        </section>
-
+        <button id="backToTop" title="Go to top">🦇</button>
+        <!-- Footer -->
         <footer>
             <p>&copy; 2025 PirateHive - All rights reserved.</p>
+            <div class="footer-links">
+                <a href="mailto:Phantomx92@proton.me">Contact Us</a>
+                <a href="brokenlink.html">🚨
+                    Report Broken Link</a>
+                <div class="social-links">
+                    <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" rel="noopener noreferrer">
+                        <img src="Telegram.webp" alt="Telegram">
+                    </a>
+                    <a href="https://www.instagram.com/phantomcodex9/" target="_blank" rel="noopener noreferrer">
+                        <img src="insta.webp" alt="Instagram">
+                    </a>
+                    <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" rel="noopener noreferrer">
+                        <img src="Discord.webp" alt="Discord">
+                    </a>
+                </div>
+            </div>
+            <p class="batman-easter-egg">The Dark Knight watches over this site.</p>
         </footer>
-    </div>
-    <script type="module" src="script.js"></script>
 
-</body>
+        <!-- JavaScript -->
+        <script>
+            // Toggle Sidebar
+            function toggleSidebar() {
+                const sidebar = document.getElementById("sidebar");
+                sidebar.classList.toggle("active");
+            }
+
+            // Close Sidebar when clicking outside
+            document.addEventListener("click", function (event) {
+                const sidebar = document.getElementById("sidebar");
+                const menuBtn = document.querySelector(".menu-btn");
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove("active");
+                }
+            });
+
+            // Search Functionality
+            const searchInput = document.getElementById('searchInput');
+            const cards = document.querySelectorAll('.card');
+            if (searchInput && cards) {
+                searchInput.addEventListener('input', function () {
+                    const searchText = searchInput.value.toLowerCase();
+                    cards.forEach(card => {
+                        const cardText = card.textContent.toLowerCase();
+                        card.style.display = cardText.includes(searchText) ? 'block' : 'none';
+                    });
+                });
+            }
+
+            window.addEventListener("load", function () {
+                const loadingScreen = document.getElementById("loadingScreen");
+                loadingScreen.style.opacity = "0";
+                setTimeout(() => {
+                    loadingScreen.style.display = "none";
+                }, 500);
+            });
+            const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+            let konamiIndex = 0;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        alert("🦇 You found the Dark Knight's secret! Redirecting to the Batcave... 🦇");
+                        window.location.href = "https://phantomcodex9.github.io/phantom/"; // Replace with your link
+                    }
+                } else {
+                    konamiIndex = 0; // Reset if the sequence is broken
+                }
+            });
+            // Add this to your JavaScript
+            window.addEventListener('scroll', () => {
+                const backToTop = document.getElementById('backToTop');
+                if (window.scrollY > 200) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+
+            document.getElementById('backToTop').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            console.log("%c🦇 I'm Batman. 🦇", "font-size: 20px; color: #000; background: #FFD700; padding: 10px; border-radius: 5px;");
+            console.log("%cWelcome to PirateHive, where the Dark Knight keeps watch.", "font-size: 14px; color: #2c3e50;");
+            console.log("%cRemember: 'It's not who I am underneath, but what I do that defines me.'", "font-size: 14px; color: #2c3e50; font-style: italic;");
+
+        </script>
+
+    </body>
 
 </html>
