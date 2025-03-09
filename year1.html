@@ -1,100 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-C5WVB11YW2');
-</script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOKS B.E.</title>
+    <title>Engineering Books by Semester</title>
     <style>
+        /* General Styles */
         body {
-            background: linear-gradient(to bottom right, #000, #1a1a1a);
-            color: #fff;
-            font-family: , monospace;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #00ff8c;
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-        .announcement {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 0 10px #ad22e4;
-        }
-        .announcement h2 {
-            color: #00ff00;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .announcement p {
-            font-size: 1.2em;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            /* Dark background */
+            color: #e0e0e0;
+            /* Light text */
             line-height: 1.6;
         }
-        .countdown {
+
+        header {
+            background: #1f1f1f;
+            /* Darker header */
+            color: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            color: #b0b0b0;
+            /* Lighter subtext */
+        }
+
+        .search-filter {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #1f1f1f;
+            /* Dark background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 80px;
+            z-index: 1000;
+        }
+
+        .search-filter input,
+        .search-filter select {
+            padding: 10px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid #333;
+            /* Darker border */
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #2d2d2d;
+            /* Dark input background */
+            color: #e0e0e0;
+            /* Light text */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .search-filter input:focus,
+        .search-filter select:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        .card a::before {
+            content: "📘";
+            /* Bullet point */
+            color: #007BFF;
+            /* Match the link color */
+            margin-right: 8px;
+            /* Space between bullet and text */
+            font-size: 1.2em;
+            /* Slightly larger bullet */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .semester {
+            background: #1f1f1f;
+            /* Dark background */
+            border: 1px solid #333;
+            /* Darker border */
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .semester:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .semester h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #007BFF;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.3s;
+        }
+
+        .semester h2::after {
+            content: "▼";
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .semester.collapsed h2::after {
+            transform: rotate(-90deg);
+        }
+
+        .semester.collapsed .card-container {
+            display: none;
+        }
+
+        .card-container {
+            margin-top: 10px;
+        }
+
+        .card {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #007BFF;
+            background: #2d2d2d;
+            /* Dark card background */
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            background: #3d3d3d;
+            /* Slightly lighter on hover */
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            /* Light text */
+        }
+
+        .card a {
+            display: block;
+            margin: 5px 0;
+            color: #e0e0e0;
+            /* Light text */
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .card a:hover {
+            color: #007BFF;
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #1f1f1f;
+            /* Dark footer */
+            color: #b0b0b0;
+            /* Lighter text */
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Report Section - Unique Design */
+        .report-section {
+            background: #1f1f1f;
+            /* Dark background */
+            border: 1px solid #333;
+            /* Darker border */
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .report-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .report-section h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #28a745;
+            /* Green color for distinction */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .report-section h2::before {
+            content: "📩";
+            font-size: 1.5rem;
+        }
+
+        .report-section h2::after {
+            content: "▼";
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .report-section.collapsed h2::after {
+            transform: rotate(-90deg);
+        }
+
+        .report-section.collapsed .report-form {
+            display: none;
+        }
+
+        .report-form {
             margin-top: 20px;
         }
-        .countdown-item {
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #00ff00;
+
+        .report-form p {
+            margin: 0 0 20px;
+            font-size: 1rem;
+            color: #b0b0b0;
+            /* Lighter text */
+        }
+
+        .report-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #e0e0e0;
+            /* Light text */
+        }
+
+        .report-form input,
+        .report-form textarea {
+            width: 100%;
             padding: 10px;
+            border: 1px solid #333;
+            /* Darker border */
             border-radius: 5px;
-            margin: 0 10px;
-            font-size: 1.5em;
-            text-align: center;
-            box-shadow: 0 0 5px #00ff00;
+            font-size: 1rem;
+            background: #2d2d2d;
+            /* Dark input background */
+            color: #e0e0e0;
+            /* Light text */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .report-form input:focus,
+        .report-form textarea:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+            outline: none;
+        }
+
+        .report-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .report-form button {
+            background: #28a745;
+            /* Green color for distinction */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .report-form button:hover {
+            background: #218838;
+            /* Darker green on hover */
+        }
+
+        @media (min-width: 768px) {
+            .search-filter {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .search-filter input {
+                width: 300px;
+            }
+
+            .search-filter select {
+                width: 200px;
+            }
+        }
+
+        .tribute {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #31c23f;
+            margin: 5px 0;
         }
     </style>
 </head>
+
 <body>
-    <h1>This section will be available SOON!</h1>
-    <div class="announcement">
-        <h2>It will contain best books for each subject</h2>
-        <p>I will be uploading atleast 3 books for each subject so you can refer them for your prepration</p>
-        <div class="countdown" id="countdown" style="color:#00ff00">
-            Loading countdown...
-        </div>
-        <p style="margin-top: 20px;"><strong>Date:</strong> march 20, 2025 | <strong>Time:</strong> 10:00 AM EST</p>
-        <p style="color: yellow; font-size: 24px;">The wait will be worth it, Stay tuned
-            for more details and exclusive sneak peeks."</p>
-        <p>🍵</p>
+    <header>
+        <h1>Engineering Books by Semester</h1>
+        <p class="tribute">Dedicated to The Legendary Aaron Swartz</p>
+    </header>
+
+    <!-- Search and Filter Section -->
+    <div class="search-filter">
+        <input type="text" id="searchInput" placeholder="Search by book, subject, or semester...">
+        <select id="semesterFilter">
+            <option value="all">All Semesters</option>
+            <option value="1">First Semester</option>
+            <option value="2">Second Semester</option>
+        </select>
     </div>
+
+    <!-- Books Container -->
+    <div class="container">
+        <!-- First Semester -->
+        <div class="semester" data-semester="1">
+            <h2>First Semester</h2>
+            <div class="card-container">
+                <!-- Mathematics I -->
+                <div class="card">
+                    <h3>Mathematics I</h3>
+                    <a href="https://z-library.sk/dl/5677662/144daa" target="_blank">"Higher Engineering Mathematics" by
+                        B.S. Grewal</a>
+                    <a href="https://z-library.sk/dl/11149609/e87f75" target="_blank">"Advanced Engineering Mathematics"
+                        by Erwin Kreyszig</a>
+                    <a href="https://z-library.sk/dl/5225823/86dc7f" target="_blank">"Engineering Mathematics" by K.A.
+                        Stroud</a>
+                </div>
+                <!-- Physics -->
+                <div class="card">
+                    <h3>Physics</h3>
+                    <a href="https://z-library.sk/dl/5869883/ff6320" target="_blank">"Fundamentals of Physics" by David
+                        Halliday, Robert Resnick, and Jearl Walker</a>
+                    <a href="https://z-library.sk/dl/5440894/46c098" target="_blank">"Engineering Physics
+                        Shatendra Sharma, Jyotsna Sharma</a>
+                </div>
+                <!-- Chemistry -->
+                <div class="card">
+                    <h3>Chemistry</h3>
+                    <a href="https://z-library.sk/dl/11426631/a303b5" target="_blank">"Engineering Chemistry" by Jain
+                        and Jain</a>
+                    <a href="https://z-library.sk/dl/5440833/4ed62e" target="_blank">"Engineering Chemistry
+                        K. Sesha Maheswaramma, Mridula Chugh</a>
+                    <a href="#" target="_blank">"Engineering Chemistry" by Shashi Chawla</a>
+                </div>
+                <!-- Basic Electrical Engineering -->
+                <div class="card">
+                    <h3>Basic Electrical Engineering</h3>
+                    <a href="https://z-library.sk/dl/1144604/3494ff" target="_blank">"Basic Electrical Engineering
+                        U.A.Bakshi, V.U.Bakshi</a>
+                </div>
+                <!-- Engineering Graphics & Design -->
+                <div class="card">
+                    <h3>Engineering Graphics & Design</h3>
+                    <a href="https://z-library.sk/dl/5421141/2d24df" target="_blank">"Engineering Drawing" by N.D.
+                        Bhatt</a>
+                    <a href="https://drive.google.com/uc?id=188tV-wfLH9kBheNx1cqFa0YR4btyN7Zn&export=download"
+                        target="_blank">" Engineering Drawing by Basant Agrawal C. M. Agrawal</a>
+                </div>
+                <!-- Programming for Problem Solving -->
+                <div class="card">
+                    <h3>Programming for Problem Solving</h3>
+                    <a href="https://z-library.sk/dl/6078087/51739f" target="_blank">"Let Us C" by Yashavant
+                        Kanetkar</a>
+                    <a href="https://z-library.sk/dl/674384/a6e076" target="_blank">"The C Programming Language" by
+                        Brian W. Kernighan and Dennis M. Ritchie</a>
+                    <a href="https://z-library.sk/dl/5483064/011fe6" target="_blank">"Programming in ANSI C" by E.
+                        Balagurusamy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Semester -->
+        <div class="semester" data-semester="2">
+            <h2>Second Semester</h2>
+            <div class="card-container">
+                <!-- Mathematics II -->
+                <div class="card">
+                    <h3>Mathematics II</h3>
+                    <a href="https://z-library.sk/dl/5474897/e9df92" target="_blank">"Higher Engineering Mathematics" by
+                        B.V. Ramana</a>
+                    <a href="https://z-library.sk/dl/17408218/b28c27" target="_blank">"Advanced Engineering Mathematics"
+                        by Michael Greenberg</a>
+                    <a href="https://z-library.sk/dl/5440861/31b142" target="_blank">"Engineering Mathematics Volume -
+                        II
+                        R. L. Garg, Nishu Gupta</a>
+                </div>
+                <!-- Data Structures -->
+                <div class="card">
+                    <h3>Data Structures</h3>
+                    <a href="https://z-library.sk/dl/2714107/b90e9f" target="_blank">"Data Structures Using C" by Reema
+                        Thareja</a>
+                    <a href="https://z-library.sk/dl/6163305/2f7819" target="_blank">"Fundamentals of Data Structures in
+                        C" by Ellis Horowitz, Sartaj Sahni, and Susan Anderson-Freed</a>
+                    <a href="https://z-library.sk/dl/2817042/135f4a" target="_blank">"Data Structures: A Pseudocode
+                        Approach with C" by Richard F. Gilberg and Behrouz A. Forouzan</a>
+                </div>
+                <!-- Discrete Mathematics -->
+                <div class="card">
+                    <h3>Discrete Mathematics</h3>
+                    <a href="https://z-library.sk/dl/3707224/e84fed" target="_blank">"Discrete Mathematics and Its
+                        Applications" Susanna S. Epp</a>
+                    <a href="https://z-library.sk/dl/28488918/e5a774" target="_blank">"Discrete Mathematical Structures"
+                        by Bernard Kolman, Robert C. Busby, and Sharon Cutler Ross</a>
+                    <a href="https://z-library.sk/dl/540103/306806" target="_blank">"Discrete Mathematics" by Seymour
+                        Lipschutz and Marc Lipson</a>
+                </div>
+                <!-- Basic Mechanical Engineering -->
+                <div class="card">
+                    <h3>Basic Mechanical Engineering</h3>
+                    <a href="https://z-library.sk/dl/5471753/9032d1" target="_blank">"Basic Civil and Mechanical
+                        Engineering G. Shanmugam, M. S. Palanichamy</a>
+                    <a href="https://z-library.sk/dl/5439927/d28b82" target="_blank">"Basic Mechanical Engineering" by
+                        Pravin Kumar</a>
+                    <a href="https://example.com/book30" target="_blank">"Basic Mechanical Engineering" by M.P. Poonia
+                        and S.C. Sharma</a>
+                </div>
+                <!-- Basic Civil Engineering -->
+                <div class="card">
+                    <h3>Basic Civil Engineering</h3>
+                    <a href="https://z-library.sk/dl/5469266/c100bd" target="_blank">"Basic Civil Engineering" by M.S.
+                        Palanichamy</a>
+                    <a href="https://z-library.sk/dl/5471753/9032d1" target="_blank">"Basic Civil and Mechanical
+                        Engineering G. Shanmugam, M. S. Palanichamy</a>
+                    <a href="https://z-library.sk/dl/3485881/6ad713" target="_blank">"Basic Civil Engineering
+                        (Pearson)</a>
+                </div>
+                <!-- Basic Computer Engineering -->
+                <div class="card">
+                    <h3>Basic Computer Engineering</h3>
+                    <a href="https://z-library.sk/dl/32085115/669ccb" target="_blank">FUNDAMENTALS OF COMPUTER EDUCATION
+                        by Janice L. Flake</a>
+                    <a href="https://z-library.sk/dl/24784069/caed85" target="_blank">"Introduction to Computing
+                        Systems" by Yale N. Patt and Sanjay J. Patel</a>
+                </div>
+                <!-- English Communication -->
+                <div class="card">
+                    <h3>English Communication</h3>
+                    <a href="https://example.com/book37" target="_blank">"Technical Communication: Principles and
+                        Practice" by Meenakshi Raman and Sangeeta Sharma</a>
+                    <a href="https://example.com/book38" target="_blank">"Effective Technical Communication" by M.
+                        Ashraf Rizvi</a>
+                    <a href="https://example.com/book39" target="_blank">"Communication Skills" by Sanjay Kumar and
+                        Pushp Lata</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report an Issue/Request a Subject Section -->
+    <div class="report-section">
+        <h2>Report an Issue/Request a Subject</h2>
+        <div class="report-form">
+            <p>If you encounter any issues or would like to request resources for additional subjects, please fill out
+                the form below:</p>
+            <form action="https://formspree.io/f/xeoajnon" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter the subject you're requesting"
+                    required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Describe the issue or request..."
+                    required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Engineering Books. All rights reserved.</p>
+    </footer>
+
     <script>
-        // Set the target date and time
-        const targetDate = new Date("march 20, 2025 00:00:00").getTime();
-        // Update the countdown every second
-        const countdownInterval = setInterval(() => {
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-            // Time calculations
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            // Display the countdown
-            document.getElementById("countdown").innerHTML =
-                `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
-            // If the countdown is finished, clear the interval and show a message
-            if (timeLeft < 0) {
-                clearInterval(countdownInterval);
-                document.getElementById("countdown").innerHTML = "The wait is over!";
-            }
-        }, 1000);
+        // Search and Filter Functionality
+        const searchInput = document.getElementById('searchInput');
+        const semesterFilter = document.getElementById('semesterFilter');
+        const semesters = document.querySelectorAll('.semester');
+
+        searchInput.addEventListener('input', filterBooks);
+        semesterFilter.addEventListener('change', filterBooks);
+
+        function filterBooks() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedSemester = semesterFilter.value;
+
+            semesters.forEach(semester => {
+                const semesterNumber = semester.getAttribute('data-semester');
+                const cards = semester.querySelectorAll('.card');
+                let semesterVisible = false;
+
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    const isVisible =
+                        (selectedSemester === 'all' || selectedSemester === semesterNumber) &&
+                        text.includes(searchTerm);
+
+                    card.style.display = isVisible ? 'block' : 'none';
+                    if (isVisible) semesterVisible = true;
+                });
+
+                semester.style.display = semesterVisible ? 'block' : 'none';
+            });
+        }
+
+        // Collapsible Semesters
+        const semesterHeaders = document.querySelectorAll('.semester h2');
+        semesterHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const semester = header.parentElement;
+                semester.classList.toggle('collapsed');
+            });
+        });
+
+        // Collapsible Report Section
+        const reportHeader = document.querySelector('.report-section h2');
+        reportHeader.addEventListener('click', () => {
+            const reportSection = reportHeader.parentElement;
+            reportSection.classList.toggle('collapsed');
+        });
     </script>
 </body>
+
 </html>
