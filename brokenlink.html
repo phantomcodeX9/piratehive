@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Broken Link - PirateHive</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS file -->
+    <style>
+        /* Custom Styles for Report Page */
+        body {
+            background: #121212;
+            /* Dark background */
+            color: #e0e0e0;
+            /* Light text */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .report-container {
+            background: #1e1e1e;
+            /* Dark card background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 90%;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .report-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #60d1c4;
+            /* Teal color for headings */
+        }
+
+        .report-container p {
+            font-size: 1.1rem;
+            color: #aaa;
+            /* Light gray for subtext */
+            margin-bottom: 20px;
+        }
+
+        .report-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .report-container input,
+        .report-container textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #333;
+            /* Dark input background */
+            color: #fff;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .report-container button {
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #617bff, #309b8e);
+            /* Blue to Teal gradient */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .report-container button:hover {
+            background: linear-gradient(90deg, #309b8e, #617bff);
+            /* Teal to Blue gradient */
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #60d1c4;
+            /* Teal color for social links */
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00c6ff;
+            /* Light blue on hover */
+        }
+
+        .faq-section {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .faq-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #60d1c4;
+            /* Teal color for headings */
+        }
+
+        .faq-section h3 {
+            font-size: 1.5rem;
+            color: #60d1c4;
+            /* Teal color for subheadings */
+            margin-bottom: 10px;
+        }
+
+        .faq-section p {
+            font-size: 1rem;
+            color: #aaa;
+            /* Light gray for text */
+            margin-bottom: 20px;
+        }
+
+        .thank-you-message {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #60d1c4;
+            /* Teal color for thank-you message */
+        }
+
+        .funny-message {
+            font-size: 1rem;
+            color: #aaa;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Report Broken Link Section -->
+    <div class="report-container">
+        <h1>Oops! Found a Broken Link?</h1>
+        <p>Looks like you stumbled upon a link that's gone rogue. Don't worry, we'll hunt it down Pirate</p>
+        <!-- Formspree Form -->
+        <form action="https://formspree.io/f/xpwpabwg" method="POST">
+            <input type="text" name="name" placeholder="Your Pirate Name" required>
+            <input type="email" name="email" placeholder="Your Email (so we can send you a thank-you parrot 🦜)"
+                required>
+            <input type="url" name="broken-link" placeholder="Broken Link URL (the one that betrayed you)" required>
+            <textarea name="details" rows="4"
+                placeholder="Describe the issue (optional, but we love a good story)"></textarea>
+            <button type="submit">Send Report</button>
+        </form>
+        <!-- Thank You Message -->
+        <div class="thank-you-message">
+            Thank you for helping us improve PirateHive! 🎉
+        </div>
+        <div class="funny-message">
+            P.S. If you include a joke in the description, our team might just name a ship after you. 🚢
+        </div>
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" rel="noopener noreferrer">📢 Telegram</a>
+            <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" rel="noopener noreferrer"> Discord</a>
+            <a href="mailto:Phantomx92@proton.me" target="_blank" rel="noopener noreferrer">📧 Email</a>
+        </div>
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>FAQ (Frequently Asked Quests)</h2>
+            <h3>❓ What should I include in my report?</h3>
+            <p>Just the broken link URL and a brief description of the issue. Bonus points if you add your treasure
+                map🏴‍☠️</p>
+            <h3>❓ How long does it take to fix a broken link?</h3>
+            <p>We aim to fix broken links within 24-48 hours. If it takes longer, blame the sea monsters. 🐙</p>
+            <h3>❓ Can I report multiple broken links?</h3>
+            <p>Absolutely! The more, the merrier. We’ll add them to our treasure map of fixes. 🗺️</p>
+        </div>
+    </div>
+</body>
+
+</html>
