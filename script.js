@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', handleScroll);
 });
 // Set the date we're counting down to
-const countdownDate = new Date("March 9, 2025 10:00:00").getTime();
+const countdownDate = new Date("March 9, 2025 10:45:00").getTime();
 
 // Update the countdown every second
 const countdownFunction = setInterval(() => {
