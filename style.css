@@ -8,23 +8,63 @@
     --font-family-heading: 'Montserrat', sans-serif;
     --card-background: #1e1e1e;
     --nav-background: #1f1f1f;
-    --hover-color: #512da8;
+    --hover-color: #c8bfdc;
 }
 
-.card:hover {
-    border: 2px solid #309b8e;
-    /* Teal border */
-    box-shadow: 0 0 10px rgba(48, 155, 142, 0.5);
-    /* Teal shadow */
+/* General Styles */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative; /* Required for the glow effect */
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-.card:hover::after {
-    content: "🦇";
-    /* Batman symbol */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Blue Semicircle Glow at the Top */
+body::before {
+    content: "";
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 1.5em;
+    top: -50px; /* Adjusted for better visibility */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.7) 30%, rgba(0, 102, 255, 0) 80%);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: -1;
+    pointer-events: none;
+    animation: glowPulse 3s infinite alternate ease-in-out;
+}
+
+/* Glow Animation */
+@keyframes glowPulse {
+    0% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* Responsive Glow */
+@media (max-width: 768px) {
+    body::before {
+        top: -30px; /* Adjusted for mobile */
+        width: 300px; /* Slightly larger for mobile */
+        height: 150px; /* Slightly larger for mobile */
+        filter: blur(30px); /* Adjusted blur for mobile */
+    }
 }
 
 /* Loading Screen Styles */
@@ -54,35 +94,15 @@
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
 }
 
-
-/* General Styles */
-body {
-    font-family: var(--font-family);
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Top Ribbon */
 /* Top Ribbon */
 .top-ribbon {
     display: flex;
     justify-content: space-between;
-    /* Space between logo, quick-access, and menu-container */
     align-items: center;
     padding: 10px 20px;
     background-color: var(--nav-background);
@@ -97,7 +117,6 @@ a {
     font-size: 1.5rem;
     font-weight: bold;
     margin-right: auto;
-    /* Push logo to the left */
 }
 
 /* Quick Access Links */
@@ -105,9 +124,7 @@ a {
     display: flex;
     gap: 15px;
     margin-left: auto;
-    /* Push quick-access to the right */
     margin-right: 20px;
-    /* Add some spacing between quick-access and menu-container */
 }
 
 .top-ribbon .quick-access a {
@@ -129,7 +146,6 @@ a {
 
 .top-ribbon .menu-btn {
     display: none;
-    /* Hide by default */
     background: none;
     border: none;
     color: #54ff04;
@@ -141,12 +157,9 @@ a {
 @media (max-width: 768px) {
     .top-ribbon .quick-access {
         display: none;
-        /* Hide quick access links in mobile view */
     }
-
     .top-ribbon .menu-btn {
         display: block;
-        /* Show menu button in mobile view */
     }
 }
 
@@ -242,15 +255,9 @@ a {
     font-size: 2rem;
     margin-bottom: 20px;
     background: linear-gradient(90deg, #03ff2d, #2df300);
-    /* Gradient colors */
     -webkit-background-clip: text;
-    /* Clip background to text */
     -webkit-text-fill-color: transparent;
-    /* Make text transparent */
     background-clip: text;
-    /* Standard property */
-    text-fill-color: transparent;
-    /* Standard property */
 }
 
 .card-container {
@@ -277,9 +284,11 @@ a {
 }
 
 .card img {
-    max-width: 100%;
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
     margin-bottom: 15px;
+    object-fit: cover;
 }
 
 .card h3 {
@@ -298,7 +307,6 @@ a {
     display: inline-block;
     padding: 10px 20px;
     background: linear-gradient(90deg, #617bff, #309b8e);
-    /* Blue to Teal gradient */
     color: #fff;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -306,106 +314,22 @@ a {
 
 .card-button:hover {
     background: linear-gradient(90deg, #309b8e, #617bff);
-    /* Teal to Blue gradient on hover */
 }
 
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .top-ribbon .quick-access {
-        display: none;
-    }
-
-    .top-ribbon .menu-btn {
-        display: block;
-    }
-
-    .card {
-        width: 100%;
-        max-width: 100%;
-    }
-}
-
-/* Style for the "soon" GIF */
-.icon {
-    width: 16px;
-    /* Very small size */
-    height: 16px;
-    /* Very small size */
-    vertical-align: middle;
-    /* Align with text */
-    margin-left: 4px;
-    /* Add some spacing */
-}
-
-.batman-easter-egg {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: 0.8em;
-    color: #137de7;
-    text-align: center;
-    margin-top: 5px;
-}
-
-footer:hover .batman-easter-egg {
-    opacity: 1;
-}
-
-/* Add this to your CSS */
-.logo:hover::after {
-    content: "Hello Pirate👋🏻";
-    position: absolute;
-    background: var(--card-background);
-    color: var(--primary-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    margin-top: 5px;
-}
-
-/* Add this to your CSS */
-#backToTop {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5em;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-    z-index: 3000;
-}
-
-#backToTop:hover {
-    background-color: var(--hover-color);
-}
-
-/* Quick Access Buttons */
 /* Quick Access Buttons */
 .quick-access-buttons {
     display: none;
-    /* Hide by default */
     justify-content: center;
     gap: 10px;
     margin: 20px auto;
     flex-wrap: wrap;
 }
 
-/* Show Quick Access Buttons only in Mobile View */
 @media (max-width: 768px) {
     .quick-access-buttons {
         display: flex;
-        /* Show in mobile view */
     }
 }
-
 
 .quick-access-buttons button {
     background-color: #309b8e;
@@ -429,24 +353,19 @@ footer:hover .batman-easter-egg {
     transform: translateY(0);
 }
 
-/* Info Section (Less Prominent) */
+/* Info Section */
 .info-section {
     padding: 20px 10px;
-    /* Reduced padding */
     background-color: var(--nav-background);
-    /* Match the navbar color */
     border-radius: 10px;
     margin: 20px auto;
     max-width: 800px;
-    /* Limit width for better focus */
 }
 
 .info-section h2 {
     font-size: 1.5rem;
-    /* Smaller heading */
     margin-bottom: 15px;
     color: var(--primary-color);
-    /* Match primary color */
 }
 
 .info-section .card {
@@ -459,37 +378,32 @@ footer:hover .batman-easter-egg {
     width: 100%;
     max-width: 300px;
     margin: 10px auto;
-    /* Center cards */
 }
 
 .info-section .card img {
     width: 60px;
-    /* Smaller icons */
     height: 60px;
     margin-bottom: 10px;
 }
 
 .info-section .card h3 {
     font-size: 1.2rem;
-    /* Smaller heading */
     margin-bottom: 10px;
     color: var(--primary-color);
 }
 
 .info-section .card p {
     font-size: 0.9rem;
-    /* Smaller text */
     color: #aaa;
     margin-bottom: 15px;
 }
 
 .info-section .card-button {
     padding: 8px 16px;
-    /* Smaller button */
     font-size: 0.9rem;
 }
 
-/* Footer with Smaller Social Icons */
+/* Footer */
 footer {
     background: linear-gradient(to right, #333, #1f1f1f);
     color: #fff;
@@ -497,6 +411,18 @@ footer {
     padding: 10px;
     position: relative;
     margin-top: 40px;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .footer-links {
@@ -536,7 +462,6 @@ footer {
 
 .social-links img {
     width: 24px;
-    /* Smaller icons */
     height: 24px;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -547,25 +472,32 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Card Image Styles */
-.card img {
-    width: 100px;
-    /* Fixed width for logos */
-    height: 100px;
-    /* Fixed height for logos */
-    border-radius: 10px;
-    margin-bottom: 15px;
-    object-fit: cover;
-    /* Ensures the image fits within the dimensions */
+/* Back to Top Button */
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #60d1c4;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Specific Adjustments for Different Sections */
-#movies .card img,
-#jeeneet .card img,
-#btech .card img,
-#info .card img {
-    width: 100px;
-    /* Consistent size for all logos */
-    height: 100px;
-    /* Consistent size for all logos */
+#backToTop:hover {
+    background-color: #512da8;
+    transform: scale(1.1);
+}
+.highlight {
+    background-color: #ffeb3b; /* Yellow background */
+    color: #000; /* Black text */
+    font-weight: bold; /* Bold text */
+    padding: 2px 4px; /* Add some padding */
+    border-radius: 3px; /* Rounded corners */
 }
