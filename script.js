@@ -75,7 +75,7 @@ document.addEventListener("keydown", (event) => {
         konamiIndex++;
         if (konamiIndex === konamiCode.length) {
             alert("🦇 You found the Dark Knight's secret! Redirecting to the Batcave... 🦇");
-            window.location.href = "https://phantomcodex9.github.io/phantom/"; // Replace with your link
+            window.location.href = "https://phantomcodex9.github.io/X9BETA/"; // Replace with your link
         }
     } else {
         konamiIndex = 0; // Reset if the sequence is broken
