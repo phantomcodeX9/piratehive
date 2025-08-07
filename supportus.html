@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel the PirateHive | Become a Crypto Legend</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --background: #0f172a;
+            --card-bg: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --pirate-gold: #fbbf24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text);
+            background-image: url('https://i.imgur.com/JpYQ3Zk.png');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--pirate-gold);
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .pirate-badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--pirate-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .qr-container {
+            margin: 1.5rem auto;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
+            border: 1px dashed var(--pirate-gold);
+            transition: all 0.3s;
+        }
+
+        .qr-code {
+            width: 180px;
+            height: 180px;
+            border-radius: 8px;
+        }
+
+        .address {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Roboto Mono', monospace;
+            word-break: break-all;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            color: var(--text);
+            border: 1px solid var(--pirate-gold);
+            position: relative;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--pirate-gold), #f59e0b);
+            color: #1e293b;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            max-width: 220px;
+            margin: 0.5rem auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(251, 191, 36, 0.3);
+        }
+
+        .video-container {
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .perks {
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .perk-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .perk-icon {
+            margin-right: 1rem;
+            color: var(--pirate-gold);
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        .pirate-emoji {
+            font-size: 1.5rem;
+            vertical-align: middle;
+            margin: 0 3px;
+        }
+
+        .tier {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tier-1 {
+            background: rgba(101, 163, 13, 0.2);
+            border: 1px solid rgba(101, 163, 13, 0.5);
+        }
+
+        .tier-2 {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+        }
+
+        .tier-3 {
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.5);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Join the PirateHive Crew <span class="pirate-emoji">🏴‍☠️</span></h1>
+        <div class="subtitle">"We don't ask for donations - we recruit treasure hunters!"</div>
+
+        <p>
+            Every Bitcoin sent to this address is converted into <span
+                style="color: var(--pirate-gold); font-weight: 600;">digital cannonballs</span>
+            we use to fight against paywalls and keep the internet free. Arrr!
+        </p>
+
+        <div class="pirate-badge"> <em>A pirate shares his treasure, but even the Jolly Roger needs gunpowder.
+                Donate not because I ask—but because you know storms come for us all.</em> </div>
+
+        <div class="perks">
+            <div class="perk-item">
+                <div class="perk-icon">⚡</div>
+                <div>Your contribution keeps our servers running (and our pirate ship afloat)</div>
+            </div>
+            <div class="perk-item">
+                <div class="perk-icon">🔓</div>
+                <div>Helps us unlock more premium content for the entire community</div>
+            </div>
+            <div class="perk-item">
+                <div class="perk-icon">🛡️</div>
+                <div>Protects the Hive from DMCA trolls and legal sea monsters</div>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                title="How to Get Bitcoin in 4 Minutes (Even Your Grandma Could Do It)" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+            <i class="fas fa-grin-squint-tears"></i> Pro Tip: Watch our hilarious tutorial above if you're new to
+            crypto.
+            We promise it's easier than teaching a parrot to say "NFT"!
+        </p>
+
+        <div class="qr-container">
+            <!-- Replace with your QR code -->
+            <img src="your-bitcoin-qr.png" alt="Bitcoin QR Code" class="qr-code">
+        </div>
+
+        <div class="address" id="btc-address">
+            bc1qyourbitcoinaddressherexyz
+        </div>
+
+        <button class="copy-btn" onclick="copyAddress()">
+            <i class="fas fa-copy"></i> Steal This Address
+        </button>
+
+        <div style="margin: 1.5rem 0;">
+            <span class="tier tier-1">5$ = Deckhand</span>
+            <span class="tier tier-2">20$ = First Mate</span>
+            <span class="tier tier-3">100$ = Captain</span>
+        </div>
+
+        <div class="footer">
+            <p>
+                <span class="pirate-emoji">💎</span> Remember: Even small treasures add up to a big chest!
+                We appreciate every satoshi (that's pirate-speak for Bitcoin pennies).
+            </p>
+            <p style="margin-top: 0.5rem;">
+                PS: If you donate over 0.01 BTC, we'll send you a virtual eye patch. <span
+                    class="pirate-emoji">😉</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function copyAddress() {
+            const address = document.getElementById('btc-address').innerText;
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerHTML = '<i class="fas fa-check"></i> Plundered!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Steal This Address';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
