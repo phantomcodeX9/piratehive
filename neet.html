@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET Medical Vault</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --hospital-blue: #005b96;
+            --hospital-light: #e8f4f8;
+            --hospital-dark: #032a42;
+            --stethoscope: #2d7a5c;
+            --ecg-red: #e63946;
+            --scrubs-green: #40916c;
+            --xray-gray: #a8dadc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--hospital-light);
+            color: var(--hospital-dark);
+            background-image:
+                radial-gradient(circle at 90% 10%, rgba(0, 91, 150, 0.05) 0%, transparent 25%),
+                linear-gradient(to bottom, var(--hospital-light) 0%, #d8e9f0 100%);
+        }
+
+        .hospital-header {
+            background: linear-gradient(135deg, var(--hospital-blue) 0%, var(--hospital-dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid var(--ecg-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hospital-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffffff10"><path d="M30 50Q50 30 70 50T90 50Q70 70 50 50T10 50Q30 30 50 50T90 50"/></svg>');
+            background-size: 200px;
+            opacity: 0.1;
+        }
+
+        .stethoscope-icon {
+            font-size: 3rem;
+            color: var(--stethoscope);
+            margin-bottom: 1rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .drive-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 91, 150, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-top: 3px solid var(--ecg-red);
+            position: relative;
+        }
+
+        .drive-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            border: none;
+        }
+
+        .btn-hospital {
+            background-color: var(--hospital-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hospital:hover {
+            background-color: var(--hospital-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 91, 150, 0.3);
+        }
+
+        .btn-hospital::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-hospital:hover::after {
+            opacity: 1;
+        }
+
+        .medical-tips {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 3px 10px rgba(0, 91, 150, 0.1);
+            border-left: 5px solid var(--scrubs-green);
+        }
+
+        .medical-tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .medical-tips li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .medical-tips li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--scrubs-green);
+            font-weight: bold;
+        }
+
+        .medical-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--hospital-blue), transparent);
+            margin: 30px auto;
+            width: 80%;
+            opacity: 0.3;
+        }
+
+        .prescription-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 3px 10px rgba(0, 91, 150, 0.1);
+            border-top: 3px solid var(--scrubs-green);
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+
+        .prescription-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--hospital-blue);
+            font-weight: bold;
+        }
+
+        .prescription-footer {
+            text-align: right;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--hospital-blue);
+        }
+
+
+        @keyframes ecg {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .floating-icon.one {
+            top: 20%;
+            left: 10%;
+            font-size: 5rem;
+            color: var(--hospital-blue);
+        }
+
+        .floating-icon.two {
+            bottom: 15%;
+            right: 10%;
+            font-size: 4rem;
+            color: var(--scrubs-green);
+            transform: rotate(45deg);
+        }
+
+        .hospital-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .hospital-btn {
+            background: white;
+            border: 2px solid var(--hospital-blue);
+            color: var(--hospital-blue);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .hospital-btn:hover {
+            background: var(--hospital-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 91, 150, 0.2);
+        }
+
+        .hospital-btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hospital-header text-center">
+        <div class="container position-relative">
+            <i class="bi bi-heart-pulse stethoscope-icon"></i>
+            <h1>NEET RESOURCES</h1>
+            <p class="lead">Comprehensive Resources for Future Doctors</p>
+        </div>
+    </div>
+
+    <div class="container position-relative">
+        <i class="bi bi-capsule-pill floating-icon one"></i>
+        <i class="bi bi-hospital floating-icon two"></i>
+
+        <div class="text-center mb-4">
+            <h3><i class="bi bi-files me-2"></i> Medical Resource Repository</h3>
+            <p class="text-muted">All materials organized for efficient study</p>
+        </div>
+
+        <div class="drive-container">
+            <iframe
+                src="https://drive.google.com/embeddedfolderview?id=18Tx5zilRWobRbrRT_jRgIYQz_oP5tIOG#list"></iframe>
+        </div>
+
+        <div class="medical-tips">
+            <h5><i class="bi bi-journal-medical text-success me-2"></i> Study Protocol:</h5>
+            <ul>
+                <li>Right-click files to download or make copies</li>
+                <li>Use the search function to locate specific topics</li>
+                <li>Organize materials by your study schedule</li>
+            </ul>
+        </div>
+
+        <div class="medical-divider"></div>
+
+
+        <div class="hospital-btn-group">
+            <a href="https://t.me/+bRom8OVaNMRjOTk1" class="hospital-btn" target="_blank">
+                <i class="bi bi-telegram"></i>TG Group
+            </a>
+            <a href="brokenlink.html" class="hospital-btn">
+                <i class="bi bi-exclamation-triangle"></i> Report Issue
+            </a>
+            <a href="index.html" class="hospital-btn">
+                <i class="bi bi-house-door"></i> Return Home
+            </a>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animate prescription card on load
+        document.addEventListener('DOMContentLoaded', function () {
+            const prescriptionCard = document.querySelector('.prescription-card');
+            prescriptionCard.style.transform = 'translateY(20px)';
+            prescriptionCard.style.opacity = '0';
+
+            setTimeout(() => {
+                prescriptionCard.style.transition = 'all 0.5s ease-out';
+                prescriptionCard.style.transform = 'translateY(0)';
+                prescriptionCard.style.opacity = '1';
+            }, 300);
+        });
+
+        // Report form handling
+
+    </script>
+</body>
+
+</html>
