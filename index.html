@@ -29,6 +29,72 @@
     </div>
 
     <body>
+        <!-- === 28-AUG-2025 COUNTDOWN BANNER === -->
+        <style>
+            #countdownBanner {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(135deg, #000814 0%, #001d3d 100%);
+                color: #00e0ff;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 14px;
+                padding: 10px 20px;
+                box-shadow: 0 4px 12px rgba(0, 224, 255, .25);
+                position: sticky;
+                top: 60px;
+                /* ribbon height = ~60px */
+                z-index: 998;
+            }
+
+            #countdownBanner span {
+                margin: 0 8px;
+                font-weight: 700
+            }
+
+            #countdownBanner .close {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 18px;
+                cursor: pointer;
+                margin-left: auto;
+            }
+        </style>
+
+        <div id="countdownBanner">
+            <span> 🦇 New Update drops in :</span>
+            <span id="cd"></span>
+            <button class="close" onclick="dismissCB()">&times;</button>
+        </div>
+
+        <script>
+            /* --- countdown --- */
+            const tgt = new Date("2025-08-28T18:00:00Z");
+            const cd = document.getElementById('cd');
+            function pad(n) { return n.toString().padStart(2, '0'); }
+            function tick() {
+                const diff = tgt - Date.now();
+                if (diff <= 0) { cd.textContent = "🎉 LIVE!"; return; }
+                const d = Math.floor(diff / 864e5);
+                const h = Math.floor(diff % 864e5 / 36e5);
+                const m = Math.floor(diff % 36e5 / 6e4);
+                const s = Math.floor(diff % 6e4 / 1e3);
+                cd.textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+                requestAnimationFrame(tick);
+            }
+            tick();
+
+            /* --- dismiss banner --- */
+            function dismissCB() {
+                document.getElementById('countdownBanner').remove();
+                localStorage.setItem('countdownBanner', 'dismissed');
+            }
+            if (localStorage.getItem('countdownBanner') === 'dismissed') {
+                document.getElementById('countdownBanner').remove();
+            }
+        </script>
+        <!-- === END COUNTDOWN BANNER === -->
         <div class="top-ribbon">
             <div class="logo" style="color: aqua;">PirateHive</div>
             <div class="quick-access">
@@ -61,10 +127,12 @@
 
         <!-- Main Content -->
         <main>
+
             <!-- Search Bar -->
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Search...">
             </div>
+
 
             <div class="quick-access-buttons">
                 <button onclick="scrollToSection('movies')">🎬 Movies</button>
@@ -262,6 +330,48 @@
             <p class="batman-easter-egg">The Dark Knight watches over this site.</p>
         </footer>
         <script src="script.js"></script>
+        <!-- ===== CONTINUOUS LIGHT CONFETTI FALL ===== -->
+        <style>
+            .confetti-light {
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: #00e0ff55;
+                /* 33 = ~20 % opacity */
+                top: -20px;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10001;
+                animation: fallLight linear;
+            }
+
+            @keyframes fallLight {
+                to {
+                    transform: translateY(105vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        </style>
+
+        <script>
+            (function lightRain() {
+                const colors = ["#00e0ff55", "#ffd60a55", "#ff006e55", "#8338ec99"];
+                function addFlake() {
+                    const f = document.createElement('div');
+                    f.className = 'confetti-light';
+                    f.style.left = Math.random() * 100 + 'vw';
+                    f.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    f.style.animationDuration = (Math.random() * 4 + 6) + 's'; // 6-10 s
+                    document.body.appendChild(f);
+                    setTimeout(() => f.remove(), 10000);
+                }
+                // initial burst
+                for (let i = 0; i < 20; i++) setTimeout(addFlake, i * 120);
+                // keep sprinkling
+                setInterval(addFlake, 250);
+            })();
+        </script>
+        <!-- ===== END CONFETTI ===== -->
     </body>
 
 </html>

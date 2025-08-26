@@ -92,6 +92,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
+
 document.getElementById('backToTop').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
@@ -111,6 +112,7 @@ document.querySelectorAll('.quick-access-buttons button').forEach(button => {
         scrollToSection(sectionId);
     });
 });
+
 
 // Console Log Easter Egg
 console.log("%c🦇 I'm Batman. 🦇", "font-size: 20px; color: #000; background: #FFD700; padding: 10px; border-radius: 5px;");

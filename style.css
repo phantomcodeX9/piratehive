@@ -11,6 +11,7 @@
     --hover-color: #c8bfdc;
 }
 
+
 /* General Styles */
 body {
     font-family: var(--font-family);
@@ -19,8 +20,10 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
-    position: relative; /* Required for the glow effect */
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    position: relative;
+    /* Required for the glow effect */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 a {
@@ -32,7 +35,8 @@ a {
 body::before {
     content: "";
     position: absolute;
-    top: -50px; /* Adjusted for better visibility */
+    top: -50px;
+    /* Adjusted for better visibility */
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
@@ -51,6 +55,7 @@ body::before {
         opacity: 0.8;
         transform: translateX(-50%) scale(1);
     }
+
     100% {
         opacity: 1;
         transform: translateX(-50%) scale(1.1);
@@ -60,10 +65,14 @@ body::before {
 /* Responsive Glow */
 @media (max-width: 768px) {
     body::before {
-        top: -30px; /* Adjusted for mobile */
-        width: 300px; /* Slightly larger for mobile */
-        height: 150px; /* Slightly larger for mobile */
-        filter: blur(30px); /* Adjusted blur for mobile */
+        top: -30px;
+        /* Adjusted for mobile */
+        width: 300px;
+        /* Slightly larger for mobile */
+        height: 150px;
+        /* Slightly larger for mobile */
+        filter: blur(30px);
+        /* Adjusted blur for mobile */
     }
 }
 
@@ -94,6 +103,7 @@ body::before {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -158,6 +168,7 @@ body::before {
     .top-ribbon .quick-access {
         display: none;
     }
+
     .top-ribbon .menu-btn {
         display: block;
     }
@@ -419,6 +430,7 @@ footer {
         opacity: 0;
         transform: translateY(20px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -494,10 +506,16 @@ footer {
     background-color: #512da8;
     transform: scale(1.1);
 }
+
 .highlight {
-    background-color: #ffeb3b; /* Yellow background */
-    color: #000; /* Black text */
-    font-weight: bold; /* Bold text */
-    padding: 2px 4px; /* Add some padding */
-    border-radius: 3px; /* Rounded corners */
+    background-color: #ffeb3b;
+    /* Yellow background */
+    color: #000;
+    /* Black text */
+    font-weight: bold;
+    /* Bold text */
+    padding: 2px 4px;
+    /* Add some padding */
+    border-radius: 3px;
+    /* Rounded corners */
 }
