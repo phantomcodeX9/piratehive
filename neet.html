@@ -25,6 +25,18 @@
             background-image:
                 radial-gradient(circle at 90% 10%, rgba(0, 91, 150, 0.05) 0%, transparent 25%),
                 linear-gradient(to bottom, var(--hospital-light) 0%, #d8e9f0 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Halloween decorations at corners and section ends */
+        .halloween-decoration {
+            position: absolute;
+            font-size: 1.8rem;
+            color: rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.8;
         }
 
         .hospital-header {
@@ -56,6 +68,14 @@
             animation: heartbeat 1.5s infinite;
         }
 
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
         .drive-container {
             background: white;
             border-radius: 10px;
@@ -64,6 +84,8 @@
             margin-bottom: 2rem;
             border-top: 3px solid var(--ecg-red);
             position: relative;
+            padding: 30px;
+            text-align: center;
         }
 
         .drive-container::before {
@@ -73,13 +95,6 @@
             left: 0;
             right: 0;
             height: 5px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 70vh;
-            min-height: 500px;
-            border: none;
         }
 
         .btn-hospital {
@@ -124,6 +139,7 @@
             max-width: 800px;
             box-shadow: 0 3px 10px rgba(0, 91, 150, 0.1);
             border-left: 5px solid var(--scrubs-green);
+            position: relative;
         }
 
         .medical-tips ul {
@@ -179,15 +195,17 @@
             color: var(--hospital-blue);
         }
 
+        .alert-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
 
-        @keyframes ecg {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
+        .alert-box i {
+            color: #856404;
+            margin-right: 10px;
         }
 
         .floating-icon {
@@ -217,6 +235,7 @@
             gap: 15px;
             margin: 25px 0;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .hospital-btn {
@@ -239,11 +258,318 @@
         .hospital-btn i {
             margin-right: 8px;
         }
+
+        .mega-access-btn {
+            background: var(--scrubs-green);
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 20px 0;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .mega-access-btn:hover {
+            background: #2d6a4f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(64, 145, 108, 0.3);
+            color: white;
+        }
+
+        .mega-access-btn i {
+            margin-right: 10px;
+        }
+
+        /* Study Tools Styles */
+        .tools-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 3px 10px rgba(0, 91, 150, 0.1);
+            position: relative;
+        }
+
+        .tool-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--hospital-light);
+            margin-bottom: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tool-tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tool-tab.active {
+            color: var(--hospital-blue);
+            border-bottom-color: var(--hospital-blue);
+        }
+
+        .tool-tab:hover {
+            color: var(--hospital-blue);
+        }
+
+        .tool-content {
+            display: none;
+        }
+
+        .tool-content.active {
+            display: block;
+        }
+
+        .timer-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--hospital-blue);
+        }
+
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid var(--hospital-light);
+            border-radius: 5px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .progress-item label {
+            flex: 1;
+            margin-right: 10px;
+            min-width: 80px;
+        }
+
+        .progress-item input[type="range"] {
+            flex: 2;
+            min-width: 150px;
+        }
+
+        .progress-item span {
+            width: 40px;
+            text-align: right;
+            margin-left: 10px;
+        }
+
+        .bookmark-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--hospital-light);
+            flex-wrap: wrap;
+        }
+
+        .bookmark-item:last-child {
+            border-bottom: none;
+        }
+
+        .bookmark-title {
+            font-weight: 600;
+        }
+
+        .bookmark-url {
+            color: var(--hospital-blue);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .bookmark-url:hover {
+            text-decoration: underline;
+        }
+
+        .bookmark-delete {
+            color: var(--ecg-red);
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* Study planner styles */
+        .planner-day {
+            border: 1px solid var(--hospital-light);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .planner-day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .planner-day-title {
+            font-weight: 600;
+        }
+
+        .planner-day-content {
+            background: var(--hospital-light);
+            padding: 10px;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease-out;
+            max-width: 90%;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background-color: var(--scrubs-green);
+        }
+
+        .notification.info {
+            background-color: var(--hospital-blue);
+        }
+
+        .notification.warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .hospital-header {
+                padding: 1.5rem 0;
+            }
+            
+            .stethoscope-icon {
+                font-size: 2.5rem;
+            }
+            
+            .hospital-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .drive-container {
+                padding: 20px;
+            }
+            
+            .mega-access-btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+            
+            .timer-display {
+                font-size: 2rem;
+            }
+            
+            .tools-container {
+                padding: 15px;
+            }
+            
+            .tool-tabs {
+                padding-bottom: 5px;
+            }
+            
+            .tool-tab {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .medical-tips {
+                padding: 15px;
+            }
+            
+            .halloween-decoration {
+                font-size: 1.5rem;
+            }
+            
+            .hospital-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .hospital-btn-group {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hospital-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hospital-header p {
+                font-size: 0.9rem;
+            }
+            
+            .stethoscope-icon {
+                font-size: 2rem;
+            }
+            
+            .timer-display {
+                font-size: 1.8rem;
+            }
+            
+            .timer-controls .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .halloween-decoration {
+                font-size: 1.2rem;
+            }
+            
+            .notification {
+                right: 10px;
+                left: 10px;
+                top: 10px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="hospital-header text-center">
+        <!-- Halloween decorations in hero section -->
+        <div class="halloween-decoration" style="top: 10px; left: 20px;">🎃</div>
+        <div class="halloween-decoration" style="top: 10px; right: 20px;">🦇</div>
+        
         <div class="container position-relative">
             <i class="bi bi-heart-pulse stethoscope-icon"></i>
             <h1>NEET RESOURCES</h1>
@@ -260,9 +586,157 @@
             <p class="text-muted">All materials organized for efficient study</p>
         </div>
 
-        <div class="drive-container">
-            <iframe
-                src="https://mega.nz/folder/LWQTUD6I#UC3bbJ7IkmQnUU4Msqq3Ew#list"></iframe>
+        <!-- Alert Box for MEGA Notice -->
+
+
+        <!-- ========= ACCESS BUTTON ========= -->
+        <div class="drive-container text-center">
+            <h4><i class="bi bi-cloud-arrow-down me-2"></i> Access NEET Resources</h4>
+            <p class="text-muted mb-4">Click the button below to access all study materials</p>
+            
+            <!-- Big green access button -->
+            <a href="https://mega.nz/folder/LWQTUD6I#UC3bbJ7IkmQnUU4Msqq3Ew"
+                target="_blank"
+                class="mega-access-btn">
+                <i class="bi bi-cloud-arrow-down"></i>Access Resources Here
+            </a>
+        </div>
+                <div class="alert-box">
+            <i class="bi bi-info-circle-fill"></i>
+            <strong>Important Notice:</strong> Our resources have been temporarily shifted to MEGA due to technical issues with Google Drive API. 
+            We're working to resolve this as soon as possible. Once fixed, all resources will be republished on Google Drive 
+            with additional useful materials for your NEET preparation.
+        </div>
+        <!-- ============================================== -->
+
+        <!-- Study Tools Section -->
+        <div class="tools-container">
+            <h4 class="text-center mb-4"><i class="bi bi-tools me-2"></i> Study Tools</h4>
+            
+            <div class="tool-tabs">
+                <div class="tool-tab active" data-tool="timer">
+                    <i class="bi bi-clock me-1"></i> Timer
+                </div>
+                <div class="tool-tab" data-tool="notes">
+                    <i class="bi bi-journal-text me-1"></i> Notes
+                </div>
+                <div class="tool-tab" data-tool="progress">
+                    <i class="bi bi-graph-up me-1"></i> Progress
+                </div>
+                <div class="tool-tab" data-tool="bookmarks">
+                    <i class="bi bi-bookmark me-1"></i> Bookmarks
+                </div>
+                <div class="tool-tab" data-tool="planner">
+                    <i class="bi bi-calendar-week me-1"></i> Planner
+                </div>
+            </div>
+            
+            <!-- Timer Tool -->
+            <div class="tool-content active" id="timer-tool">
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                <div class="timer-controls">
+                    <button class="btn btn-hospital" id="startTimer">Start</button>
+                    <button class="btn btn-hospital" id="pauseTimer">Pause</button>
+                    <button class="btn btn-hospital" id="resetTimer">Reset</button>
+                </div>
+                <div class="text-center">
+                    <label for="timerMinutes">Set Timer (minutes):</label>
+                    <input type="number" id="timerMinutes" min="1" max="60" value="25" class="form-control d-inline-block w-auto ms-2">
+                </div>
+            </div>
+            
+            <!-- Notes Tool -->
+            <div class="tool-content" id="notes-tool">
+                <h5>Quick Notes</h5>
+                <textarea class="notes-area" id="notesArea" placeholder="Write your quick notes here..."></textarea>
+                <div class="text-end mt-2">
+                    <button class="btn btn-hospital" id="saveNotes">Save Notes</button>
+                </div>
+            </div>
+            
+            <!-- Progress Tool -->
+            <div class="tool-content" id="progress-tool">
+                <h5>Track Your Progress</h5>
+                <div class="progress-item">
+                    <label for="physicsProgress">Physics:</label>
+                    <input type="range" id="physicsProgress" min="0" max="100" value="0">
+                    <span id="physicsValue">0%</span>
+                </div>
+                <div class="progress-item">
+                    <label for="chemistryProgress">Chemistry:</label>
+                    <input type="range" id="chemistryProgress" min="0" max="100" value="0">
+                    <span id="chemistryValue">0%</span>
+                </div>
+                <div class="progress-item">
+                    <label for="biologyProgress">Biology:</label>
+                    <input type="range" id="biologyProgress" min="0" max="100" value="0">
+                    <span id="biologyValue">0%</span>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-hospital" id="saveProgress">Save Progress</button>
+                </div>
+            </div>
+            
+            <!-- Bookmarks Tool -->
+            <div class="tool-content" id="bookmarks-tool">
+                <h5>Resource Bookmarks</h5>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input type="text" id="bookmarkTitle" class="form-control" placeholder="Bookmark title">
+                        <input type="url" id="bookmarkUrl" class="form-control" placeholder="URL">
+                        <button class="btn btn-hospital" id="addBookmark">Add</button>
+                    </div>
+                </div>
+                <div id="bookmarksList">
+                    <!-- Bookmarks will be added here dynamically -->
+                </div>
+            </div>
+            
+            <!-- Planner Tool -->
+            <div class="tool-content" id="planner-tool">
+                <h5>Study Planner</h5>
+                <div class="planner-day">
+                    <div class="planner-day-header">
+                        <div class="planner-day-title">Monday</div>
+                        <button class="btn btn-sm btn-hospital edit-day" data-day="monday">Edit</button>
+                    </div>
+                    <div class="planner-day-content" id="monday-plan">Physics: Chapter 1-2</div>
+                </div>
+                <div class="planner-day">
+                    <div class="planner-day-header">
+                        <div class="planner-day-title">Tuesday</div>
+                        <button class="btn btn-sm btn-hospital edit-day" data-day="tuesday">Edit</button>
+                    </div>
+                    <div class="planner-day-content" id="tuesday-plan">Chemistry: Organic Basics</div>
+                </div>
+                <div class="planner-day">
+                    <div class="planner-day-header">
+                        <div class="planner-day-title">Wednesday</div>
+                        <button class="btn btn-sm btn-hospital edit-day" data-day="wednesday">Edit</button>
+                    </div>
+                    <div class="planner-day-content" id="wednesday-plan">Biology: Cell Structure</div>
+                </div>
+                <div class="planner-day">
+                    <div class="planner-day-header">
+                        <div class="planner-day-title">Thursday</div>
+                        <button class="btn btn-sm btn-hospital edit-day" data-day="thursday">Edit</button>
+                    </div>
+                    <div class="planner-day-content" id="thursday-plan">Physics: Chapter 3-4</div>
+                </div>
+                <div class="planner-day">
+                    <div class="planner-day-header">
+                        <div class="planner-day-title">Friday</div>
+                        <button class="btn btn-sm btn-hospital edit-day" data-day="friday">Edit</button>
+                    </div>
+                    <div class="planner-day-content" id="friday-plan">Chemistry: Inorganic Basics</div>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-hospital" id="savePlanner">Save Planner</button>
+                </div>
+            </div>
+            
+            <!-- Halloween decoration at the end of tools section -->
+            <div class="halloween-decoration" style="bottom: 10px; right: 10px;">🎃</div>
         </div>
 
         <div class="medical-tips">
@@ -272,10 +746,11 @@
                 <li>Use the search function to locate specific topics</li>
                 <li>Organize materials by your study schedule</li>
             </ul>
+            <!-- Halloween decoration at the end of tips section -->
+            <div class="halloween-decoration" style="bottom: 5px; left: 10px;">🦇</div>
         </div>
 
         <div class="medical-divider"></div>
-
 
         <div class="hospital-btn-group">
             <a href="https://t.me/+bRom8OVaNMRjOTk1" class="hospital-btn" target="_blank">
@@ -287,28 +762,347 @@
             <a href="index.html" class="hospital-btn">
                 <i class="bi bi-house-door"></i> Return Home
             </a>
+            <!-- Halloween decoration at the end of button group -->
+            <div class="halloween-decoration" style="bottom: -25px; right: 20px;">🎃</div>
         </div>
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Animate prescription card on load
-        document.addEventListener('DOMContentLoaded', function () {
-            const prescriptionCard = document.querySelector('.prescription-card');
-            prescriptionCard.style.transform = 'translateY(20px)';
-            prescriptionCard.style.opacity = '0';
-
-            setTimeout(() => {
-                prescriptionCard.style.transition = 'all 0.5s ease-out';
-                prescriptionCard.style.transform = 'translateY(0)';
-                prescriptionCard.style.opacity = '1';
-            }, 300);
+        // Timer functionality
+        let timerInterval;
+        let timerSeconds = 25 * 60; // Default 25 minutes
+        let isTimerRunning = false;
+        
+        const timerDisplay = document.getElementById('timerDisplay');
+        const startTimerBtn = document.getElementById('startTimer');
+        const pauseTimerBtn = document.getElementById('pauseTimer');
+        const resetTimerBtn = document.getElementById('resetTimer');
+        const timerMinutesInput = document.getElementById('timerMinutes');
+        
+        // Load timer state from localStorage
+        const savedTimerState = JSON.parse(localStorage.getItem('neetTimerState')) || {
+            seconds: 25 * 60,
+            isRunning: false,
+            lastSaved: Date.now()
+        };
+        
+        // If timer was running, calculate elapsed time
+        if (savedTimerState.isRunning) {
+            const elapsedSeconds = Math.floor((Date.now() - savedTimerState.lastSaved) / 1000);
+            timerSeconds = Math.max(0, savedTimerState.seconds - elapsedSeconds);
+            if (timerSeconds > 0) {
+                isTimerRunning = true;
+                startTimer();
+            }
+        } else {
+            timerSeconds = savedTimerState.seconds;
+        }
+        
+        updateTimerDisplay();
+        
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function saveTimerState() {
+            localStorage.setItem('neetTimerState', JSON.stringify({
+                seconds: timerSeconds,
+                isRunning: isTimerRunning,
+                lastSaved: Date.now()
+            }));
+        }
+        
+        function startTimer() {
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                saveTimerState();
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                        saveTimerState();
+                    } else {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        saveTimerState();
+                        // Timer completed
+                        timerDisplay.textContent = "Time's up!";
+                        showNotification("Timer completed!", "success");
+                    }
+                }, 1000);
+            }
+        }
+        
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            saveTimerState();
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            const minutes = parseInt(timerMinutesInput.value) || 25;
+            timerSeconds = minutes * 60;
+            updateTimerDisplay();
+            saveTimerState();
+        }
+        
+        startTimerBtn.addEventListener('click', startTimer);
+        pauseTimerBtn.addEventListener('click', pauseTimer);
+        resetTimerBtn.addEventListener('click', resetTimer);
+        
+        timerMinutesInput.addEventListener('change', () => {
+            const minutes = parseInt(timerMinutesInput.value) || 25;
+            timerSeconds = minutes * 60;
+            updateTimerDisplay();
+            saveTimerState();
         });
-
-        // Report form handling
-
+        
+        // Tool tabs functionality
+        const toolTabs = document.querySelectorAll('.tool-tab');
+        const toolContents = document.querySelectorAll('.tool-content');
+        
+        // Load active tab from localStorage
+        const savedActiveTab = localStorage.getItem('neetActiveTab') || 'timer';
+        
+        toolTabs.forEach(tab => {
+            const toolName = tab.getAttribute('data-tool');
+            if (toolName === savedActiveTab) {
+                tab.classList.add('active');
+                document.getElementById(`${toolName}-tool`).classList.add('active');
+            }
+            
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                toolTabs.forEach(t => t.classList.remove('active'));
+                toolContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(`${toolName}-tool`).classList.add('active');
+                
+                // Save active tab to localStorage
+                localStorage.setItem('neetActiveTab', toolName);
+            });
+        });
+        
+        // Notes functionality
+        const notesArea = document.getElementById('notesArea');
+        const saveNotesBtn = document.getElementById('saveNotes');
+        
+        // Load saved notes from localStorage
+        const savedNotes = localStorage.getItem('neetNotes');
+        if (savedNotes) {
+            notesArea.value = savedNotes;
+        }
+        
+        // Auto-save notes every 5 seconds
+        setInterval(() => {
+            localStorage.setItem('neetNotes', notesArea.value);
+        }, 5000);
+        
+        saveNotesBtn.addEventListener('click', () => {
+            localStorage.setItem('neetNotes', notesArea.value);
+            showNotification('Notes saved successfully!', 'success');
+        });
+        
+        // Progress tracking functionality
+        const physicsProgress = document.getElementById('physicsProgress');
+        const chemistryProgress = document.getElementById('chemistryProgress');
+        const biologyProgress = document.getElementById('biologyProgress');
+        const physicsValue = document.getElementById('physicsValue');
+        const chemistryValue = document.getElementById('chemistryValue');
+        const biologyValue = document.getElementById('biologyValue');
+        const saveProgressBtn = document.getElementById('saveProgress');
+        
+        // Load saved progress from localStorage
+        const savedProgress = JSON.parse(localStorage.getItem('neetProgress')) || {
+            physics: 0,
+            chemistry: 0,
+            biology: 0
+        };
+        
+        physicsProgress.value = savedProgress.physics;
+        chemistryProgress.value = savedProgress.chemistry;
+        biologyProgress.value = savedProgress.biology;
+        
+        physicsValue.textContent = `${savedProgress.physics}%`;
+        chemistryValue.textContent = `${savedProgress.chemistry}%`;
+        biologyValue.textContent = `${savedProgress.biology}%`;
+        
+        // Auto-save progress on change
+        function saveProgress() {
+            const progress = {
+                physics: physicsProgress.value,
+                chemistry: chemistryProgress.value,
+                biology: biologyProgress.value
+            };
+            localStorage.setItem('neetProgress', JSON.stringify(progress));
+        }
+        
+        physicsProgress.addEventListener('input', () => {
+            physicsValue.textContent = `${physicsProgress.value}%`;
+            saveProgress();
+        });
+        
+        chemistryProgress.addEventListener('input', () => {
+            chemistryValue.textContent = `${chemistryProgress.value}%`;
+            saveProgress();
+        });
+        
+        biologyProgress.addEventListener('input', () => {
+            biologyValue.textContent = `${biologyProgress.value}%`;
+            saveProgress();
+        });
+        
+        saveProgressBtn.addEventListener('click', () => {
+            saveProgress();
+            showNotification('Progress saved successfully!', 'success');
+        });
+        
+        // Bookmarks functionality
+        const bookmarkTitle = document.getElementById('bookmarkTitle');
+        const bookmarkUrl = document.getElementById('bookmarkUrl');
+        const addBookmarkBtn = document.getElementById('addBookmark');
+        const bookmarksList = document.getElementById('bookmarksList');
+        
+        // Load saved bookmarks from localStorage
+        let bookmarks = JSON.parse(localStorage.getItem('neetBookmarks')) || [];
+        
+        function renderBookmarks() {
+            bookmarksList.innerHTML = '';
+            bookmarks.forEach((bookmark, index) => {
+                const bookmarkItem = document.createElement('div');
+                bookmarkItem.className = 'bookmark-item';
+                bookmarkItem.innerHTML = `
+                    <div>
+                        <div class="bookmark-title">${bookmark.title}</div>
+                        <a href="${bookmark.url}" target="_blank" class="bookmark-url">${bookmark.url}</a>
+                    </div>
+                    <i class="bi bi-trash bookmark-delete" data-index="${index}"></i>
+                `;
+                bookmarksList.appendChild(bookmarkItem);
+            });
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.bookmark-delete').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    bookmarks.splice(index, 1);
+                    localStorage.setItem('neetBookmarks', JSON.stringify(bookmarks));
+                    renderBookmarks();
+                    showNotification('Bookmark deleted!', 'info');
+                });
+            });
+        }
+        
+        renderBookmarks();
+        
+        addBookmarkBtn.addEventListener('click', () => {
+            const title = bookmarkTitle.value.trim();
+            const url = bookmarkUrl.value.trim();
+            
+            if (title && url) {
+                bookmarks.push({ title, url });
+                localStorage.setItem('neetBookmarks', JSON.stringify(bookmarks));
+                renderBookmarks();
+                bookmarkTitle.value = '';
+                bookmarkUrl.value = '';
+                showNotification('Bookmark added successfully!', 'success');
+            } else {
+                showNotification('Please enter both title and URL!', 'warning');
+            }
+        });
+        
+        // Planner functionality
+        const editDayBtns = document.querySelectorAll('.edit-day');
+        const savePlannerBtn = document.getElementById('savePlanner');
+        
+        // Load saved planner from localStorage
+        const savedPlanner = JSON.parse(localStorage.getItem('neetPlanner')) || {
+            monday: 'Physics: Chapter 1-2',
+            tuesday: 'Chemistry: Organic Basics',
+            wednesday: 'Biology: Cell Structure',
+            thursday: 'Physics: Chapter 3-4',
+            friday: 'Chemistry: Inorganic Basics'
+        };
+        
+        Object.keys(savedPlanner).forEach(day => {
+            const planElement = document.getElementById(`${day}-plan`);
+            if (planElement) {
+                planElement.textContent = savedPlanner[day];
+            }
+        });
+        
+        editDayBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const day = btn.getAttribute('data-day');
+                const planElement = document.getElementById(`${day}-plan`);
+                const currentPlan = planElement.textContent;
+                
+                const newPlan = prompt(`Edit plan for ${day}:`, currentPlan);
+                if (newPlan !== null) {
+                    planElement.textContent = newPlan;
+                }
+            });
+        });
+        
+        savePlannerBtn.addEventListener('click', () => {
+            const planner = {};
+            ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].forEach(day => {
+                const planElement = document.getElementById(`${day}-plan`);
+                if (planElement) {
+                    planner[day] = planElement.textContent;
+                }
+            });
+            
+            localStorage.setItem('neetPlanner', JSON.stringify(planner));
+            showNotification('Planner saved successfully!', 'success');
+        });
+        
+        // Notification function
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            // Add to DOM
+            document.body.appendChild(notification);
+            
+            // Trigger animation
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+        
+        // Easter egg: Clicking on Halloween decorations
+        document.querySelectorAll('.halloween-decoration').forEach(decoration => {
+            decoration.style.cursor = 'pointer';
+            decoration.style.pointerEvents = 'auto';
+            decoration.addEventListener('click', () => {
+                decoration.style.color = '#ff6b35';
+                decoration.style.transform = 'scale(1.2) rotate(10deg)';
+                showNotification('Spooky! 👻', 'success');
+                
+                setTimeout(() => {
+                    decoration.style.color = 'rgba(0, 0, 0, 0.7)';
+                    decoration.style.transform = 'scale(1) rotate(0deg)';
+                }, 2000);
+            });
+        });
     </script>
 </body>
 
