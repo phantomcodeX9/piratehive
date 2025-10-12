@@ -78,7 +78,7 @@
             background-image:
                 radial-gradient(circle at 15% 50%, rgba(20, 20, 48, .5) 0%, transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(156, 39, 176, .3) 0%, transparent 25%);
-      /* Hide cursor in Halloween mode */
+            /* Hide cursor in Halloween mode */
         }
 
         body.halloween-theme {
@@ -154,27 +154,67 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
         }
 
         @keyframes fly {
-            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
-            25% { transform: translateX(10px) translateY(-5px) rotate(-10deg); }
-            50% { transform: translateX(-5px) translateY(-10px) rotate(5deg); }
-            75% { transform: translateX(-10px) translateY(-5px) rotate(-5deg); }
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(10px) translateY(-5px) rotate(-10deg);
+            }
+
+            50% {
+                transform: translateX(-5px) translateY(-10px) rotate(5deg);
+            }
+
+            75% {
+                transform: translateX(-10px) translateY(-5px) rotate(-5deg);
+            }
         }
 
         @keyframes crawl {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(5px) rotate(5deg); }
-            50% { transform: translateX(-5px) rotate(-5deg); }
-            75% { transform: translateX(3px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(5px) rotate(5deg);
+            }
+
+            50% {
+                transform: translateX(-5px) rotate(-5deg);
+            }
+
+            75% {
+                transform: translateX(3px) rotate(3deg);
+            }
         }
 
         @keyframes bubble {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-5px) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-5px) scale(1.05);
+            }
         }
 
         /* Snowflakes */
@@ -263,8 +303,13 @@
         }
 
         @keyframes snowfall {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(calc(100vh + 20px)) rotate(360deg); }
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(calc(100vh + 20px)) rotate(360deg);
+            }
         }
 
         /* Fog effect at bottom */
@@ -287,8 +332,15 @@
         }
 
         @keyframes fog-drift {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.7; }
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
         }
 
         /* Small Halloween elements on card corners */
@@ -324,9 +376,17 @@
         }
 
         @keyframes pumpkin-pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .halloween-toggle::before {
@@ -358,30 +418,34 @@
         }
 
         @keyframes pumpkin-glow {
-            0% { 
+            0% {
                 box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.8);
                 transform: translate(-50%, -50%) scale(1);
             }
-            50% { 
+
+            50% {
                 box-shadow: 0 0 15px 5px rgba(255, 107, 53, 0.4);
                 transform: translate(-50%, -50%) scale(1.05);
             }
-            100% { 
+
+            100% {
                 box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
                 transform: translate(-50%, -50%) scale(1);
             }
         }
 
         @keyframes pumpkin-glow-outer {
-            0% { 
+            0% {
                 box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.6);
                 transform: translate(-50%, -50%) scale(1);
             }
-            50% { 
+
+            50% {
                 box-shadow: 0 0 20px 10px rgba(255, 107, 53, 0.2);
                 transform: translate(-50%, -50%) scale(1.1);
             }
-            100% { 
+
+            100% {
                 box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
                 transform: translate(-50%, -50%) scale(1);
             }
@@ -439,8 +503,15 @@
         }
 
         @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         .light-string {
@@ -810,13 +881,16 @@
         }
 
         @keyframes breathe {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow:
                     0 0 4px var(--primary),
                     0 0 8px var(--primary),
                     0 0 16px var(--primary),
                     0 0 32px var(--primary);
             }
+
             50% {
                 box-shadow:
                     0 0 6px var(--primary),
@@ -866,9 +940,11 @@
             0% {
                 box-shadow: 0 0 8px var(--primary), 0 0 16px var(--primary);
             }
+
             50% {
                 box-shadow: 0 0 12px var(--primary), 0 0 24px var(--primary);
             }
+
             100% {
                 box-shadow: 0 0 8px var(--primary), 0 0 16px var(--primary);
             }
@@ -1553,7 +1629,7 @@
 <body>
     <!-- Custom cursor and witch follower (hidden by default) -->
     <div class="custom-cursor"></div>
-    <div class="witch-follower">🧙‍♀️</div>
+    <div class="witch-follower"><img src="image.png" style="width: 80px; height: 80px;"></div>
 
     <!-- Snowflakes -->
     <div class="snowflake">❄</div>
@@ -1579,7 +1655,7 @@
 
     <!-- Loading -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="batman-loader"></div>
+        <div class="batman-loader">⚓</div>
         <div class="loading-text">Setting The Sails</div>
         <div class="loading-dots">
             <div class="dot"></div>
@@ -1703,7 +1779,8 @@
                         <span class="card-halloween bottom-right">🕷️</span>
                         <img src="every.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Everything Collection</h3>
-                        <p class="card-description">Live sports, movies, multi-language content and more in one place.(may need a VPN)
+                        <p class="card-description">Live sports, movies, multi-language content and more in one
+                            place.(may need a VPN)
                         </p>
                         <div class="card-footer"><a href="https://watch.corsflix.dpdns.org/" target="_blank"
                                 class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
@@ -1715,7 +1792,8 @@
                         <span class="card-badge">Live</span>
                         <img src="sport.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Live Sports</h3>
-                        <p class="card-description">Watch live sports events from around the world in high definition.(may require a VPN)
+                        <p class="card-description">Watch live sports events from around the world in high
+                            definition.(may require a VPN)
                         </p>
                         <div class="card-footer"><a href="https://streamed.pk/" target="_blank"
                                 class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
@@ -2114,7 +2192,7 @@
             <div class="light-bulb" style="--delay: 2.4;"></div>
             <div class="light-bulb" style="--delay: 2.9;"></div>
         </div>
-        
+
         <div class="footer-grid">
             <div class="footer-brand">
                 <span class="logo-text">PirateHive</span>
@@ -2185,13 +2263,13 @@
         halloweenToggle.addEventListener('click', () => {
             body.classList.toggle('halloween-theme');
             const isHalloween = body.classList.contains('halloween-theme');
-            
+
             // Save preference
             localStorage.setItem('theme', isHalloween ? 'halloween' : 'default');
-            
+
             // Change pumpkin emoji
             halloweenToggle.textContent = isHalloween ? '🎃' : '🎃';
-            
+
             // Add a little animation
             halloweenToggle.style.transform = 'scale(1.2) rotate(360deg)';
             setTimeout(() => {
@@ -2209,18 +2287,18 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
+
             // Update cursor position immediately (only in Halloween mode)
             if (body.classList.contains('halloween-theme')) {
                 cursor.style.left = mouseX + 'px';
                 cursor.style.top = mouseY + 'px';
             }
-            
+
             // Show witch when mouse moves (only in Halloween mode)
             if (body.classList.contains('halloween-theme')) {
                 isMouseMoving = true;
                 clearTimeout(mouseTimer);
-                
+
                 // Hide witch after mouse stops moving
                 mouseTimer = setTimeout(() => {
                     isMouseMoving = false;
@@ -2233,12 +2311,12 @@
             // Calculate distance between witch and mouse
             const dx = mouseX - witchX;
             const dy = mouseY - witchY;
-            
+
             // Smooth following with easing (only in Halloween mode)
             if (body.classList.contains('halloween-theme') && isMouseMoving) {
                 witchX += dx * 0.09;
                 witchY += dy * 0.09;
-                
+
                 // Calculate rotation based on movement direction
                 const angle = Math.atan2(dy, dx) * (180 / Math.PI);
                 witch.style.transform = `translate(-50%, -50%) rotate(${angle + 90}deg)`;
@@ -2246,19 +2324,19 @@
                 // Hide witch when not in Halloween mode
                 witch.style.opacity = '0';
             }
-            
+
             // Update witch position
             witch.style.left = witchX + 'px';
             witch.style.top = witchY + 'px';
-            
+
             // Show witch when moving and in Halloween mode
             if (body.classList.contains('halloween-theme') && isMouseMoving) {
                 witch.style.opacity = '1';
             }
-            
+
             requestAnimationFrame(animateWitch);
         }
-        
+
         // Start animation
         animateWitch();
 
@@ -2399,5 +2477,3 @@
 </body>
 
 </html>
-
-
