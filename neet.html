@@ -29,16 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* Subtle Halloween decorations at corners and section ends */
-        .halloween-decoration {
-            position: absolute;
-            font-size: 1.8rem;
-            color: rgba(0, 0, 0, 0.7);
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.8;
-        }
-
         .hospital-header {
             background: linear-gradient(135deg, var(--hospital-blue) 0%, var(--hospital-dark) 100%);
             color: white;
@@ -196,15 +186,15 @@
         }
 
         .alert-box {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
+            background-color: #d1ecf1;
+            border-left: 5px solid #0c5460;
             padding: 15px;
             margin: 20px 0;
             border-radius: 5px;
         }
 
         .alert-box i {
-            color: #856404;
+            color: #0c5460;
             margin-right: 10px;
         }
 
@@ -515,10 +505,6 @@
                 padding: 15px;
             }
             
-            .halloween-decoration {
-                font-size: 1.5rem;
-            }
-            
             .hospital-btn {
                 padding: 8px 16px;
                 font-size: 0.9rem;
@@ -551,10 +537,6 @@
                 font-size: 0.9rem;
             }
             
-            .halloween-decoration {
-                font-size: 1.2rem;
-            }
-            
             .notification {
                 right: 10px;
                 left: 10px;
@@ -566,10 +548,6 @@
 
 <body>
     <div class="hospital-header text-center">
-        <!-- Halloween decorations in hero section -->
-        <div class="halloween-decoration" style="top: 10px; left: 20px;">🎃</div>
-        <div class="halloween-decoration" style="top: 10px; right: 20px;">🦇</div>
-        
         <div class="container position-relative">
             <i class="bi bi-heart-pulse stethoscope-icon"></i>
             <h1>NEET RESOURCES</h1>
@@ -586,8 +564,12 @@
             <p class="text-muted">All materials organized for efficient study</p>
         </div>
 
-        <!-- Alert Box for MEGA Notice -->
-
+        <!-- Alert Box for SharePoint Notice -->
+        <div class="alert-box">
+            <i class="bi bi-info-circle-fill"></i>
+            <strong>Resources Available:</strong> All NEET study materials are now available on SharePoint. 
+            Access the complete collection of study resources using the link below.
+        </div>
 
         <!-- ========= ACCESS BUTTON ========= -->
         <div class="drive-container text-center">
@@ -595,17 +577,11 @@
             <p class="text-muted mb-4">Click the button below to access all study materials</p>
             
             <!-- Big green access button -->
-            <a href="https://mega.nz/folder/LDYSFCAC#m_NVrIb6WCJBoK8UnlLayQ"
+            <a href="https://540xft-my.sharepoint.com/:f:/g/personal/binod69_540xft_onmicrosoft_com/EsMxdjc1Uv5Cn_Em75rBRFEBO_b4i1Uhha0kT0DPCs6Haw"
                 target="_blank"
                 class="mega-access-btn">
                 <i class="bi bi-cloud-arrow-down"></i>Access Resources Here
             </a>
-        </div>
-                <div class="alert-box">
-            <i class="bi bi-info-circle-fill"></i>
-            <strong>Important Notice:</strong> Our resources have been temporarily shifted to MEGA due to technical issues with Google Drive API. 
-            We're working to resolve this as soon as possible. Once fixed, all resources will be republished on Google Drive 
-            with additional useful materials for your NEET preparation.
         </div>
         <!-- ============================================== -->
 
@@ -734,9 +710,6 @@
                     <button class="btn btn-hospital" id="savePlanner">Save Planner</button>
                 </div>
             </div>
-            
-            <!-- Halloween decoration at the end of tools section -->
-            <div class="halloween-decoration" style="bottom: 10px; right: 10px;">🎃</div>
         </div>
 
         <div class="medical-tips">
@@ -746,8 +719,6 @@
                 <li>Use the search function to locate specific topics</li>
                 <li>Organize materials by your study schedule</li>
             </ul>
-            <!-- Halloween decoration at the end of tips section -->
-            <div class="halloween-decoration" style="bottom: 5px; left: 10px;">🦇</div>
         </div>
 
         <div class="medical-divider"></div>
@@ -762,8 +733,6 @@
             <a href="index.html" class="hospital-btn">
                 <i class="bi bi-house-door"></i> Return Home
             </a>
-            <!-- Halloween decoration at the end of button group -->
-            <div class="halloween-decoration" style="bottom: -25px; right: 20px;">🎃</div>
         </div>
     </div>
 
@@ -1087,22 +1056,6 @@
                 }, 300);
             }, 3000);
         }
-        
-        // Easter egg: Clicking on Halloween decorations
-        document.querySelectorAll('.halloween-decoration').forEach(decoration => {
-            decoration.style.cursor = 'pointer';
-            decoration.style.pointerEvents = 'auto';
-            decoration.addEventListener('click', () => {
-                decoration.style.color = '#ff6b35';
-                decoration.style.transform = 'scale(1.2) rotate(10deg)';
-                showNotification('Spooky! 👻', 'success');
-                
-                setTimeout(() => {
-                    decoration.style.color = 'rgba(0, 0, 0, 0.7)';
-                    decoration.style.transform = 'scale(1) rotate(0deg)';
-                }, 2000);
-            });
-        });
     </script>
 </body>
 
