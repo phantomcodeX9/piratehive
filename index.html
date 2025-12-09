@@ -851,10 +851,6 @@
             visibility: visible
         }
 
-        .back-to-top:hover {
-            transform: translateY(-5px)
-        }
-
         /* Modal */
         .modal {
             display: none;
@@ -1117,6 +1113,64 @@
             height: 40px;
             object-fit: contain;
         }
+
+        /* NEW: Temporary notification */
+        .temp-notification {
+            position: fixed;
+            top: calc(var(--header-height) + 20px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, var(--success), #00cc66);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 255, 140, .3);
+            z-index: 1001;
+            display: none;
+            animation: slideDown 0.5s ease, fadeIn 0.5s ease;
+        }
+
+        .temp-notification.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* NEW: Blinking dot for new content */
+        .new-indicator {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 12px;
+            height: 12px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
     </style>
 
 </head>
@@ -1158,6 +1212,11 @@
         </div>
     </header>
 
+    <!-- Temporary Notification -->
+    <div class="temp-notification" id="tempNotification">
+        <i class="fas fa-graduation-cap"></i> New: Free Udemy Courses Available!
+    </div>
+
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
         <div class="search-box">
@@ -1196,7 +1255,12 @@
                 <button class="tab" data-tab="btech"><i class="fas fa-laptop-code"></i> BE/B.Tech</button>
                 <button class="tab" data-tab="ebooks"><i class="fas fa-book-open"></i> E-Books</button>
                 <button class="tab" data-tab="games"> <i class="fas fa-gamepad"></i>Games</button>
+                                <!-- NEW: Udemy Courses Tab with NEW indicator -->
+                <button class="tab" data-tab="udemy" style="color: #0de73c;"><i class="fas fa-graduation-cap"></i> Udemy Courses
+                    <span class="new-indicator"></span>
+                </button>
                 <button class="tab" data-tab="info"><i class="fas fa-info-circle"></i> Info</button>
+
             </div>
 
             <!-- Movies Tab -->
@@ -1357,7 +1421,8 @@
             <div class="tab-content" id="btech-tab">
                 <div class="notice-box"><a href="https://t.me/+F4UQT36D96RiODll"><i
                             class="fas fa-exclamation-circle"></i><strong>Join our coding
-                            community for real-time help and resources!</strong></a></div>
+                            community for real-time help and resources!</strong></a>
+                </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">1st Year</span>
@@ -1410,7 +1475,6 @@
                             curated collection.</p>
                         <div class="card-footer"><a href="#" target="_blank" class="card-button"
                                 style="background-color: #a0a0c0;" SOON<i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
                         </div>
                     </div>
                 </div>
@@ -1513,6 +1577,32 @@
                 </div>
             </div>
 
+            <!-- NEW: Udemy Courses Tab (moved above Info) -->
+            <div class="tab-content" id="udemy-tab">
+                <div class="notice-box">
+                    <a href="udemy.html">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <strong>Unlock premium Udemy courses for FREE with exclusive discount coupons!</strong>
+                    </a>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <span class="card-badge">New</span>
+                        <img src="udemy-icon.png" class="card-icon" alt="Udemy">
+                        <h3 class="card-title">Udemy Courses Collection</h3>
+                        <p class="card-description">Access premium Udemy courses for free using our exclusive discount
+                            coupons.
+                            Learn anything from programming to design, marketing, and more.</p>
+                        <div class="card-footer">
+                            <a href="udemy.html" target="_blank" class="card-button">Browse Courses <i
+                                    class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><span><i class="fas fa-eye"></i> New</span></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
             <!-- Info Tab -->
             <div class="tab-content" id="info-tab">
                 <div class="card-grid">
@@ -1544,12 +1634,12 @@
         <div class="stats-container">
             <div class="stat-card">
                 <div class="stat-icon"><i class="fab fa-github"></i></div>
-                <div class="stat-number" data-count="182">0</div>
+                <div class="stat-number" data-count="183">0</div>
                 <div class="stat-label">Commits & Changes</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number" data-count="1059056">0</div>
+                <div class="stat-number" data-count="1075048">0</div>
                 <div class="stat-label">Users (updated every week)</div>
             </div>
             <div class="stat-card">
@@ -1559,7 +1649,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fab fa-telegram"></i></div>
-                <div class="stat-number" data-count="2072">0</div>
+                <div class="stat-number" data-count="2100">0</div>
                 <div class="stat-label">Telegram Family</div>
             </div>
         </div>
@@ -1662,6 +1752,15 @@
                 $('#loadingScreen').style.opacity = 0;
                 setTimeout(() => $('#loadingScreen').style.display = 'none', 500);
             }, 1000); // Reduced from 2000ms to 1000ms
+
+            // Show temporary notification after loading
+            setTimeout(() => {
+                $('#tempNotification').classList.add('show');
+                // Hide notification after 5 seconds
+                setTimeout(() => {
+                    $('#tempNotification').classList.remove('show');
+                }, 5000);
+            }, 1500);
         });
 
         /* -------------  HEADER  ------------- */
@@ -1699,7 +1798,8 @@
             { title: 'Annas archive', url: 'https://annas-archive.org/', keywords: 'audiobooks mp3 audio' },
             { title: 'FitGirl Repacks', url: 'https://fitgirl-repacks.site/', keywords: 'games pc repacks fitgirl' },
             { title: 'SteamUnlocked', url: 'https://steamunlocked.net/', keywords: 'games preinstalled steam' },
-            { title: 'Steamrip', url: 'https://steamrip.com/', keywords: 'games steam torrent game' }
+            { title: 'Steamrip', url: 'https://steamrip.com/', keywords: 'games steam torrent game' },
+            { title: 'Udemy Courses', url: 'udemy.html', keywords: 'udemy courses learning education discount free' }
         );
 
         $('#searchButton').addEventListener('click', () => {
@@ -1717,6 +1817,7 @@
 
         /* -------------  NOTIFICATIONS  ------------- */
         const notifications = [
+            { text: 'Udaemy courses', time: '09 Dec UTC 07:42' },
             { text: 'Maintenance Complete  (JEE/Neet working again) ', time: '22 nov UTC 04:05' },
             { text: 'Maintenance Complete  (New sites added & JEE/Neet working again) ', time: '12 oct UTC 17:00' },
             { text: 'Games Section now live', time: '04 sept UTC 15:24' },
@@ -1732,6 +1833,7 @@
                 $('#notificationPanel').classList.remove('active');
             }
         });
+
 
         /* -------------  STATS COUNTER  ------------- */
         const statNumbers = $$('.stat-number');
@@ -1778,4 +1880,3 @@
 </body>
 
 </html>
-
