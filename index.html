@@ -2,28 +2,15 @@
 <html lang="en">
 
 <head>
-    <!--Ayeee tech savvy pirate, Welcome to piratehive, satisfy your inner nerd or copy the whole code idfc -->
-    <!-- Gtag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5WVB11YW2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-C5WVB11YW2');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PirateHive - Your Ultimate Digital Resource Hub</title>
     <link rel="icon" href="pirate.png" type="image/png">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --------------  ORIGINAL CSS  -------------- */
         :root {
-            /* Original Theme Colors */
+            /* User Defined Colors */
             --primary: #00ffff;
             --primary-dark: #00cccc;
             --secondary: #ff6b00;
@@ -38,41 +25,68 @@
             --success: #00ff8c;
             --warning: #ffcc00;
             --danger: #ff3860;
+            
+            /* Layout Variables */
             --header-height: 80px;
             --border-radius: 12px;
             --transition: all .3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, .3);
             --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+            
+            /* Derived/Enhanced Variables */
+            --bg-deep: var(--darker);
+            --bg-base: var(--dark);
+            --bg-elevated: var(--card-dark);
+            --border: rgba(0, 255, 255, 0.15);
+            --border-hover: rgba(0, 255, 255, 0.4);
+            --radius-sm: 8px;
+            --radius-md: var(--border-radius);
+            --radius-lg: 20px;
+            --radius-full: 100px;
         }
 
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--dark);
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-deep);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image:
-                radial-gradient(circle at 15% 50%, rgba(20, 20, 48, .5) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(156, 39, 176, .3) 0%, transparent 25%);
-            position: relative;
-            transition: background-image 0.5s ease;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 1rem;
-            font-weight: 700
+        /* Dynamic Background */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-gradient {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 50%);
+        }
+
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 0%, transparent 70%);
         }
 
         /* Loading Screen */
@@ -84,84 +98,92 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity .5s
+            z-index: 10000;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
 
-        .batman-loader {
-            width: 120px;
-            height: 120px;
-            font-size: 90px;
-            animation: pulse 1.5s infinite, rotate 4s linear infinite;
-            margin-bottom: 2rem
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
         }
 
-        .loading-text {
-            font-size: 1.2rem;
-            color: var(--primary);
-            letter-spacing: 2px;
-            text-transform: uppercase
+        .loader-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
         }
 
-        .loading-dots {
-            display: flex;
-            margin-top: 1rem
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
+        .loader-ring {
+            position: absolute;
+            inset: 0;
+            border: 3px solid transparent;
+            border-top-color: var(--primary);
             border-radius: 50%;
-            margin: 0 5px;
-            animation: bounce 1.5s infinite
+            animation: spin 1.2s linear infinite;
         }
 
-        .dot:nth-child(2) {
-            animation-delay: .2s
+        .loader-ring:nth-child(2) {
+            inset: 10px;
+            border-top-color: var(--accent);
+            animation-duration: 1s;
+            animation-direction: reverse;
         }
 
-        .dot:nth-child(3) {
-            animation-delay: .4s
+        .loader-ring:nth-child(3) {
+            inset: 20px;
+            border-top-color: var(--secondary);
+            animation-duration: 0.8s;
+        }
+
+        .loader-icon {
+            position: absolute;
+            inset: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(.95);
-                opacity: .7
-            }
-
-            50% {
-                transform: scale(1.1);
-                opacity: 1
-            }
-
-            100% {
-                transform: scale(.95);
-                opacity: .7
-            }
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0)
-            }
-
-            to {
-                transform: rotate(360deg)
-            }
+        .loading-text {
+            margin-top: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        @keyframes bounce {
+        .loading-bar {
+            margin-top: 1.5rem;
+            width: 200px;
+            height: 3px;
+            background: var(--card-dark);
+            border-radius: 3px;
+            overflow: hidden;
+        }
 
-            0%,
-            100% {
-                transform: translateY(0)
-            }
+        .loading-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            animation: loading 2s ease-in-out forwards;
+        }
 
-            50% {
-                transform: translateY(-15px)
-            }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
         }
 
         /* Header */
@@ -169,555 +191,680 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             height: var(--header-height);
-            background: rgba(10, 10, 26, .95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
+            background: rgba(5, 5, 16, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 255, 255, .1);
-            transition: var(--transition)
+            transition: var(--transition);
         }
 
         .header.scrolled {
             height: 70px;
-            box-shadow: var(--shadow)
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px
+            gap: 12px;
+            text-decoration: none;
         }
 
         .logo-img {
-            width: 40px;
-            height: 40px;
-            font-size: 32px
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-img {
+            transform: rotate(-5deg) scale(1.05);
         }
 
         .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
-            -webkit-text-fill-color: transparent
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 2rem
+            gap: 0.5rem;
         }
 
         .nav-link {
-            color: var(--text);
+            color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
             position: relative;
-            padding: .5rem 0;
-            transition: var(--transition)
         }
 
-        .nav-link:hover {
-            color: var(--primary)
+        .nav-link:hover, .nav-link.active {
+            color: var(--text);
+            background: rgba(0, 255, 255, 0.1);
         }
 
-        .nav-link::after {
+        .nav-link.active::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: var(--transition)
-        }
-
-        .nav-link:hover::after {
-            width: 100%
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1.5rem
+            gap: 0.5rem;
         }
 
         .nav-action {
-            color: var(--text);
-            font-size: 1.2rem;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
             transition: var(--transition);
             position: relative;
-            cursor: pointer
         }
 
         .nav-action:hover {
-            color: var(--primary);
-            transform: translateY(-2px)
+            color: var(--text);
+            background: rgba(0, 255, 255, 0.1);
         }
 
         .nav-badge {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--secondary);
-            color: var(--dark);
-            font-size: .7rem;
-            font-weight: 700;
-            width: 18px;
+            top: 4px;
+            right: 4px;
+            min-width: 18px;
             height: 18px;
-            border-radius: 50%;
+            padding: 0 5px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: var(--radius-full);
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center
         }
 
         .menu-toggle {
             display: none;
-            background: none;
+            width: 42px;
+            height: 42px;
+            background: transparent;
             border: none;
             color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover {
+            background: rgba(0, 255, 255, 0.1);
         }
 
         /* Hero Section */
         .hero {
-            padding: calc(var(--header-height) + 2rem) 5% 5rem;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--header-height) + 4rem) 2rem 4rem;
             position: relative;
-            overflow: hidden
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            opacity: .1;
-            z-index: -1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiMwMGFjYWMiIHN0cm9rZS13aWR0aD0iMC41Ij48cGF0aCBkPSJNMCwwIEw2MCw2ME02MCwwIEwwLDYwIi8+PC9nPjwvc3ZnPg==')
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: var(--gradient);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+        }
+
+        .hero-title-gradient {
+            background: linear-gradient(135deg, var(--text) 20%, var(--primary) 50%, var(--accent) 80%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease
+            animation: gradientShift 5s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
             color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1s ease .2s forwards;
-            opacity: 0
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
         .hero-actions {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
-            animation: fadeInUp 1s ease .4s forwards;
-            opacity: 0
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: .5rem;
-            padding: .8rem 2rem;
-            border-radius: 50px;
+            gap: 10px;
+            padding: 1rem 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
-            transition: var(--transition);
+            border-radius: var(--radius-full);
             border: none;
             cursor: pointer;
-            font-family: 'Montserrat', sans-serif
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
             background: var(--gradient);
-            color: var(--text);
-            box-shadow: 0 4px 15px rgba(0, 255, 255, .3)
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 255, 255, .4)
+            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text);
-            border: 2px solid var(--primary)
+            border: 1px solid var(--primary);
         }
 
         .btn-secondary:hover {
-            background: rgba(0, 255, 255, .1);
-            transform: translateY(-3px)
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateY(-3px);
         }
 
-        /* Tabs */
+        /* Tabs Section */
         .tabs-section {
-            padding: 2rem 5%
+            padding: 4rem 2rem;
         }
 
         .tabs-container {
-            background: var(--card-dark);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .tabs-header {
             display: flex;
             flex-wrap: wrap;
-            gap: .5rem;
-            margin-bottom: 2rem;
-            padding: .8rem;
-            border-radius: 50px;
-            background: rgba(0, 0, 0, .35);
-            border: 2px solid transparent;
-            box-shadow:
-                0 0 4px var(--primary),
-                0 0 8px var(--primary),
-                0 0 16px var(--primary),
-                0 0 32px var(--primary);
-            animation: breathe 2.5s ease-in-out infinite;
-        }
-
-        @keyframes breathe {
-
-            0%,
-            100% {
-                box-shadow:
-                    0 0 4px var(--primary),
-                    0 0 8px var(--primary),
-                    0 0 16px var(--primary),
-                    0 0 32px var(--primary);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 6px var(--primary),
-                    0 0 12px var(--primary),
-                    0 0 24px var(--primary),
-                    0 0 48px var(--primary);
-            }
+            gap: 0.5rem;
+            padding: 6px;
+            background: var(--card-dark);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            margin-bottom: 3rem;
         }
 
         .tab {
-            background: transparent;
-            border: none;
-            color: var(--text);
-            padding: .8rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
+            flex: 1;
+            min-width: fit-content;
             display: flex;
             align-items: center;
-            gap: .5rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid transparent;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.9rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-full);
+            color: var(--text-muted);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .tab:hover {
-            background: rgba(0, 255, 255, .1)
+        .tab:hover:not(.active) {
+            color: var(--text);
+            background: rgba(0, 255, 255, 0.05);
         }
 
         .tab.active {
-            background: var(--primary);
+            background: var(--gradient);
             color: var(--dark);
-            box-shadow:
-                0 0 8px var(--primary),
-                0 0 16px var(--primary),
-                0 0 24px var(--primary);
-            border-color: var(--primary);
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 8px var(--primary), 0 0 16px var(--primary);
-            }
-
-            50% {
-                box-shadow: 0 0 12px var(--primary), 0 0 24px var(--primary);
-            }
-
-            100% {
-                box-shadow: 0 0 8px var(--primary), 0 0 16px var(--primary);
-            }
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn .5s ease
+            animation: fadeIn 0.5s ease;
         }
 
         .tab-content.active {
-            display: block
+            display: block;
         }
 
-        .tab-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem
-        }
-
-        .tab-title {
-            font-size: 2rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent
-        }
-
-        .tab-actions {
-            display: flex;
-            gap: 1rem
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .notice-box {
-            background: linear-gradient(145deg, var(--card-dark), var(--card-light));
-            border-left: 4px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
             padding: 1rem 1.5rem;
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-left: 4px solid var(--secondary);
+            border-radius: var(--radius-sm);
             margin-bottom: 2rem;
-            border-radius: 4px
         }
 
         .notice-box a {
-            color: var(--text);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: .5rem;
-            transition: var(--transition)
+            gap: 10px;
+            color: var(--secondary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
         }
 
         .notice-box a:hover {
-            color: var(--primary)
+            color: var(--text);
         }
 
         /* Cards */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background: linear-gradient(145deg, var(--card-dark), var(--card-light));
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 255, 255, .1);
             position: relative;
-            overflow: hidden;
-            height: 100%;
+            padding: 1.75rem;
+            background: var(--card-dark);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
             display: flex;
-            flex-direction: column
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .card::before {
             content: '';
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
             background: var(--gradient);
             opacity: 0;
             transition: var(--transition);
-            z-index: 0
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary)
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow), 0 0 20px rgba(0, 255, 255, 0.1);
         }
 
         .card:hover::before {
-            opacity: .05
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-            z-index: 1;
-            position: relative
+            opacity: 1;
         }
 
         .card-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: var(--secondary);
-            color: var(--dark);
-            font-size: .7rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(156, 39, 176, 0.2);
+            border: 1px solid rgba(156, 39, 176, 0.4);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
             font-weight: 700;
-            padding: .3rem .7rem;
-            border-radius: 20px;
-            z-index: 1
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+            margin-bottom: 1.25rem;
+            background: var(--card-light);
+            padding: 8px;
         }
 
         .card-title {
-            font-size: 1.3rem;
-            margin-bottom: .8rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--primary);
-            z-index: 1;
-            position: relative
+            margin-bottom: 0.75rem;
         }
 
         .card-description {
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             flex-grow: 1;
-            z-index: 1;
-            position: relative
+            margin-bottom: 1.5rem;
         }
 
         .card-footer {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            z-index: 1;
-            position: relative
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .card-button {
             display: inline-flex;
             align-items: center;
-            gap: .5rem;
-            background: var(--primary);
-            color: var(--dark);
-            padding: .6rem 1.2rem;
-            border-radius: 50px;
-            text-decoration: none;
+            gap: 8px;
+            padding: 0.6rem 1.2rem;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-full);
+            color: var(--primary);
             font-weight: 600;
-            transition: var(--transition)
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
         .card-button:hover {
-            background: var(--primary-dark);
-            transform: translateX(5px)
+            background: var(--primary);
+            color: var(--dark);
         }
 
         .card-meta {
             display: flex;
             align-items: center;
-            gap: .8rem;
+            gap: 8px;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            font-size: .9rem
         }
 
-        /* Stats */
+        /* STATS SECTION - REDESIGNED */
         .stats-section {
-            padding: 5rem 5%;
-            background: var(--card-dark);
-            margin: 5rem 0;
+            padding: 6rem 2rem;
             position: relative;
+            overflow: hidden;
         }
 
         .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         .stat-card {
-            text-align: center;
+            position: relative;
             padding: 2rem;
-            background: linear-gradient(145deg, var(--darker), var(--card-dark));
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            background: linear-gradient(145deg, var(--card-dark), var(--darker));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            text-align: center;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        /* Animated Border using pseudo-elements */
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: var(--gradient);
+            border-radius: var(--radius-md);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: var(--darker);
+            border-radius: calc(var(--radius-md) - 1px);
+            z-index: -1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .stat-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 255, 0.05);
+            border-radius: 50%;
+            border: 1px solid rgba(0, 255, 255, 0.1);
             position: relative;
         }
 
-        .stat-icon {
-            font-size: 2.5rem;
+        .stat-icon-wrapper i {
+            font-size: 1.5rem;
             color: var(--primary);
-            margin-bottom: 1rem
+            transition: var(--transition);
+        }
+
+        .stat-card:hover .stat-icon-wrapper i {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+
+        /* Pulse ring on hover */
+        .stat-card:hover .stat-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: pulseRing 1.5s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.4); opacity: 0; }
         }
 
         .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--text), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: .5rem
+            transition: var(--transition);
+        }
+
+        .stat-card:hover .stat-number {
+            transform: scale(1.05);
         }
 
         .stat-label {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 1rem
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Features */
+        /* Background decoration for stats */
+        .stats-bg-decoration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(156, 39, 176, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Features Section */
         .features-section {
-            padding: 5rem 5%;
-            position: relative;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.02), transparent);
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem
+            max-width: 600px;
+            margin: 0 auto 4rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
             margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent
         }
 
         .section-subtitle {
+            font-size: 1rem;
             color: var(--text-muted);
-            font-size: 1.1rem
         }
 
         .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .feature-card {
-            background: linear-gradient(145deg, var(--card-dark), var(--card-light));
-            border-radius: var(--border-radius);
-            padding: 2rem;
             text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--card-dark);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
             transition: var(--transition);
-            border: 1px solid rgba(0, 255, 255, .1);
-            position: relative;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary)
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
         }
 
         .feature-icon {
@@ -727,102 +874,131 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--gradient);
-            border-radius: 50%;
-            font-size: 2rem
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(156, 39, 176, 0.1));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 1.75rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border-color: var(--primary);
         }
 
         .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary)
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
         .feature-description {
-            color: var(--text-muted)
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         /* Footer */
         .footer {
+            padding: 5rem 2rem 2rem;
             background: var(--darker);
-            padding: 5rem 5% 2rem;
-            border-top: 1px solid rgba(0, 255, 255, .1);
-            position: relative;
+            border-top: 1px solid var(--border);
         }
 
         .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 2fr repeat(3, 1fr);
             gap: 3rem;
-            margin-bottom: 3rem
         }
 
         .footer-brand .logo-text {
-            font-size: 2rem;
+            font-size: 1.8rem;
+            display: inline-block;
             margin-bottom: 1rem;
-            display: block
         }
 
         .footer-description {
             color: var(--text-muted);
-            margin-bottom: 1.5rem
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            max-width: 300px;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem
+            gap: 0.75rem;
         }
 
         .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
             color: var(--text-muted);
-            font-size: 1.2rem;
-            transition: var(--transition)
+            text-decoration: none;
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            color: var(--primary)
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
         }
 
         .footer-heading {
-            font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
             margin-bottom: 1.5rem;
-            color: var(--primary)
         }
 
         .footer-links {
-            list-style: none
+            list-style: none;
         }
 
         .footer-link {
-            margin-bottom: .8rem
+            margin-bottom: 0.75rem;
         }
 
         .footer-link a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: var(--transition);
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: .5rem
+            gap: 8px;
+            transition: var(--transition);
         }
 
         .footer-link a:hover {
-            color: var(--primary)
+            color: var(--primary);
         }
 
         .footer-bottom {
-            text-align: center;
+            max-width: 1200px;
+            margin: 3rem auto 0;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, .1);
-            color: var(--text-muted)
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
         .footer-credits {
+            margin-top: 0.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: .5rem;
-            margin-top: 1rem
+            gap: 8px;
         }
 
         /* Back to Top */
@@ -830,355 +1006,341 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: var(--text);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            background: var(--gradient);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            z-index: 99
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
         }
 
         .back-to-top.visible {
             opacity: 1;
-            visibility: visible
+            visibility: visible;
+            transform: translateY(0);
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center
+        .back-to-top:hover {
+            transform: translateY(-3px);
         }
 
-        .modal.active {
-            display: flex
-        }
-
-        .modal-content {
-            background: var(--card-dark);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer
-        }
-
-        .modal-title {
-            margin-bottom: 1.5rem;
-            color: var(--primary)
-        }
-
-        /* Filter Panel */
-        .filter-panel {
-            background: var(--card-light);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            display: none
-        }
-
-        .filter-panel.active {
-            display: block;
-            animation: fadeIn .3s ease
-        }
-
-        .filter-group {
-            margin-bottom: 1rem
-        }
-
-        .filter-label {
-            display: block;
-            margin-bottom: .5rem;
-            color: var(--text)
-        }
-
-        .filter-select,
-        .filter-input {
-            width: 100%;
-            padding: .8rem;
-            border-radius: var(--border-radius);
-            background: var(--card-dark);
-            border: 1px solid rgba(0, 255, 255, .2);
-            color: var(--text)
-        }
-
-        .filter-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-top: 1rem
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        /* Responsive */
-        @media(max-width:992px) {
-            .nav-menu {
-                position: fixed;
-                top: var(--header-height);
-                right: -100%;
-                width: 280px;
-                height: calc(100vh - var(--header-height));
-                background: var(--card-dark);
-                flex-direction: column;
-                padding: 2rem;
-                transition: var(--transition);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, .2)
-            }
-
-            .nav-menu.active {
-                right: 0
-            }
-
-            .menu-toggle {
-                display: block
-            }
-
-            .hero-title {
-                font-size: 2.5rem
-            }
-        }
-
-        @media(max-width:768px) {
-            .hero-actions {
-                flex-direction: column
-            }
-
-            .tabs-header {
-                flex-direction: column
-            }
-
-            .tab {
-                width: 100%;
-                justify-content: center
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr
-            }
-        }
-
-        /* --------------  NEW / FIXED COMPONENTS  -------------- */
-        /* Search overlay */
+        /* Search Overlay */
         .search-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, .85);
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 2000;
             display: none;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            animation: fadeIn .3s ease
+            padding-top: 15vh;
         }
 
         .search-overlay.active {
-            display: flex
+            display: flex;
+            animation: fadeIn 0.3s ease;
         }
 
         .search-box {
             width: 90%;
             max-width: 600px;
             background: var(--card-dark);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
         }
 
         .search-input {
-            background: var(--darker);
-            border: 1px solid var(--primary);
-            border-radius: var(--border-radius);
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: transparent;
+            border: none;
             color: var(--text);
-            padding: 1rem;
-            font-size: 1.1rem
+            font-size: 1.1rem;
+            font-family: inherit;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-input:focus {
+            outline: none;
         }
 
         .search-results {
             max-height: 300px;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
+            border-top: 1px solid var(--border);
         }
 
         .result-item {
-            background: var(--card-light);
-            padding: .8rem 1rem;
-            border-radius: var(--border-radius);
-            color: var(--text);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: .8rem
+            gap: 12px;
+            padding: 1rem 1.5rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
         }
 
         .result-item:hover {
-            background: var(--primary);
-            color: var(--dark)
+            background: rgba(0, 255, 255, 0.1);
         }
 
-        /* Notification panel */
+        .result-item i {
+            color: var(--primary);
+        }
+
+        /* Notification Panel */
         .notification-panel {
             position: fixed;
             top: var(--header-height);
-            right: -320px;
-            width: 320px;
+            right: 0;
+            width: 360px;
             height: calc(100vh - var(--header-height));
-            background: var(--card-dark);
-            border-left: 1px solid rgba(0, 255, 255, .1);
-            transition: right .3s ease;
+            background: var(--bg-base);
+            border-left: 1px solid var(--border);
+            transform: translateX(100%);
+            transition: var(--transition);
             z-index: 1500;
-            padding: 1.5rem;
-            overflow-y: auto
+            overflow-y: auto;
         }
 
         .notification-panel.active {
-            right: 0
+            transform: translateX(0);
+        }
+
+        .notification-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .notification-header h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary);
         }
 
         .notification-item {
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
-            padding: .8rem 0;
-            font-size: .9rem
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .notification-item:hover {
+            background: rgba(0, 255, 255, 0.05);
         }
 
         .notification-time {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            font-size: .75rem
+            margin-top: 4px;
         }
 
-        .logo-img,
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: var(--bg-base);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .tabs-header {
+                border-radius: var(--radius-md);
+            }
+
+            .tab {
+                flex: none;
+                width: 100%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-description {
+                max-width: none;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus States */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
         }
     </style>
-
 </head>
 
 <body>
-    <!-- Loading -->
+    <!-- Background Canvas -->
+    <div class="bg-canvas">
+        <div class="bg-gradient"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="batman-loader"></div>
+        <div class="loader-container">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-icon"><i class="fas fa-anchor"></i></div>
+        </div>
         <div class="loading-text">Setting The Sails</div>
-        <div class="loading-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
         </div>
     </div>
 
     <!-- Header -->
     <header class="header" id="header">
-        <div class="logo">
-            <img src="pirate.png" alt="PirateHive" class="logo-img"
-                style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
-            <span class="logo-text">PirateHive</span>
-        </div>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="pirate.png" alt="PirateHive" class="logo-img">
+                <span class="logo-text">PirateHive</span>
+            </a>
 
-        <nav class="nav-menu" id="navMenu">
-            <a href="#hero" class="nav-link active">Home</a>
-            <a href="#tabs-section" class="nav-link">Resources</a>
-            <a href="https://t.me/+bRom8OVaNMRjOTk1" class="nav-link" id="communityLink">Community</a>
-            <a href="faq.html" class="nav-link" id="faqLink">FAQ</a>
-        </nav>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#tabs-section" class="nav-link">Resources</a>
+                <a href="https://t.me/+bRom8OVaNMRjOTk1" class="nav-link">Community</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+            </nav>
 
-        <div class="nav-actions">
-            <span class="nav-action" id="searchButton"><i class="fas fa-search"></i></span>
-            <span class="nav-action" id="notificationsButton">
-                <i class="fas fa-bell"></i><span class="nav-badge" id="badge">0</span>
-            </span>
-
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-actions">
+                <button class="nav-action" id="searchButton" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-action" id="notificationsButton" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="nav-badge" id="badge">0</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
         <div class="search-box">
-            <input type="text" class="search-input" id="searchInput" placeholder="Search movies, courses, books…">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search movies, courses, books..." aria-label="Search">
             <div class="search-results" id="searchResults"></div>
         </div>
     </div>
 
     <!-- Notification Panel -->
     <div class="notification-panel" id="notificationPanel">
-        <h3 style="margin-bottom:1rem;color:var(--primary)">Notifications</h3>
+        <div class="notification-header">
+            <h3>Notifications</h3>
+        </div>
         <div id="notificationList"></div>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Unlock Digital Treasures</h1>
-            <p class="hero-subtitle">Your ultimate destination for premium resources, entertainment and educational
-                content — all free.</p>
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span>Free Resources Updated Weekly</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-title-gradient">Unlock Digital Treasures</span>
+            </h1>
+            <p class="hero-subtitle">Your ultimate destination for premium resources, entertainment and educational content. Everything you need, completely free.</p>
             <div class="hero-actions">
-                <a href="#tabs-section" class="btn btn-primary"><i class="fas fa-gem"></i> Explore Resources</a>
-                <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="btn btn-secondary"><i
-                        class="fas fa-users"></i> Join Community</a>
+                <a href="#tabs-section" class="btn btn-primary">
+                    <i class="fas fa-compass"></i>
+                    <span>Explore Resources</span>
+                </a>
+                <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-users"></i>
+                    <span>Join Community</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1191,11 +1353,11 @@
                 <button class="tab" data-tab="jeeneet"><i class="fas fa-book"></i> JEE/NEET</button>
                 <button class="tab" data-tab="btech"><i class="fas fa-laptop-code"></i> BE/B.Tech</button>
                 <button class="tab" data-tab="ebooks"><i class="fas fa-book-open"></i> E-Books</button>
-                <button class="tab" data-tab="games"> <i class="fas fa-gamepad"></i>Games</button>
+                <button class="tab" data-tab="games"><i class="fas fa-gamepad"></i> Games</button>
                 <button class="tab" data-tab="info"><i class="fas fa-info-circle"></i> Info</button>
             </div>
 
-            <!-- Movies Tab -->
+            <!-- Entertainment Tab -->
             <div class="tab-content active" id="movies-tab">
                 <div class="notice-box">
                     <a href="https://rentry.co/4e7mycvp" target="_blank">
@@ -1207,22 +1369,19 @@
                     <div class="card">
                         <span class="card-badge">Popular</span>
                         <img src="screen.png" class="card-icon" alt="Movies">
-                        <h3 class="card-title">Movies & TV Shows</h3>
-                        <p class="card-description">Explore latest movies & TV shows from around the world with
-                            high-quality streaming.</p>
-                        <div class="card-footer"><a href="https://xprime.tv/" target="_blank" class="card-button">Visit
-                                Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 68.9K</span></div>
+                        <h3 class="card-title">Movies and TV Shows</h3>
+                        <p class="card-description">Explore latest movies and TV shows from around the world with high-quality streaming.</p>
+                        <div class="card-footer">
+                            <a href="https://xprime.tv/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 68.9K</div>
                         </div>
                     </div>
                     <div class="card">
                         <img src="movien2.webp" class="card-icon" alt="Movies">
                         <h3 class="card-title">Movies (Regional Lang)</h3>
-                        <p class="card-description">Watch movies in regional languages with a vast collection of
-                            content.</p>
-                        <div class="card-footer"><a href="https://www.cineby.app/" target="_blank"
-                                class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">Watch movies in regional languages with a vast collection of content.</p>
+                        <div class="card-footer">
+                            <a href="https://www.cineby.app/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
@@ -1230,42 +1389,33 @@
                         <img src="movien3.webp" class="card-icon" alt="Movies">
                         <h3 class="card-title">Downloadable Content</h3>
                         <p class="card-description">Download movies for offline viewing without any advertisements.</p>
-                        <div class="card-footer"><a href="https://pstream.mov/" target="_blank"
-                                class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <div class="card-footer">
+                            <a href="https://pstream.mov/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <img src="every.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Everything Collection</h3>
-                        <p class="card-description">Live sports, movies, multi-language content and more in one
-                            place.(may need a VPN)
-                        </p>
-                        <div class="card-footer"><a href="https://watch.corsflix.dpdns.org/" target="_blank"
-                                class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">Live sports, movies, multi-language content and more in one place. May need a VPN.</p>
+                        <div class="card-footer">
+                            <a href="https://watch.corsflix.dpdns.org/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Live</span>
                         <img src="sport.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Live Sports</h3>
-                        <p class="card-description">Watch live sports events from around the world in high
-                            definition.(may require a VPN)
-                        </p>
-                        <div class="card-footer"><a href="https://ntvstream.cx/" target="_blank"
-                                class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">Watch live sports events from around the world in high definition. May require a VPN.</p>
+                        <div class="card-footer">
+                            <a href="https://ntvstream.cx/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <img src="docu.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Documentaries</h3>
-                        <p class="card-description">For documentary enthusiasts with a wide range of educational
-                            content.</p>
-                        <div class="card-footer"><a href="https://topdocumentaryfilms.com/" target="_blank"
-                                class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">For documentary enthusiasts with a wide range of educational content.</p>
+                        <div class="card-footer">
+                            <a href="https://topdocumentaryfilms.com/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
@@ -1273,9 +1423,8 @@
                         <img src="anime.webp" class="card-icon" alt="Movies">
                         <h3 class="card-title">Anime Collection</h3>
                         <p class="card-description">I'll take a potato chip... and eat it! Extensive anime library.</p>
-                        <div class="card-footer"><a href="https://animekai.to/home" target="_blank"
-                                class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <div class="card-footer">
+                            <a href="https://animekai.to/home" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1284,65 +1433,54 @@
             <!-- JEE/NEET Tab -->
             <div class="tab-content" id="jeeneet-tab">
                 <div class="notice-box">
-                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Resources
-                            for JEE/NEET aspirants!
-                        </strong></a>
+                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Resources for JEE/NEET aspirants!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">JEE</span>
-                        <img src="jee.png" class="card-icon" alt="Movies">
+                        <img src="jee.png" class="card-icon" alt="JEE">
                         <h3 class="card-title">JEE / BITSAT Preparation</h3>
-                        <p class="card-description">Better luck fighting for Placement if you survive this.
-                            Comprehensive resources for JEE aspirants.</p>
-                        <div class="card-footer"><a href="jee.html" target="_blank" class="card-button">Access Now <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">Better luck fighting for Placement if you survive this. Comprehensive resources for JEE aspirants.</p>
+                        <div class="card-footer">
+                            <a href="jee.html" target="_blank" class="card-button">Access Now <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">NEET</span>
-                        <img src="neet.png" class="card-icon" alt="Movies">
+                        <img src="neet.png" class="card-icon" alt="NEET">
                         <h3 class="card-title">NEET Preparation</h3>
-                        <p class="card-description">Please Hurry! 25lakh people are in QUE. Comprehensive medical
-                            entrance exam resources.</p>
-                        <div class="card-footer"><a href="neet.html" target="_blank" class="card-button">Access Now <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">Please Hurry! 25 lakh people are in queue. Comprehensive medical entrance exam resources.</p>
+                        <div class="card-footer">
+                            <a href="neet.html" target="_blank" class="card-button">Access Now <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Tests</span>
-                        <img src="test.png" class="card-icon" alt="Movies">
-                        <h3 class="card-title">QUIZZES/TEST SERIES</h3>
-                        <p class="card-description">Here, have some Reality Check of your preparation with our extensive
-                            test series.</p>
-                        <div class="card-footer"><a href="https://novatra.in/" target="_blank" class="card-button">Start
-                                Quiz <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <img src="test.png" class="card-icon" alt="Tests">
+                        <h3 class="card-title">Quizzes and Test Series</h3>
+                        <p class="card-description">Here, have some Reality Check of your preparation with our extensive test series.</p>
+                        <div class="card-footer">
+                            <a href="https://novatra.in/" target="_blank" class="card-button">Start Quiz <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">2TB</span>
-                        <img src="lecture2.png" class="card-icon" alt="Movies">
+                        <img src="lecture2.png" class="card-icon" alt="Lectures">
                         <h3 class="card-title">Lectures and Resources</h3>
-                        <p class="card-description">2TB Compiled resources that may have some hidden gems for your
-                            preparation.</p>
-                        <div class="card-footer"><a href="https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ"
-                                target="_blank" class="card-button">Access Resources <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 6.7K</span></div>
+                        <p class="card-description">2TB Compiled resources that may have some hidden gems for your preparation.</p>
+                        <div class="card-footer">
+                            <a href="https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ" target="_blank" class="card-button">Access Resources <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 6.7K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Telegram</span>
-                        <img src="Telegram.webp" class="card-icon" alt="Movies">
+                        <img src="Telegram.webp" class="card-icon" alt="Telegram">
                         <h3 class="card-title">Best Telegram Channels</h3>
-                        <p class="card-description">Join Our Channel & Check Pinned messages. If you don't find what you
-                            need, text us on PRHIVE CHAT.</p>
-                        <div class="card-footer"><a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank"
-                                class="card-button">Join Channel <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 52.7K</span></div>
+                        <p class="card-description">Join Our Channel and Check Pinned messages. If you don't find what you need, text us on PRHIVE CHAT.</p>
+                        <div class="card-footer">
+                            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="card-button">Join Channel <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 52.7K</div>
                         </div>
                     </div>
                 </div>
@@ -1350,105 +1488,94 @@
 
             <!-- B.Tech Tab -->
             <div class="tab-content" id="btech-tab">
-                <div class="notice-box"><a href="https://t.me/+F4UQT36D96RiODll"><i
-                            class="fas fa-exclamation-circle"></i><strong>Join our coding
-                            community for real-time help and resources!</strong></a>
+                <div class="notice-box">
+                    <a href="https://t.me/+F4UQT36D96RiODll"><i class="fas fa-exclamation-circle"></i><strong>Join our coding community for real-time help and resources!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">1st Year</span>
-                        <img src="engin.png" class="card-icon" alt="Movies">
+                        <img src="engin.png" class="card-icon" alt="Engineering">
                         <h3 class="card-title">1st Year Resources</h3>
-                        <p class="card-description">Access resources for 1st-year engineering students including notes,
-                            books, and reference materials.</p>
-                        <div class="card-footer"><a href="year1.html" target="_blank" class="card-button">Explore <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <p class="card-description">Access resources for 1st-year engineering students including notes, books, and reference materials.</p>
+                        <div class="card-footer">
+                            <a href="year1.html" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Coding</span>
-                        <img src="coding.png" class="card-icon" alt="Movies">
+                        <img src="coding.png" class="card-icon" alt="Coding">
                         <h3 class="card-title">Coding Resources</h3>
-                        <p class="card-description">Learn coding with comprehensive resources, tutorials, and practice
-                            problems for all skill levels.</p>
-                        <div class="card-footer"><a href="coding.html" target="_blank" class="card-button">Explore <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 5.6K</span></div>
+                        <p class="card-description">Learn coding with comprehensive resources, tutorials, and practice problems for all skill levels.</p>
+                        <div class="card-footer">
+                            <a href="coding.html" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 5.6K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Discord</span>
-                        <img src="Discord.webp" class="card-icon" alt="Movies">
-                        <h3 class="card-title">Must Join Discord Server!</h3>
-                        <p class="card-description">Socialise & learn with our growing community of tech enthusiasts and
-                            professionals.</p>
-                        <div class="card-footer"><a href="https://discord.gg/XZ6P9ZDK9M" target="_blank"
-                                class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 98.4K</span></div>
+                        <img src="Discord.webp" class="card-icon" alt="Discord">
+                        <h3 class="card-title">Must Join Discord Server</h3>
+                        <p class="card-description">Socialise and learn with our growing community of tech enthusiasts and professionals.</p>
+                        <div class="card-footer">
+                            <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 98.4K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Telegram</span>
-                        <img src="tele.png" class="card-icon" alt="Movies">
-                        <h3 class="card-title">Coding Knights!</h3>
-                        <p class="card-description">An active Group To interact with fellow developers</p>
-                        <div class="card-footer"><a href="https://t.me/+F4UQT36D96RiODll" target="_blank"
-                                class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                        <img src="tele.png" class="card-icon" alt="Telegram">
+                        <h3 class="card-title">Coding Knights</h3>
+                        <p class="card-description">An active Group to interact with fellow developers.</p>
+                        <div class="card-footer">
+                            <a href="https://t.me/+F4UQT36D96RiODll" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="card" style="background-color: #a0a0c0;">
-                        <span class="card-badge" style="background-color: #a0a0c0;">Projects</span>
-                        <div class="card-icon">🚀</div>
-                        <h3 class="card-title" style="color: #a0a0c0;">Project Ideas & Guides</h3>
-                        <p class="card-description">Find inspiration and guidance for your next tech project with our
-                            curated collection.</p>
-                        <div class="card-footer"><a href="#" target="_blank" class="card-button"
-                                style="background-color: #a0a0c0;" SOON<i class="fas fa-arrow-right"></i></a>
+                    <div class="card">
+                        <span class="card-badge">Projects</span>
+                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🚀</div>
+                        <h3 class="card-title">Project Ideas and Guides</h3>
+                        <p class="card-description">Find inspiration and guidance for your next tech project with our curated collection.</p>
+                        <div class="card-footer">
+                            <span class="card-button" style="opacity:0.6;cursor:not-allowed;">Coming Soon</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- E-Books Tab -->
             <div class="tab-content" id="ebooks-tab">
                 <div class="notice-box">
-                    <a href="#"><i class="fas fa-exclamation-circle"></i>
-                        <strong>Everything from fiction to university texts – no paid walls!</strong></a>
+                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Everything from fiction to university texts - no paid walls!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">Anna's</span>
-                        <img src="ebook2.png" class="card-icon" alt="Movies">
+                        <img src="ebook2.png" class="card-icon" alt="Anna's Archive">
                         <h3 class="card-title">Anna's Library</h3>
-                        <p class="card-description">The Godfather Of books Piracy</p>
+                        <p class="card-description">The Godfather of books piracy.</p>
                         <div class="card-footer">
-                            <a href="https://annas-archive.org/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 9.8K</span></div>
+                            <a href="https://annas-archive.org/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 9.8K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">LibGen</span>
-                        <img src="ebook.png" class="card-icon" alt="Movies">
+                        <img src="ebook.png" class="card-icon" alt="LibGen">
                         <h3 class="card-title">Library Genesis</h3>
-                        <p class="card-description">Millions of books & scientific articles, direct download links.</p>
+                        <p class="card-description">Millions of books and scientific articles, direct download links.</p>
                         <div class="card-footer">
-                            <a href="http://libgen.li/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 5.2K</span></div>
+                            <a href="http://libgen.li/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 5.2K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Z-Library</span>
-                        <img src="Books.webp" class="card-icon" alt="Movies">
+                        <img src="Books.webp" class="card-icon" alt="Z-Library">
                         <h3 class="card-title">Z-Library Mirror</h3>
-                        <p class="card-description">Fiction, non-fiction, comics – fastest mirrors updated daily.</p>
+                        <p class="card-description">Fiction, non-fiction, comics - fastest mirrors updated daily.</p>
                         <div class="card-footer">
-                            <a href="https://z-lib.gd/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 7.3K</span></div>
+                            <a href="https://z-lib.gd/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 7.3K</div>
                         </div>
                     </div>
                 </div>
@@ -1457,53 +1584,44 @@
             <!-- Games Tab -->
             <div class="tab-content" id="games-tab">
                 <div class="notice-box">
-                    <a href="https://rentry.org/pgames"><i class="fas fa-exclamation-circle"></i>
-                        <strong> Click here to prepare your ship to sail the high sea. enjoy!</strong></a>
+                    <a href="https://rentry.org/pgames"><i class="fas fa-exclamation-circle"></i><strong>Click here to prepare your ship to sail the high sea. Enjoy!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">Pre-installed</span>
-                        <div class="card-icon">🕹️</div>
+                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
                         <h3 class="card-title">AnkerGames</h3>
-                        <p class="card-description">Unleash your gaming skills with lightning-fast downloads of
-                            pre-installed portable PC games.</p>
+                        <p class="card-description">Unleash your gaming skills with lightning-fast downloads of pre-installed portable PC games.</p>
                         <div class="card-footer">
-                            <a href="https://ankergames.net/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                            <a href="https://ankergames.net/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Torrent</span>
-                        <div class="card-icon">🎮</div>
+                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🎮</div>
                         <h3 class="card-title">FitGirl Repacks</h3>
-                        <p class="card-description">Compressed repacks of the latest AAA & indie games.</p>
+                        <p class="card-description">Compressed repacks of the latest AAA and indie games.</p>
                         <div class="card-footer">
-                            <a href="https://fitgirl-repacks.site/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"><span><i class="fas fa-eye"></i> 12.4K</span></div>
+                            <a href="https://fitgirl-repacks.site/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <div class="card-meta"><i class="fas fa-eye"></i> 12.4K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Direct-Download</span>
-                        <div class="card-icon">🕹️</div>
+                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
                         <h3 class="card-title">SteamRip</h3>
-                        <p class="card-description">Pre-installed Steam games – download, unzip & play.</p>
+                        <p class="card-description">Pre-installed Steam games - download, unzip and play.</p>
                         <div class="card-footer">
-                            <a href="https://steamrip.com/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                            <a href="https://steamrip.com/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">DD</span>
-                        <div class="card-icon">🕹️</div>
+                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
                         <h3 class="card-title">Gamebounty</h3>
-                        <p class="card-description">incase above listed dont work try this</p>
+                        <p class="card-description">In case above listed don't work, try this alternative.</p>
                         <div class="card-footer">
-                            <a href="https://gamebounty.world/" target="_blank" class="card-button">Visit <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="card-meta"></div>
+                            <a href="https://gamebounty.world/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1513,67 +1631,75 @@
             <div class="tab-content" id="info-tab">
                 <div class="card-grid">
                     <div class="card">
-                        <img src="about.png" class="card-icon" alt="Movies">
+                        <img src="about.png" class="card-icon" alt="About">
                         <h3 class="card-title">About Us</h3>
-                        <p class="card-description">Our mission is to provide free alternatives to paid content. We do
-                            not host any files. Concerns? <a href="mailto:Phantomx92@proton.me"
-                                style="color:var(--primary)">Email us</a>.</p>
-                        <div class="card-footer"><a href="mailto:Phantomx92@proton.me" class="card-button">Contact <i
-                                    class="fas fa-arrow-right"></i></a></div>
+                        <p class="card-description">Our mission is to provide free alternatives to paid content. We do not host any files. Concerns? <a href="mailto:Phantomx92@proton.me" style="color:var(--primary)">Email us</a>.</p>
+                        <div class="card-footer">
+                            <a href="mailto:Phantomx92@proton.me" class="card-button">Contact <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Important</span>
-                        <img src="tele.png" class="card-icon" alt="Movies">
+                        <img src="tele.png" class="card-icon" alt="Telegram">
                         <h3 class="card-title">Join Telegram</h3>
-                        <p class="card-description">Join our Telegram for updates & backup. If the site goes down,
-                            you'll still have access.</p>
-                        <div class="card-footer"><a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank"
-                                class="card-button">Join Now <i class="fas fa-arrow-right"></i></a></div>
+                        <p class="card-description">Join our Telegram for updates and backup. If the site goes down, you'll still have access.</p>
+                        <div class="card-footer">
+                            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="card-button">Join Now <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats & Features -->
-    <section class="stats-section">
+    <!-- STATS SECTION (MOVED) -->
+    <section class="stats-section" id="stats-section">
+        <div class="stats-bg-decoration"></div>
         <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fab fa-github"></i></div>
-                <div class="stat-number" data-count="183">0</div>
-                <div class="stat-label">Commits & Changes</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number" data-count="1075048">0</div>
-                <div class="stat-label">Users (updated every week)</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-globe"></i></div>
-                <div class="stat-number" data-count="114">0</div>
-                <div class="stat-label">Countries Reached</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fab fa-telegram"></i></div>
-                <div class="stat-number" data-count="2100">0</div>
-                <div class="stat-label">Telegram Family</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="stat-number" data-count="183">0</div>
+                    <div class="stat-label">Commits & Changes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" data-count="1075048">0</div>
+                    <div class="stat-label">Users Worldwide</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="stat-number" data-count="114">0</div>
+                    <div class="stat-label">Countries Reached</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="stat-number" data-count="2100">0</div>
+                    <div class="stat-label">Telegram Family</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Features Section -->
     <section class="features-section">
         <div class="section-header">
             <h2 class="section-title">Why Choose PirateHive?</h2>
-            <p class="section-subtitle">Because whether you admit it or not, you're already here. This section? Just me
-                filling space, IDC.</p>
+            <p class="section-subtitle">Because whether you admit it or not, you're already here. This section? Just me filling space, IDC.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-lock-open"></i></div>
                 <h3 class="feature-title">Free Access</h3>
-                <p class="feature-description">No subscriptions. No hidden costs.
-                    You ain't paying for this shit anyway.
-                </p>
+                <p class="feature-description">No subscriptions. No hidden costs. You ain't paying for this anyway.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-bolt"></i></div>
@@ -1582,14 +1708,13 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3 class="feature-title">Safe & Secure</h3>
+                <h3 class="feature-title">Safe and Secure</h3>
                 <p class="feature-description">Safe enough to use, dangerous enough to enjoy. Balance, baby.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-sync"></i></div>
                 <h3 class="feature-title">Regular Updates</h3>
-                <p class="feature-description">Monthly drops. Or whenever we feel like flexing.</p>
-                Jokes apart I deliver **at least one update a month**.
+                <p class="feature-description">Monthly drops. Or whenever we feel like flexing. At least one update a month guaranteed.</p>
             </div>
         </div>
     </section>
@@ -1599,77 +1724,74 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <span class="logo-text">PirateHive</span>
-                <p class="footer-description">Your ultimate destination for premium digital resources, entertainment,
-                    and educational content.
-                </p>
+                <p class="footer-description">Your ultimate destination for premium digital resources, entertainment, and educational content.</p>
                 <div class="social-links">
-                    <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank"><i class="fab fa-telegram"></i></a>
-                    <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="footer-links">
+            <div>
                 <h3 class="footer-heading">Resources</h3>
                 <ul class="footer-links">
-                    <li class="footer-link"><a href="#movies-tab"><i class="fas fa-chevron-right"></i> Entertainment</a>
-                    </li>
-                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Education</a>
-                    </li>
-                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Software</a>
-                    </li>
+                    <li class="footer-link"><a href="#movies-tab"><i class="fas fa-chevron-right"></i> Entertainment</a></li>
+                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Education</a></li>
+                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Software</a></li>
                 </ul>
             </div>
-            <div class="footer-links">
+            <div>
                 <h3 class="footer-heading">Support</h3>
                 <ul class="footer-links">
-                    <li class="footer-link"><a href="mailto:Phantomx92@proton.me"><i class="fas fa-chevron-right"></i>
-                            Contact Us</a></li>
-                    <li class="footer-link"><a href="brokenlink.html"><i class="fas fa-chevron-right"></i> Report
-                            Issue</a></li>
+                    <li class="footer-link"><a href="mailto:Phantomx92@proton.me"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li class="footer-link"><a href="brokenlink.html"><i class="fas fa-chevron-right"></i> Report Issue</a></li>
                 </ul>
             </div>
-            <div class="footer-links">
-                <h3 class="footer-heading">Legal(Not smthg i'm intrested in)</h3>
+            <div>
+                <h3 class="footer-heading">Legal</h3>
                 <ul class="footer-links">
-                    <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Terms </a></li>
-                    <li class="footer-link"><i class="fas fa-chevron-right"></i> Make Internet Great Again </li>
+                    <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Terms</a></li>
+                    <li class="footer-link"><span style="color:var(--text-muted)"><i class="fas fa-chevron-right"></i> Make Internet Great Again</span></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 PirateHive. All rights reserved.</p>
-            <div class="footer-credits"><span>The Dark Knight watches over this site</span><i
-                    class="fas fa-shield-alt"></i></div>
+            <p>2025 PirateHive. All rights reserved.</p>
+            <div class="footer-credits">
+                <span>The Dark Knight watches over this site</span>
+                <i class="fas fa-shield-alt" style="color:var(--primary)"></i>
+            </div>
         </div>
     </footer>
 
     <!-- Back to Top -->
-    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <!-- JavaScript (Production Ready) -->
     <script>
-        /* -------------  UTILS  ------------- */
+        // Utils
         const $ = s => document.querySelector(s);
         const $$ = s => document.querySelectorAll(s);
 
-        /* -------------  LOADING  ------------- */
+        // Loading Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
-                $('#loadingScreen').style.opacity = 0;
-                setTimeout(() => $('#loadingScreen').style.display = 'none', 500);
-            }, 1000); // Reduced from 2000ms to 1000ms
+                $('#loadingScreen').classList.add('hidden');
+            }, 2500);
         });
 
-        /* -------------  HEADER  ------------- */
+        // Header Scroll
         window.addEventListener('scroll', () => {
             $('#header').classList.toggle('scrolled', window.scrollY > 50);
             $('#backToTop').classList.toggle('visible', window.scrollY > 300);
         });
 
-        /* -------------  MOBILE MENU  ------------- */
-        $('#menuToggle').addEventListener('click', () => $('#navMenu').classList.toggle('active'));
+        // Mobile Menu
+        $('#menuToggle').addEventListener('click', () => {
+            $('#navMenu').classList.toggle('active');
+        });
 
-        /* -------------  TABS  ------------- */
+        // Tabs
         $$('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const id = tab.dataset.tab;
@@ -1680,96 +1802,139 @@
             });
         });
 
-        /* -------------  SEARCH  ------------- */
+        // Search
         const searchIndex = [
-            { title: 'Telegram', url: 'https://t.me/+bRom8OVaNMRjOTk1', keywords: 'telegram chat chatroom support contact' },
-            { title: 'Movies & TV Shows', url: 'https://watch.corsflix.dpdns.org/', keywords: 'movies tv shows stream' },
-            { title: 'JEE Preparation', url: 'https://phantomcodex9.github.io/piratehive/jee.html', keywords: 'jee bitsat preparation study material JEE' },
-            { title: 'NEET Preparation', url: 'https://phantomcodex9.github.io/piratehive/neet.html', keywords: 'neet medical entrance study' },
-            { title: 'Coding Resources', url: 'https://t.me/codingknights', keywords: 'coding programming resources btech engineering cse telegram' },
-            { title: 'Discord Community', url: 'https://discord.gg/XZ6P9ZDK9M', keywords: 'discord chat community help' }
-        ];
-        searchIndex.push(
+            { title: 'Telegram Community', url: 'https://t.me/+bRom8OVaNMRjOTk1', keywords: 'telegram chat support contact' },
+            { title: 'Movies and TV Shows', url: 'https://watch.corsflix.dpdns.org/', keywords: 'movies tv shows stream' },
+            { title: 'JEE Preparation', url: 'jee.html', keywords: 'jee bitsat preparation study material' },
+            { title: 'NEET Preparation', url: 'neet.html', keywords: 'neet medical entrance study' },
+            { title: 'Coding Resources', url: 'coding.html', keywords: 'coding programming btech engineering' },
+            { title: 'Discord Community', url: 'https://discord.gg/XZ6P9ZDK9M', keywords: 'discord chat community help' },
             { title: 'Library Genesis', url: 'https://libgen.gs/', keywords: 'ebooks libgen books academic' },
             { title: 'Z-Library Mirror', url: 'https://z-lib.gd/', keywords: 'ebooks fiction novels zlibrary' },
-            { title: 'Annas archive', url: 'https://annas-archive.org/', keywords: 'audiobooks mp3 audio' },
+            { title: 'Annas Archive', url: 'https://annas-archive.org/', keywords: 'audiobooks mp3 audio' },
             { title: 'FitGirl Repacks', url: 'https://fitgirl-repacks.site/', keywords: 'games pc repacks fitgirl' },
-            { title: 'SteamUnlocked', url: 'https://steamunlocked.net/', keywords: 'games preinstalled steam' },
-            { title: 'Steamrip', url: 'https://steamrip.com/', keywords: 'games steam torrent game' }
-        );
+            { title: 'SteamRip', url: 'https://steamrip.com/', keywords: 'games steam torrent game' }
+        ];
 
         $('#searchButton').addEventListener('click', () => {
             $('#searchOverlay').classList.add('active');
             $('#searchInput').focus();
         });
+
         $('#searchOverlay').addEventListener('click', e => {
-            if (e.target === $('#searchOverlay')) $('#searchOverlay').classList.remove('active');
-        });
-        $('#searchInput').addEventListener('input', e => {
-            const val = e.target.value.toLowerCase().trim();
-            const results = searchIndex.filter(item => item.keywords.includes(val) || item.title.toLowerCase().includes(val));
-            $('#searchResults').innerHTML = results.map(r => `<a href="${r.url}" target="_blank" class="result-item"><i class="fas fa-external-link-alt"></i>${r.title}</a>`).join('') || '<p style="padding:1rem;color:var(--text-muted)">No results found.</p>';
+            if (e.target === $('#searchOverlay')) {
+                $('#searchOverlay').classList.remove('active');
+            }
         });
 
-        /* -------------  NOTIFICATIONS  ------------- */
+        $('#searchInput').addEventListener('input', e => {
+            const val = e.target.value.toLowerCase().trim();
+            if (!val) {
+                $('#searchResults').innerHTML = '';
+                return;
+            }
+            const results = searchIndex.filter(item => 
+                item.keywords.includes(val) || item.title.toLowerCase().includes(val)
+            );
+            $('#searchResults').innerHTML = results.length 
+                ? results.map(r => `<a href="${r.url}" target="_blank" class="result-item"><i class="fas fa-external-link-alt"></i>${r.title}</a>`).join('')
+                : '<p style="padding:1rem;color:var(--text-muted)">No results found.</p>';
+        });
+
+        // Notifications
         const notifications = [
-            { text: 'Maintenance Complete  (JEE/Neet working again) ', time: '22 nov UTC 04:05' },
-            { text: 'Maintenance Complete  (New sites added & JEE/Neet working again) ', time: '12 oct UTC 17:00' },
-            { text: 'Games Section now live', time: '04 sept UTC 15:24' },
-            { text: 'UPDATE PROTON - New Website is now live', time: '28 aug UTC 18:00' },
-            { text: 'maintenance complete.', time: '27 aug UTC 5:40' }
+            { text: 'Maintenance Complete (JEE/NEET working again)', time: '22 Nov UTC 04:05' },
+            { text: 'Maintenance Complete (New sites added)', time: '12 Oct UTC 17:00' },
+            { text: 'Games Section now live', time: '04 Sept UTC 15:24' },
+            { text: 'UPDATE PROTON - New Website is now live', time: '28 Aug UTC 18:00' },
+            { text: 'Maintenance complete.', time: '27 Aug UTC 5:40' }
         ];
+
         $('#badge').textContent = notifications.length;
         $('#notificationList').innerHTML = notifications.map(n => `
-            <div class="notification-item">${n.text}<div class="notification-time">${n.time}</div></div>`).join('');
-        $('#notificationsButton').addEventListener('click', () => $('#notificationPanel').classList.toggle('active'));
+            <div class="notification-item">
+                ${n.text}
+                <div class="notification-time">${n.time}</div>
+            </div>
+        `).join('');
+
+        $('#notificationsButton').addEventListener('click', () => {
+            $('#notificationPanel').classList.toggle('active');
+        });
+
         document.addEventListener('click', e => {
             if (!e.target.closest('#notificationsButton') && !e.target.closest('#notificationPanel')) {
                 $('#notificationPanel').classList.remove('active');
             }
         });
 
-
-        /* -------------  STATS COUNTER  ------------- */
+        // Stats Counter Animation
         const statNumbers = $$('.stat-number');
         let statsAnimated = false;
-        const animateStats = () => {
-            if (statsAnimated) return;
-            const statsSection = $('.stats-section');
-            const pos = statsSection.getBoundingClientRect();
-            if (pos.top < window.innerHeight - 100) {
-                statNumbers.forEach(stat => {
-                    const target = +stat.dataset.count;
-                    animateValue(stat, 0, target, 2000);
-                });
-                statsAnimated = true;
-            }
-        };
-        window.addEventListener('scroll', animateStats);
+
         const animateValue = (el, start, end, dur) => {
             let startTime = null;
             const step = t => {
                 if (!startTime) startTime = t;
                 const progress = Math.min((t - startTime) / dur, 1);
-                el.textContent = Math.floor(progress * (end - start) + start);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * (end - start) + start).toLocaleString();
                 if (progress < 1) requestAnimationFrame(step);
             };
             requestAnimationFrame(step);
         };
 
-        /* -------------  SMOOTH SCROLL  ------------- */
-        $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-            const target = $(a.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
+        const animateStats = () => {
+            if (statsAnimated) return;
+            const statsSection = $('#stats-section');
+            if (!statsSection) return;
+            
+            const rect = statsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.dataset.count);
+                    animateValue(stat, 0, target, 2000);
+                });
+                statsAnimated = true;
             }
-        }));
+        };
 
-        /* -------------  BACK TO TOP  ------------- */
-        $('#backToTop').addEventListener('click', e => {
-            e.preventDefault();
+        window.addEventListener('scroll', animateStats);
+        // Run once on load in case section is already in view
+        setTimeout(animateStats, 100);
+
+        // Smooth Scroll
+        $$('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const href = a.getAttribute('href');
+                if (href === '#') return;
+                const target = $(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    $('#navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Back to Top
+        $('#backToTop').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Keyboard Navigation for Search
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                $('#searchOverlay').classList.remove('active');
+                $('#notificationPanel').classList.remove('active');
+                $('#navMenu').classList.remove('active');
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                $('#searchOverlay').classList.add('active');
+                $('#searchInput').focus();
+            }
         });
     </script>
 </body>
