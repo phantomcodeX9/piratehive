@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PirateHive - Your Ultimate Digital Resource Hub</title>
     <link rel="icon" href="pirate.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -25,14 +27,14 @@
             --success: #00ff8c;
             --warning: #ffcc00;
             --danger: #ff3860;
-            
+
             /* Layout Variables */
             --header-height: 80px;
             --border-radius: 12px;
             --transition: all .3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, .3);
             --gradient: linear-gradient(135deg, var(--primary), var(--accent));
-            
+
             /* Derived/Enhanced Variables */
             --bg-deep: var(--darker);
             --bg-base: var(--dark);
@@ -45,7 +47,9 @@
             --radius-full: 100px;
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -74,7 +78,7 @@
         .bg-gradient {
             position: absolute;
             inset: 0;
-            background: 
+            background:
                 radial-gradient(ellipse 80% 50% at 20% 20%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
                 radial-gradient(ellipse 60% 40% at 80% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 50%);
         }
@@ -82,7 +86,7 @@
         .bg-grid {
             position: absolute;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -147,12 +151,23 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
         }
 
         .loading-text {
@@ -182,8 +197,13 @@
         }
 
         @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
 
         /* Header */
@@ -260,7 +280,8 @@
             position: relative;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--text);
             background: rgba(0, 255, 255, 0.1);
         }
@@ -376,8 +397,15 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         .hero-title {
@@ -401,8 +429,15 @@
         }
 
         @keyframes gradientShift {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
+
+            0%,
+            100% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
         }
 
         .hero-subtitle {
@@ -532,8 +567,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .notice-box {
@@ -741,8 +783,13 @@
         }
 
         @keyframes rotateBorder {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
         }
 
         .stat-icon-wrapper {
@@ -780,8 +827,15 @@
         }
 
         @keyframes pulseRing {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.4); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
         }
 
         .stat-number {
@@ -1154,6 +1208,7 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1239,7 +1294,10 @@
 
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -1247,7 +1305,8 @@
         }
 
         /* Focus States */
-        a:focus-visible, button:focus-visible {
+        a:focus-visible,
+        button:focus-visible {
             outline: 2px solid var(--primary);
             outline-offset: 2px;
         }
@@ -1308,7 +1367,8 @@
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
         <div class="search-box">
-            <input type="text" class="search-input" id="searchInput" placeholder="Search movies, courses, books..." aria-label="Search">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search movies, courses, books..."
+                aria-label="Search">
             <div class="search-results" id="searchResults"></div>
         </div>
     </div>
@@ -1331,7 +1391,8 @@
             <h1 class="hero-title">
                 <span class="hero-title-gradient">Unlock Digital Treasures</span>
             </h1>
-            <p class="hero-subtitle">Your ultimate destination for premium resources, entertainment and educational content. Everything you need, completely free.</p>
+            <p class="hero-subtitle">Your ultimate destination for premium resources, entertainment and educational
+                content. Everything you need, completely free.</p>
             <div class="hero-actions">
                 <a href="#tabs-section" class="btn btn-primary">
                     <i class="fas fa-compass"></i>
@@ -1370,18 +1431,22 @@
                         <span class="card-badge">Popular</span>
                         <img src="screen.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Movies and TV Shows</h3>
-                        <p class="card-description">Explore latest movies and TV shows from around the world with high-quality streaming.</p>
+                        <p class="card-description">Explore latest movies and TV shows from around the world with
+                            high-quality streaming.</p>
                         <div class="card-footer">
-                            <a href="https://xprime.tv/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://xprime.tv/" target="_blank" class="card-button">Visit Site <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 68.9K</div>
                         </div>
                     </div>
                     <div class="card">
                         <img src="movien2.webp" class="card-icon" alt="Movies">
                         <h3 class="card-title">Movies (Regional Lang)</h3>
-                        <p class="card-description">Watch movies in regional languages with a vast collection of content.</p>
+                        <p class="card-description">Watch movies in regional languages with a vast collection of
+                            content.</p>
                         <div class="card-footer">
-                            <a href="https://www.cineby.app/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://www.bitcine.net/" target="_blank" class="card-button">Visit Site <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
@@ -1390,32 +1455,39 @@
                         <h3 class="card-title">Downloadable Content</h3>
                         <p class="card-description">Download movies for offline viewing without any advertisements.</p>
                         <div class="card-footer">
-                            <a href="https://pstream.mov/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://pstream.mov/" target="_blank" class="card-button">Visit Site <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <img src="every.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Everything Collection</h3>
-                        <p class="card-description">Live sports, movies, multi-language content and more in one place. May need a VPN.</p>
+                        <p class="card-description">Live sports, movies, multi-language content and more in one place.
+                            May need a VPN.</p>
                         <div class="card-footer">
-                            <a href="https://watch.corsflix.dpdns.org/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://watch.corsflix.dpdns.org/" target="_blank" class="card-button">Visit Site
+                                <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Live</span>
                         <img src="sport.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Live Sports</h3>
-                        <p class="card-description">Watch live sports events from around the world in high definition. May require a VPN.</p>
+                        <p class="card-description">Watch live sports events from around the world in high definition.
+                            May require a VPN.</p>
                         <div class="card-footer">
-                            <a href="https://ntvstream.cx/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://ntvstream.cx/" target="_blank" class="card-button">Visit Site <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <img src="docu.png" class="card-icon" alt="Movies">
                         <h3 class="card-title">Documentaries</h3>
-                        <p class="card-description">For documentary enthusiasts with a wide range of educational content.</p>
+                        <p class="card-description">For documentary enthusiasts with a wide range of educational
+                            content.</p>
                         <div class="card-footer">
-                            <a href="https://topdocumentaryfilms.com/" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://topdocumentaryfilms.com/" target="_blank" class="card-button">Visit Site <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
@@ -1424,7 +1496,8 @@
                         <h3 class="card-title">Anime Collection</h3>
                         <p class="card-description">I'll take a potato chip... and eat it! Extensive anime library.</p>
                         <div class="card-footer">
-                            <a href="https://animekai.to/home" target="_blank" class="card-button">Visit Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://animekai.to/home" target="_blank" class="card-button">Visit Site <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1433,43 +1506,52 @@
             <!-- JEE/NEET Tab -->
             <div class="tab-content" id="jeeneet-tab">
                 <div class="notice-box">
-                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Resources for JEE/NEET aspirants!</strong></a>
+                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Resources for JEE/NEET
+                            aspirants!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">JEE</span>
                         <img src="jee.png" class="card-icon" alt="JEE">
                         <h3 class="card-title">JEE / BITSAT Preparation</h3>
-                        <p class="card-description">Better luck fighting for Placement if you survive this. Comprehensive resources for JEE aspirants.</p>
+                        <p class="card-description">Better luck fighting for Placement if you survive this.
+                            Comprehensive resources for JEE aspirants.</p>
                         <div class="card-footer">
-                            <a href="jee.html" target="_blank" class="card-button">Access Now <i class="fas fa-arrow-right"></i></a>
+                            <a href="jee.html" target="_blank" class="card-button">Access Now <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">NEET</span>
                         <img src="neet.png" class="card-icon" alt="NEET">
                         <h3 class="card-title">NEET Preparation</h3>
-                        <p class="card-description">Please Hurry! 25 lakh people are in queue. Comprehensive medical entrance exam resources.</p>
+                        <p class="card-description">Please Hurry! 25 lakh people are in queue. Comprehensive medical
+                            entrance exam resources.</p>
                         <div class="card-footer">
-                            <a href="neet.html" target="_blank" class="card-button">Access Now <i class="fas fa-arrow-right"></i></a>
+                            <a href="neet.html" target="_blank" class="card-button">Access Now <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Tests</span>
                         <img src="test.png" class="card-icon" alt="Tests">
                         <h3 class="card-title">Quizzes and Test Series</h3>
-                        <p class="card-description">Here, have some Reality Check of your preparation with our extensive test series.</p>
+                        <p class="card-description">Here, have some Reality Check of your preparation with our extensive
+                            test series.</p>
                         <div class="card-footer">
-                            <a href="https://novatra.in/" target="_blank" class="card-button">Start Quiz <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://novatra.in/" target="_blank" class="card-button">Start Quiz <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">2TB</span>
                         <img src="lecture2.png" class="card-icon" alt="Lectures">
                         <h3 class="card-title">Lectures and Resources</h3>
-                        <p class="card-description">2TB Compiled resources that may have some hidden gems for your preparation.</p>
+                        <p class="card-description">2TB Compiled resources that may have some hidden gems for your
+                            preparation.</p>
                         <div class="card-footer">
-                            <a href="https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ" target="_blank" class="card-button">Access Resources <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://mega.nz/folder/fXgiWK7Z#A4a_b5kK44lg-119cEa6LQ" target="_blank"
+                                class="card-button">Access Resources <i class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 6.7K</div>
                         </div>
                     </div>
@@ -1477,9 +1559,11 @@
                         <span class="card-badge">Telegram</span>
                         <img src="Telegram.webp" class="card-icon" alt="Telegram">
                         <h3 class="card-title">Best Telegram Channels</h3>
-                        <p class="card-description">Join Our Channel and Check Pinned messages. If you don't find what you need, text us on PRHIVE CHAT.</p>
+                        <p class="card-description">Join Our Channel and Check Pinned messages. If you don't find what
+                            you need, text us on PRHIVE CHAT.</p>
                         <div class="card-footer">
-                            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="card-button">Join Channel <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="card-button">Join Channel <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 52.7K</div>
                         </div>
                     </div>
@@ -1489,25 +1573,30 @@
             <!-- B.Tech Tab -->
             <div class="tab-content" id="btech-tab">
                 <div class="notice-box">
-                    <a href="https://t.me/+F4UQT36D96RiODll"><i class="fas fa-exclamation-circle"></i><strong>Join our coding community for real-time help and resources!</strong></a>
+                    <a href="https://t.me/+F4UQT36D96RiODll"><i class="fas fa-exclamation-circle"></i><strong>Join our
+                            coding community for real-time help and resources!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">1st Year</span>
                         <img src="engin.png" class="card-icon" alt="Engineering">
                         <h3 class="card-title">1st Year Resources</h3>
-                        <p class="card-description">Access resources for 1st-year engineering students including notes, books, and reference materials.</p>
+                        <p class="card-description">Access resources for 1st-year engineering students including notes,
+                            books, and reference materials.</p>
                         <div class="card-footer">
-                            <a href="year1.html" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
+                            <a href="year1.html" target="_blank" class="card-button">Explore <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Coding</span>
                         <img src="coding.png" class="card-icon" alt="Coding">
                         <h3 class="card-title">Coding Resources</h3>
-                        <p class="card-description">Learn coding with comprehensive resources, tutorials, and practice problems for all skill levels.</p>
+                        <p class="card-description">Learn coding with comprehensive resources, tutorials, and practice
+                            problems for all skill levels.</p>
                         <div class="card-footer">
-                            <a href="coding.html" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
+                            <a href="coding.html" target="_blank" class="card-button">Explore <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 5.6K</div>
                         </div>
                     </div>
@@ -1515,9 +1604,11 @@
                         <span class="card-badge">Discord</span>
                         <img src="Discord.webp" class="card-icon" alt="Discord">
                         <h3 class="card-title">Must Join Discord Server</h3>
-                        <p class="card-description">Socialise and learn with our growing community of tech enthusiasts and professionals.</p>
+                        <p class="card-description">Socialise and learn with our growing community of tech enthusiasts
+                            and professionals.</p>
                         <div class="card-footer">
-                            <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" class="card-button">Explore <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 98.4K</div>
                         </div>
                     </div>
@@ -1527,14 +1618,17 @@
                         <h3 class="card-title">Coding Knights</h3>
                         <p class="card-description">An active Group to interact with fellow developers.</p>
                         <div class="card-footer">
-                            <a href="https://t.me/+F4UQT36D96RiODll" target="_blank" class="card-button">Explore <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://t.me/+F4UQT36D96RiODll" target="_blank" class="card-button">Explore <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Projects</span>
-                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🚀</div>
+                        <div class="card-icon"
+                            style="display:flex;align-items:center;justify-content:center;font-size:24px;">🚀</div>
                         <h3 class="card-title">Project Ideas and Guides</h3>
-                        <p class="card-description">Find inspiration and guidance for your next tech project with our curated collection.</p>
+                        <p class="card-description">Find inspiration and guidance for your next tech project with our
+                            curated collection.</p>
                         <div class="card-footer">
                             <span class="card-button" style="opacity:0.6;cursor:not-allowed;">Coming Soon</span>
                         </div>
@@ -1545,7 +1639,8 @@
             <!-- E-Books Tab -->
             <div class="tab-content" id="ebooks-tab">
                 <div class="notice-box">
-                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Everything from fiction to university texts - no paid walls!</strong></a>
+                    <a href="#"><i class="fas fa-exclamation-circle"></i><strong>Everything from fiction to university
+                            texts - no paid walls!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
@@ -1554,7 +1649,8 @@
                         <h3 class="card-title">Anna's Library</h3>
                         <p class="card-description">The Godfather of books piracy.</p>
                         <div class="card-footer">
-                            <a href="https://annas-archive.org/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://annas-archive.org/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 9.8K</div>
                         </div>
                     </div>
@@ -1562,9 +1658,11 @@
                         <span class="card-badge">LibGen</span>
                         <img src="ebook.png" class="card-icon" alt="LibGen">
                         <h3 class="card-title">Library Genesis</h3>
-                        <p class="card-description">Millions of books and scientific articles, direct download links.</p>
+                        <p class="card-description">Millions of books and scientific articles, direct download links.
+                        </p>
                         <div class="card-footer">
-                            <a href="http://libgen.li/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="http://libgen.li/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 5.2K</div>
                         </div>
                     </div>
@@ -1574,7 +1672,8 @@
                         <h3 class="card-title">Z-Library Mirror</h3>
                         <p class="card-description">Fiction, non-fiction, comics - fastest mirrors updated daily.</p>
                         <div class="card-footer">
-                            <a href="https://z-lib.gd/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://z-lib.gd/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 7.3K</div>
                         </div>
                     </div>
@@ -1584,44 +1683,54 @@
             <!-- Games Tab -->
             <div class="tab-content" id="games-tab">
                 <div class="notice-box">
-                    <a href="https://rentry.org/pgames"><i class="fas fa-exclamation-circle"></i><strong>Click here to prepare your ship to sail the high sea. Enjoy!</strong></a>
+                    <a href="https://rentry.org/pgames"><i class="fas fa-exclamation-circle"></i><strong>Click here to
+                            prepare your ship to sail the high sea. Enjoy!</strong></a>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <span class="card-badge">Pre-installed</span>
-                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
+                        <div class="card-icon"
+                            style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
                         <h3 class="card-title">AnkerGames</h3>
-                        <p class="card-description">Unleash your gaming skills with lightning-fast downloads of pre-installed portable PC games.</p>
+                        <p class="card-description">Unleash your gaming skills with lightning-fast downloads of
+                            pre-installed portable PC games.</p>
                         <div class="card-footer">
-                            <a href="https://ankergames.net/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://ankergames.net/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Torrent</span>
-                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🎮</div>
+                        <div class="card-icon"
+                            style="display:flex;align-items:center;justify-content:center;font-size:24px;">🎮</div>
                         <h3 class="card-title">FitGirl Repacks</h3>
                         <p class="card-description">Compressed repacks of the latest AAA and indie games.</p>
                         <div class="card-footer">
-                            <a href="https://fitgirl-repacks.site/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://fitgirl-repacks.site/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="card-meta"><i class="fas fa-eye"></i> 12.4K</div>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Direct-Download</span>
-                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
+                        <div class="card-icon"
+                            style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
                         <h3 class="card-title">SteamRip</h3>
                         <p class="card-description">Pre-installed Steam games - download, unzip and play.</p>
                         <div class="card-footer">
-                            <a href="https://steamrip.com/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://steamrip.com/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">DD</span>
-                        <div class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
+                        <div class="card-icon"
+                            style="display:flex;align-items:center;justify-content:center;font-size:24px;">🕹️</div>
                         <h3 class="card-title">Gamebounty</h3>
                         <p class="card-description">In case above listed don't work, try this alternative.</p>
                         <div class="card-footer">
-                            <a href="https://gamebounty.world/" target="_blank" class="card-button">Visit <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://gamebounty.world/" target="_blank" class="card-button">Visit <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1633,18 +1742,23 @@
                     <div class="card">
                         <img src="about.png" class="card-icon" alt="About">
                         <h3 class="card-title">About Us</h3>
-                        <p class="card-description">Our mission is to provide free alternatives to paid content. We do not host any files. Concerns? <a href="mailto:Phantomx92@proton.me" style="color:var(--primary)">Email us</a>.</p>
+                        <p class="card-description">Our mission is to provide free alternatives to paid content. We do
+                            not host any files. Concerns? <a href="mailto:Phantomx92@proton.me"
+                                style="color:var(--primary)">Email us</a>.</p>
                         <div class="card-footer">
-                            <a href="mailto:Phantomx92@proton.me" class="card-button">Contact <i class="fas fa-arrow-right"></i></a>
+                            <a href="mailto:Phantomx92@proton.me" class="card-button">Contact <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="card">
                         <span class="card-badge">Important</span>
                         <img src="tele.png" class="card-icon" alt="Telegram">
                         <h3 class="card-title">Join Telegram</h3>
-                        <p class="card-description">Join our Telegram for updates and backup. If the site goes down, you'll still have access.</p>
+                        <p class="card-description">Join our Telegram for updates and backup. If the site goes down,
+                            you'll still have access.</p>
                         <div class="card-footer">
-                            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="card-button">Join Now <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" class="card-button">Join Now <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1668,21 +1782,21 @@
                     <div class="stat-icon-wrapper">
                         <i class="fas fa-users"></i>
                     </div>
-                    <div class="stat-number" data-count="1075048">0</div>
+                    <div class="stat-number" data-count="11225948">0</div>
                     <div class="stat-label">Users Worldwide</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon-wrapper">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <div class="stat-number" data-count="114">0</div>
+                    <div class="stat-number" data-count="116">0</div>
                     <div class="stat-label">Countries Reached</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon-wrapper">
                         <i class="fab fa-telegram"></i>
                     </div>
-                    <div class="stat-number" data-count="2100">0</div>
+                    <div class="stat-number" data-count="2200">0</div>
                     <div class="stat-label">Telegram Family</div>
                 </div>
             </div>
@@ -1693,7 +1807,8 @@
     <section class="features-section">
         <div class="section-header">
             <h2 class="section-title">Why Choose PirateHive?</h2>
-            <p class="section-subtitle">Because whether you admit it or not, you're already here. This section? Just me filling space, IDC.</p>
+            <p class="section-subtitle">Because whether you admit it or not, you're already here. This section? Just me
+                filling space, IDC.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
@@ -1714,7 +1829,8 @@
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-sync"></i></div>
                 <h3 class="feature-title">Regular Updates</h3>
-                <p class="feature-description">Monthly drops. Or whenever we feel like flexing. At least one update a month guaranteed.</p>
+                <p class="feature-description">Monthly drops. Or whenever we feel like flexing. At least one update a
+                    month guaranteed.</p>
             </div>
         </div>
     </section>
@@ -1724,33 +1840,42 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <span class="logo-text">PirateHive</span>
-                <p class="footer-description">Your ultimate destination for premium digital resources, entertainment, and educational content.</p>
+                <p class="footer-description">Your ultimate destination for premium digital resources, entertainment,
+                    and educational content.</p>
                 <div class="social-links">
-                    <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-                    <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://t.me/+bRom8OVaNMRjOTk1" target="_blank" aria-label="Telegram"><i
+                            class="fab fa-telegram"></i></a>
+                    <a href="https://discord.gg/XZ6P9ZDK9M" target="_blank" aria-label="Discord"><i
+                            class="fab fa-discord"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div>
                 <h3 class="footer-heading">Resources</h3>
                 <ul class="footer-links">
-                    <li class="footer-link"><a href="#movies-tab"><i class="fas fa-chevron-right"></i> Entertainment</a></li>
-                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Education</a></li>
-                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Software</a></li>
+                    <li class="footer-link"><a href="#movies-tab"><i class="fas fa-chevron-right"></i> Entertainment</a>
+                    </li>
+                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Education</a>
+                    </li>
+                    <li class="footer-link"><a href="#tabs-section"><i class="fas fa-chevron-right"></i> Software</a>
+                    </li>
                 </ul>
             </div>
             <div>
                 <h3 class="footer-heading">Support</h3>
                 <ul class="footer-links">
-                    <li class="footer-link"><a href="mailto:Phantomx92@proton.me"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                    <li class="footer-link"><a href="brokenlink.html"><i class="fas fa-chevron-right"></i> Report Issue</a></li>
+                    <li class="footer-link"><a href="mailto:Phantomx92@proton.me"><i class="fas fa-chevron-right"></i>
+                            Contact Us</a></li>
+                    <li class="footer-link"><a href="brokenlink.html"><i class="fas fa-chevron-right"></i> Report
+                            Issue</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="footer-heading">Legal</h3>
                 <ul class="footer-links">
                     <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Terms</a></li>
-                    <li class="footer-link"><span style="color:var(--text-muted)"><i class="fas fa-chevron-right"></i> Make Internet Great Again</span></li>
+                    <li class="footer-link"><span style="color:var(--text-muted)"><i class="fas fa-chevron-right"></i>
+                            Make Internet Great Again</span></li>
                 </ul>
             </div>
         </div>
@@ -1834,17 +1959,17 @@
                 $('#searchResults').innerHTML = '';
                 return;
             }
-            const results = searchIndex.filter(item => 
+            const results = searchIndex.filter(item =>
                 item.keywords.includes(val) || item.title.toLowerCase().includes(val)
             );
-            $('#searchResults').innerHTML = results.length 
+            $('#searchResults').innerHTML = results.length
                 ? results.map(r => `<a href="${r.url}" target="_blank" class="result-item"><i class="fas fa-external-link-alt"></i>${r.title}</a>`).join('')
                 : '<p style="padding:1rem;color:var(--text-muted)">No results found.</p>';
         });
 
         // Notifications
         const notifications = [
-            { text: 'Maintenance Complete (JEE/NEET working again)', time: '22 Nov UTC 04:05' },
+            { text: 'Maintenance Complete (JEE/NEET working again)', time: '2 May UTC 04:05' },
             { text: 'Maintenance Complete (New sites added)', time: '12 Oct UTC 17:00' },
             { text: 'Games Section now live', time: '04 Sept UTC 15:24' },
             { text: 'UPDATE PROTON - New Website is now live', time: '28 Aug UTC 18:00' },
@@ -1889,7 +2014,7 @@
             if (statsAnimated) return;
             const statsSection = $('#stats-section');
             if (!statsSection) return;
-            
+
             const rect = statsSection.getBoundingClientRect();
             if (rect.top < window.innerHeight - 100) {
                 statNumbers.forEach(stat => {
